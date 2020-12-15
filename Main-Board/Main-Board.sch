@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Main-Board-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -269,4 +270,94 @@ Text GLabel 1350 3700 0    59   Input ~ 0
 IMU_SCL
 Text Notes 2300 3250 0    59   ~ 0
 Get 3.3 logic chip and we dont need any of the logical level converters. \nhttps://www.sparkfun.com/products/11114?_ga=2.157966834.958786350.1607897333-1936986696.1607897333
+$Comp
+L MCU_Microchip_ATmega:ATmega328P-AU U?
+U 1 1 5FD850AB
+P 3950 5650
+F 0 "U?" H 3950 4061 50  0000 C CNN
+F 1 "ATmega328P-AU" H 3950 3970 50  0000 C CNN
+F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 3950 5650 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 3950 5650 50  0001 C CNN
+	1    3950 5650
+	1    0    0    -1  
+$EndComp
+Text GLabel 4800 5350 2    50   Input ~ 0
+A0
+Text GLabel 4800 5450 2    50   Input ~ 0
+A1
+Text GLabel 3100 4750 0    50   Input ~ 0
+A7
+Text GLabel 3100 4650 0    50   Input ~ 0
+A6
+Wire Wire Line
+	3100 4650 3350 4650
+Wire Wire Line
+	3350 4750 3100 4750
+Wire Wire Line
+	4800 5350 4550 5350
+Wire Wire Line
+	4800 5450 4550 5450
+Text GLabel 4800 5550 2    50   Input ~ 0
+A2
+Wire Wire Line
+	4800 5550 4550 5550
+Text GLabel 4800 5650 2    50   Input ~ 0
+A3
+Wire Wire Line
+	4800 5650 4550 5650
+Text GLabel 4800 5750 2    50   Input ~ 0
+A4_SDA
+Text GLabel 4800 5850 2    50   Input ~ 0
+A5_SCL
+Wire Wire Line
+	4550 5750 4800 5750
+Wire Wire Line
+	4800 5850 4550 5850
+$Comp
+L power:GND #PWR?
+U 1 1 5FD8ADF7
+P 3950 7450
+F 0 "#PWR?" H 3950 7200 50  0001 C CNN
+F 1 "GND" H 3955 7277 50  0000 C CNN
+F 2 "" H 3950 7450 50  0001 C CNN
+F 3 "" H 3950 7450 50  0001 C CNN
+	1    3950 7450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3950 7450 3950 7150
+Text GLabel 4800 6150 2    50   Input ~ 0
+RX
+Text GLabel 4800 6250 2    50   Input ~ 0
+TX
+Wire Wire Line
+	4550 6150 4800 6150
+Wire Wire Line
+	4800 6250 4550 6250
+Text GLabel 4800 6350 2    50   Input ~ 0
+D2
+Text GLabel 4800 6450 2    50   Input ~ 0
+D3
+Text GLabel 4800 6550 2    50   Input ~ 0
+D4
+Text GLabel 4800 6650 2    50   Input ~ 0
+D5
+Text GLabel 4800 6750 2    50   Input ~ 0
+D6
+Text GLabel 4800 6850 2    50   Input ~ 0
+D7
+Wire Wire Line
+	4550 6850 4800 6850
+Wire Wire Line
+	4800 6750 4550 6750
+Wire Wire Line
+	4550 6650 4800 6650
+Wire Wire Line
+	4800 6550 4550 6550
+Wire Wire Line
+	4550 6450 4800 6450
+Wire Wire Line
+	4800 6350 4550 6350
+Text Notes 8750 6000 0    50   ~ 0
+PWM for RGB?
 $EndSCHEMATC
