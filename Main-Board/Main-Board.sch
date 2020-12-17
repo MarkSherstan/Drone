@@ -32,4 +32,10 @@ U 5FDD4B9C
 F0 "Microcontroller" 50
 F1 "Microcontroller.sch" 50
 $EndSheet
+Text Notes 7850 3150 0    50   ~ 0
+Double check interupt pins and ESC compatible 
+Text Notes 7400 3950 0    50   ~ 0
+Connection to PDB? Molex connectors?
+Text Notes 8250 4850 0    50   ~ 0
+Debug port? Extra spare PWM?\n
 $EndSCHEMATC
