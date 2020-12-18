@@ -38,4 +38,48 @@ Text Notes 7400 3950 0    50   ~ 0
 Connection to PDB? Molex connectors?
 Text Notes 8250 4850 0    50   ~ 0
 Debug port? Extra spare PWM?\n
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 60055D25
+P 4650 3150
+F 0 "J?" H 4568 2825 50  0000 C CNN
+F 1 "ESC1" H 4568 2916 50  0000 C CNN
+F 2 "" H 4650 3150 50  0001 C CNN
+F 3 "~" H 4650 3150 50  0001 C CNN
+	1    4650 3150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 60056CDE
+P 4650 3750
+F 0 "J?" H 4568 3425 50  0000 C CNN
+F 1 "ESC2" H 4568 3516 50  0000 C CNN
+F 2 "" H 4650 3750 50  0001 C CNN
+F 3 "~" H 4650 3750 50  0001 C CNN
+	1    4650 3750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 60056F29
+P 4650 4350
+F 0 "J?" H 4568 4025 50  0000 C CNN
+F 1 "ESC3" H 4568 4116 50  0000 C CNN
+F 2 "" H 4650 4350 50  0001 C CNN
+F 3 "~" H 4650 4350 50  0001 C CNN
+	1    4650 4350
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x02 J?
+U 1 1 600574C6
+P 4650 5000
+F 0 "J?" H 4568 4675 50  0000 C CNN
+F 1 "ESC4" H 4568 4766 50  0000 C CNN
+F 2 "" H 4650 5000 50  0001 C CNN
+F 3 "~" H 4650 5000 50  0001 C CNN
+	1    4650 5000
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
