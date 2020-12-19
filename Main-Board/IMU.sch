@@ -15,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 Text GLabel 2450 4800 0    59   Input ~ 0
-IMU_SCL
+IMU_SCL_LL
 $Comp
 L power:+3.3V #PWR?
 U 1 1 5FD9D00C
@@ -47,9 +47,9 @@ Wire Wire Line
 Wire Wire Line
 	5900 2450 6100 2450
 Text GLabel 6100 2600 2    59   Input ~ 0
-IMU_SDA
+IMU_SDA_LL
 Text GLabel 6100 2450 2    59   Input ~ 0
-IMU_SCL
+IMU_SCL_LL
 Wire Wire Line
 	3400 2150 4900 2150
 Wire Wire Line
@@ -346,10 +346,6 @@ F 3 "" H 4250 4250 50  0001 C CNN
 	1    4250 4250
 	1    0    0    -1  
 $EndComp
-Text GLabel 4500 4800 2    50   Input ~ 0
-A5_SCL
-Text GLabel 8650 4800 2    50   Input ~ 0
-A4_SDA
 Wire Wire Line
 	3600 4800 3350 4800
 Wire Wire Line
@@ -504,5 +500,9 @@ Connection ~ 7050 4800
 Wire Wire Line
 	7050 4350 7050 4250
 Text GLabel 6600 4800 0    59   Input ~ 0
-IMU_SDA
+IMU_SDA_LL
+Text GLabel 4500 4800 2    59   Input ~ 0
+IMU_SCL_LH
+Text GLabel 8650 4800 2    59   Input ~ 0
+IMU_SDA_LH
 $EndSCHEMATC
