@@ -9,3 +9,4 @@ Footprints to make
 - SS1P3L
 - Button 
 - Crystal (Double check)
+- Fix op amp numbering
