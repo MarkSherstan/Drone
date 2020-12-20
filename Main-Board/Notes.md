@@ -9,4 +9,9 @@ Footprints to make
 - SS1P3L
 - Button 
 - Crystal (Double check)
-- Fix op amp numbering
+
+To Do:
+- Debug port? Extra spare PWM?
+- Double check interupt pins and ESC compatible 
+- Molex connectors? - ESC and lights connectors?
+- Layout 2 layer?

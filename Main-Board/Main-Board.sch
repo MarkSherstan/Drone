@@ -28,12 +28,6 @@ U 5FDD4B9C
 F0 "Microcontroller" 50
 F1 "Microcontroller.sch" 50
 $EndSheet
-Text Notes 7800 6250 0    50   ~ 0
-Double check interupt pins and ESC compatible 
-Text Notes 7800 6400 0    50   ~ 0
-Connection to PDB? Molex connectors?
-Text Notes 7800 6100 0    50   ~ 0
-Debug port? Extra spare PWM?\n
 $Comp
 L Connector_Generic:Conn_01x02 J1
 U 1 1 60058BBB
@@ -174,8 +168,6 @@ F 3 "~" H 9100 4850 50  0001 C CNN
 	1    9100 4850
 	0    1    1    0   
 $EndComp
-Text Notes 7800 6550 0    50   ~ 0
-Change connector types for ESCs and lights? Molex??
 Text Notes 2350 750  0    79   ~ 16
 Microcontroller and IMU
 $Comp
@@ -294,7 +286,7 @@ U 1 1 6009D7CE
 P 8350 4450
 F 0 "D1" H 8350 4947 50  0000 C CNN
 F 1 "LED_RGB" H 8350 4856 50  0000 C CNN
-F 2 "" H 8350 4400 50  0001 C CNN
+F 2 "Custom:RGB_LED" H 8350 4400 50  0001 C CNN
 F 3 "~" H 8350 4400 50  0001 C CNN
 	1    8350 4450
 	1    0    0    -1  
@@ -626,10 +618,10 @@ Wire Wire Line
 Wire Wire Line
 	4400 5650 4550 5650
 $Comp
-L Mechanical:MountingHole H?
+L Mechanical:MountingHole H1
 U 1 1 5FDEB61F
 P 2450 7400
-F 0 "H?" H 2550 7446 50  0000 L CNN
+F 0 "H1" H 2550 7446 50  0000 L CNN
 F 1 "M2" H 2550 7355 50  0000 L CNN
 F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 2450 7400 50  0001 C CNN
 F 3 "~" H 2450 7400 50  0001 C CNN
@@ -637,10 +629,10 @@ F 3 "~" H 2450 7400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H?
+L Mechanical:MountingHole H2
 U 1 1 5FDEDAAD
 P 2850 7400
-F 0 "H?" H 2950 7446 50  0000 L CNN
+F 0 "H2" H 2950 7446 50  0000 L CNN
 F 1 "M2" H 2950 7355 50  0000 L CNN
 F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 2850 7400 50  0001 C CNN
 F 3 "~" H 2850 7400 50  0001 C CNN
@@ -648,10 +640,10 @@ F 3 "~" H 2850 7400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H?
+L Mechanical:MountingHole H3
 U 1 1 5FDEF850
 P 3200 7400
-F 0 "H?" H 3300 7446 50  0000 L CNN
+F 0 "H3" H 3300 7446 50  0000 L CNN
 F 1 "M2" H 3300 7355 50  0000 L CNN
 F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 3200 7400 50  0001 C CNN
 F 3 "~" H 3200 7400 50  0001 C CNN
@@ -659,10 +651,10 @@ F 3 "~" H 3200 7400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H?
+L Mechanical:MountingHole H4
 U 1 1 5FDF1549
 P 3550 7400
-F 0 "H?" H 3650 7446 50  0000 L CNN
+F 0 "H4" H 3650 7446 50  0000 L CNN
 F 1 "M2" H 3650 7355 50  0000 L CNN
 F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 3550 7400 50  0001 C CNN
 F 3 "~" H 3550 7400 50  0001 C CNN

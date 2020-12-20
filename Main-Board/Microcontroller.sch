@@ -462,7 +462,7 @@ U 1 1 5FE3E5F4
 P 6850 6100
 F 0 "D6" H 6850 6316 50  0000 C CNN
 F 1 "SS1P3L" H 6850 6225 50  0000 C CNN
-F 2 "" H 6850 6100 50  0001 C CNN
+F 2 "Custom:SS1P3L" H 6850 6100 50  0001 C CNN
 F 3 "~" H 6850 6100 50  0001 C CNN
 	1    6850 6100
 	1    0    0    -1  
@@ -658,17 +658,6 @@ Wire Wire Line
 Wire Wire Line
 	5900 7500 5700 7500
 $Comp
-L Switch:SW_MEC_5G SW1
-U 1 1 5FEF10E5
-P 1000 5900
-F 0 "SW1" H 1000 6185 50  0000 C CNN
-F 1 "Reset" H 1000 6094 50  0000 C CNN
-F 2 "" H 1000 6100 50  0001 C CNN
-F 3 "" H 1000 6100 50  0001 C CNN
-	1    1000 5900
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0153
 U 1 1 5FEF5DEF
 P 650 5900
@@ -830,7 +819,7 @@ F 1 "4.7uF 16V" H 2218 1505 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2138 1400 50  0001 C CNN
 F 3 "~" H 2100 1550 50  0001 C CNN
 	1    2100 1550
-	1    0    0    -1  
+	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:C C?
@@ -1087,4 +1076,15 @@ Connection ~ 1950 6800
 Wire Wire Line
 	1950 7300 1700 7300
 Connection ~ 1950 7300
+$Comp
+L Custom:Push-Switch SW1
+U 1 1 5FDF717A
+P 1000 5850
+F 0 "SW1" H 1000 6085 50  0000 C CNN
+F 1 "Reset" H 1000 5994 50  0000 C CNN
+F 2 "Custom:Switch" H 1000 6100 50  0001 C CNN
+F 3 "" H 1000 6100 50  0001 C CNN
+	1    1000 5850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
