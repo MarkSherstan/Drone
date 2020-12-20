@@ -23,3 +23,4 @@ To Do:
 - Order pre crimped leads
 - Double check actual PWM for the RGB????
 - Use JST connectors? Vertical?
+- Add reverse polarity? - Key power differently???
