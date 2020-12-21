@@ -583,56 +583,56 @@ Wire Wire Line
 $Comp
 L Connector_Generic:Conn_02x03_Odd_Even J9
 U 1 1 5FE91946
-P 5300 7100
-F 0 "J9" H 5350 7417 50  0000 C CNN
-F 1 "ICSP" H 5350 7326 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 5300 7100 50  0001 C CNN
-F 3 "~" H 5300 7100 50  0001 C CNN
-	1    5300 7100
+P 2600 6950
+F 0 "J9" H 2650 7267 50  0000 C CNN
+F 1 "ICSP" H 2650 7176 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x03_P2.54mm_Vertical" H 2600 6950 50  0001 C CNN
+F 3 "~" H 2600 6950 50  0001 C CNN
+	1    2600 6950
 	-1   0    0    1   
 $EndComp
-Text GLabel 4800 7200 0    50   Input ~ 0
+Text GLabel 2100 7050 0    50   Input ~ 0
 RESET
 $Comp
 L power:GND #PWR066
 U 1 1 5FE94089
-P 5700 7200
-F 0 "#PWR066" H 5700 6950 50  0001 C CNN
-F 1 "GND" H 5705 7027 50  0000 C CNN
-F 2 "" H 5700 7200 50  0001 C CNN
-F 3 "" H 5700 7200 50  0001 C CNN
-	1    5700 7200
+P 3000 7050
+F 0 "#PWR066" H 3000 6800 50  0001 C CNN
+F 1 "GND" H 3005 6877 50  0000 C CNN
+F 2 "" H 3000 7050 50  0001 C CNN
+F 3 "" H 3000 7050 50  0001 C CNN
+	1    3000 7050
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	4800 7200 5000 7200
+	2100 7050 2300 7050
 Wire Wire Line
-	5500 7200 5700 7200
+	2800 7050 3000 7050
 $Comp
 L power:+5V #PWR064
 U 1 1 5FE9C160
-P 5700 7000
-F 0 "#PWR064" H 5700 6850 50  0001 C CNN
-F 1 "+5V" H 5715 7173 50  0000 C CNN
-F 2 "" H 5700 7000 50  0001 C CNN
-F 3 "" H 5700 7000 50  0001 C CNN
-	1    5700 7000
+P 3000 6850
+F 0 "#PWR064" H 3000 6700 50  0001 C CNN
+F 1 "+5V" H 3015 7023 50  0000 C CNN
+F 2 "" H 3000 6850 50  0001 C CNN
+F 3 "" H 3000 6850 50  0001 C CNN
+	1    3000 6850
 	1    0    0    -1  
 $EndComp
-Text GLabel 5700 7100 2    50   Input ~ 0
+Text GLabel 3000 6950 2    50   Input ~ 0
 D11
-Text GLabel 4800 7000 0    50   Input ~ 0
+Text GLabel 2100 6850 0    50   Input ~ 0
 D12
-Text GLabel 4800 7100 0    50   Input ~ 0
+Text GLabel 2100 6950 0    50   Input ~ 0
 D13
 Wire Wire Line
-	4800 7000 5000 7000
+	2100 6850 2300 6850
 Wire Wire Line
-	5000 7100 4800 7100
+	2300 6950 2100 6950
 Wire Wire Line
-	5500 7000 5700 7000
+	2800 6850 3000 6850
 Wire Wire Line
-	5700 7100 5500 7100
+	3000 6950 2800 6950
 $Comp
 L power:GND #PWR061
 U 1 1 5FEF5DEF
@@ -785,7 +785,7 @@ L Device:CP C8
 U 1 1 5FFF2594
 P 2200 1550
 F 0 "C8" H 2318 1596 50  0000 L CNN
-F 1 "4.7uF 16V 20%" H 2318 1505 50  0000 L CNN
+F 1 "4.7uF 10V 20%" H 2318 1505 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 2238 1400 50  0001 C CNN
 F 3 "~" H 2200 1550 50  0001 C CNN
 	1    2200 1550
@@ -893,7 +893,7 @@ L Device:CP C16
 U 1 1 5FE1EC4C
 P 8600 5950
 F 0 "C16" H 8482 5996 50  0000 R CNN
-F 1 "4.7uF 16V 20%" H 8482 5905 50  0000 R CNN
+F 1 "4.7uF 10V 20%" H 8482 5905 50  0000 R CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 8638 5800 50  0001 C CNN
 F 3 "~" H 8600 5950 50  0001 C CNN
 	1    8600 5950
@@ -923,110 +923,8 @@ F 3 "~" H 3400 5900 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	3550 5900 3950 5900
-Text Notes 5100 6750 0    79   ~ 16
+Text Notes 2400 6600 0    79   ~ 16
 ICSP
-Text GLabel 3450 2900 2    50   Input ~ 0
-XTAL1
-Text GLabel 3450 3000 2    50   Input ~ 0
-XTAL2
-Wire Wire Line
-	3450 2900 3200 2900
-Wire Wire Line
-	3200 3000 3450 3000
-$Comp
-L power:GND #PWR065
-U 1 1 5FEC1FF5
-P 3550 7050
-F 0 "#PWR065" H 3550 6800 50  0001 C CNN
-F 1 "GND" H 3555 6877 50  0000 C CNN
-F 2 "" H 3550 7050 50  0001 C CNN
-F 3 "" H 3550 7050 50  0001 C CNN
-	1    3550 7050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:Crystal Y1
-U 1 1 6031835C
-P 2500 7050
-F 0 "Y1" V 2454 7181 50  0000 L CNN
-F 1 "16 MHz" V 2545 7181 50  0000 L CNN
-F 2 "Custom:Crystal" H 2500 7050 50  0001 C CNN
-F 3 "~" H 2500 7050 50  0001 C CNN
-F 4 "Fox Electronics" H 2500 7050 50  0001 C CNN "Manufacturer"
-F 5 "FC4STCBMF16.0-BAG200" H 2500 7050 50  0001 C CNN "Manufacturer #"
-F 6 "631-1108-ND" H 2500 7050 50  0001 C CNN "Digi-Key #"
-F 7 "https://www.digikey.ca/en/products/detail/fox-electronics/FC4STCBMF16-0-BAG200/1024700?s=N4IgTCBcDaIGIHkAaBlAMnA9ARgGwAYBaMfEAXQF8g" H 2500 7050 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
-	1    2500 7050
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R23
-U 1 1 60339A37
-P 1800 7050
-F 0 "R23" H 1870 7096 50  0000 L CNN
-F 1 "1 Mohm 5%" H 1870 7005 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 1730 7050 50  0001 C CNN
-F 3 "~" H 1800 7050 50  0001 C CNN
-	1    1800 7050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 603531AF
-P 3100 6800
-AR Path="/5FD99B6C/603531AF" Ref="C?"  Part="1" 
-AR Path="/5FD9E07D/603531AF" Ref="C?"  Part="1" 
-AR Path="/5FDD4B9C/603531AF" Ref="C18"  Part="1" 
-F 0 "C18" V 3350 6750 50  0000 L CNN
-F 1 "2pF 16V X7R 2%" V 3250 6500 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3138 6650 50  0001 C CNN
-F 3 "~" H 3100 6800 50  0001 C CNN
-	1    3100 6800
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 60362846
-P 3100 7300
-AR Path="/5FD99B6C/60362846" Ref="C?"  Part="1" 
-AR Path="/5FD9E07D/60362846" Ref="C?"  Part="1" 
-AR Path="/5FDD4B9C/60362846" Ref="C19"  Part="1" 
-F 0 "C19" V 3350 7200 50  0000 L CNN
-F 1 "2pF 16V X7R 2%" V 3250 6950 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3138 7150 50  0001 C CNN
-F 3 "~" H 3100 7300 50  0001 C CNN
-	1    3100 7300
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	1800 6900 1800 6800
-Wire Wire Line
-	1800 7300 1800 7200
-Wire Wire Line
-	2500 7200 2500 7300
-Wire Wire Line
-	2500 6900 2500 6800
-Wire Wire Line
-	3250 7300 3400 7300
-Wire Wire Line
-	3250 6800 3400 6800
-Wire Wire Line
-	3400 6800 3400 7050
-Wire Wire Line
-	3550 7050 3400 7050
-Connection ~ 3400 7050
-Wire Wire Line
-	3400 7050 3400 7300
-Wire Wire Line
-	2950 7300 2500 7300
-Connection ~ 2500 7300
-Wire Wire Line
-	2950 6800 2500 6800
-Connection ~ 2500 6800
-Text GLabel 1500 6800 0    50   Input ~ 0
-XTAL1
-Text GLabel 1500 7300 0    50   Input ~ 0
-XTAL2
 $Comp
 L Custom:Push-Switch SW1
 U 1 1 5FDF717A
@@ -1153,16 +1051,46 @@ Wire Wire Line
 Connection ~ 7850 4550
 Wire Wire Line
 	7850 4550 8250 4550
-Connection ~ 1800 6800
-Connection ~ 1800 7300
-Wire Wire Line
-	1800 6800 2500 6800
-Wire Wire Line
-	1800 7300 2500 7300
-Wire Wire Line
-	1500 6800 1800 6800
-Wire Wire Line
-	1500 7300 1800 7300
 Wire Wire Line
 	1050 2300 2000 2300
+$Comp
+L Device:Resonator Y1
+U 1 1 60255C7D
+P 4300 2950
+F 0 "Y1" V 4346 3061 50  0000 L CNN
+F 1 "16 MHz" V 4255 3061 50  0000 L CNN
+F 2 "Custom:Resonator" H 4275 2950 50  0001 C CNN
+F 3 "~" H 4275 2950 50  0001 C CNN
+F 4 "Murata Electronics" H 4300 2950 50  0001 C CNN "Manufacturer"
+F 5 "CSTNE16M0VH3L000R0" H 4300 2950 50  0001 C CNN "Manufacturer #"
+F 6 "490-17952-1-ND" H 4300 2950 50  0001 C CNN "Digi-Key #"
+F 7 "https://www.digikey.ca/en/products/detail/murata-electronics/CSTNE16M0VH3L000R0/8747733" H 4300 2950 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
+	1    4300 2950
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	3750 2900 3750 2800
+Wire Wire Line
+	3200 2900 3750 2900
+Wire Wire Line
+	3750 3100 4300 3100
+Wire Wire Line
+	3750 2800 4300 2800
+Wire Wire Line
+	3750 3100 3750 3000
+Wire Wire Line
+	3200 3000 3750 3000
+$Comp
+L power:GND #PWR0101
+U 1 1 60296342
+P 4650 2950
+F 0 "#PWR0101" H 4650 2700 50  0001 C CNN
+F 1 "GND" H 4655 2777 50  0000 C CNN
+F 2 "" H 4650 2950 50  0001 C CNN
+F 3 "" H 4650 2950 50  0001 C CNN
+	1    4650 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 2950 4650 2950
 $EndSCHEMATC
