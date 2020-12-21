@@ -1,32 +1,26 @@
-Orange LED - https://www.digikey.ca/en/products/detail/rohm-semiconductor/SML-E12DWT86/2337250
-Green LED - https://www.digikey.ca/en/products/detail/rohm-semiconductor/SML-E12P8WT86/1641804
-Fuse - https://www.digikey.ca/en/products/detail/eaton-electronics-division/PTS120615V050/2639137
-SS1P3L - https://www.digikey.ca/en/products/detail/vishay-semiconductor-diodes-division/MSS1P3LHM3_A-H/7594340
-4.7 uF Tant - https://www.digikey.ca/en/products/detail/avx-corporation/F981C475MMA/4004970
-Button - https://www.digikey.ca/en/products/detail/c-k/RS-187R05A2-DS-MT-RT/2747186?s=N4IgTCBcDaIMIGkByBGADAZgGwrgFQFokAREAXQF8g
-91 ohm res - https://www.digikey.ca/en/products/detail/yageo/RC0603JR-0791RL/726840
-1 uF - https://www.digikey.ca/en/products/detail/samsung-electro-mechanics/CL10B105MO8NNWC/5961008
-
-
-Footprints to make 
-- SS1P3L
-- Button 
-- Crystal (Double check)
-
-To Do:
+# To Do
 - Double check interupt pins and ESC compatible 
-- Layout 2 layer?
-- Name the nets
-- Order pre crimped leads (multicolor)
 - Double check actual PWM for the RGB????
-- Use JST connectors? Vertical?
-- Add reverse polarity? - Key power differently???
-- Renumber everything
-- Total power dissapotion from LEDs?
-- PDB board
+- Name the nets
 - Bright LEDs?
 - Look at actual arduino???
-- BOM and skim all component footprints and stuff
-- MPU 6050 drop in -> Have some in stock....
-- CH340G -> Serial interface?
 - Ferrite bead?
+- SMD crystal? 
+
+# PDB board
+- 2 Oz 
+- Have proper mating connectors
+
+# LED board?
+-
+
+# Future 
+- Over actuated design? 
+- ATMEGA 2560?
+
+# Additional BOM Items:
+- MPU 6050 drop in -> Have some in stock....
+- Mating housing for JST-GH connectors
+- Order pre crimped leads (multicolor)
+- Do I have extra BSS138?
+- Oscillator???
