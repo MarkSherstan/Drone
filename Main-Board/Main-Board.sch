@@ -5,8 +5,8 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 3
-Title "Master Sheet"
-Date "2020-12-19"
+Title "Flight Controller"
+Date "2020-12-21"
 Rev "A"
 Comp ""
 Comment1 ""
@@ -121,7 +121,7 @@ AR Path="/5FD9E07D/60061C0F" Ref="R?"  Part="1"
 AR Path="/5FDD4B9C/60061C0F" Ref="R?"  Part="1" 
 AR Path="/60061C0F" Ref="R3"  Part="1" 
 F 0 "R3" V 8807 4150 50  0000 C CNN
-F 1 "87.5 ohm 5%" V 8716 4150 50  0000 C CNN
+F 1 "90 ohm 5%" V 8716 4150 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4150 50  0001 C CNN
 F 3 "~" H 8600 4150 50  0001 C CNN
 	1    8600 4150
@@ -136,7 +136,7 @@ AR Path="/5FD9E07D/600625FC" Ref="R?"  Part="1"
 AR Path="/5FDD4B9C/600625FC" Ref="R?"  Part="1" 
 AR Path="/600625FC" Ref="R4"  Part="1" 
 F 0 "R4" V 8807 4550 50  0000 C CNN
-F 1 "147.5 ohm 5%" V 8716 4550 50  0000 C CNN
+F 1 "150 ohm 5%" V 8716 4550 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4550 50  0001 C CNN
 F 3 "~" H 8600 4550 50  0001 C CNN
 	1    8600 4550
@@ -151,7 +151,7 @@ AR Path="/5FD9E07D/60062A76" Ref="R?"  Part="1"
 AR Path="/5FDD4B9C/60062A76" Ref="R?"  Part="1" 
 AR Path="/60062A76" Ref="R5"  Part="1" 
 F 0 "R5" V 8807 4950 50  0000 C CNN
-F 1 "87.5 ohm 5%" V 8716 4950 50  0000 C CNN
+F 1 "90 ohm 5%" V 8716 4950 50  0000 C CNN
 F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4950 50  0001 C CNN
 F 3 "~" H 8600 4950 50  0001 C CNN
 	1    8600 4950
@@ -561,26 +561,26 @@ $EndComp
 $Comp
 L Mechanical:MountingHole H3
 U 1 1 5FDEF850
-P 8650 6300
-F 0 "H3" H 8750 6346 50  0000 L CNN
-F 1 "M2" H 8750 6255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 8650 6300 50  0001 C CNN
-F 3 "~" H 8650 6300 50  0001 C CNN
-	1    8650 6300
+P 8700 6300
+F 0 "H3" H 8800 6346 50  0000 L CNN
+F 1 "M2" H 8800 6255 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 8700 6300 50  0001 C CNN
+F 3 "~" H 8700 6300 50  0001 C CNN
+	1    8700 6300
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H4
 U 1 1 5FDF1549
-P 9000 6300
-F 0 "H4" H 9100 6346 50  0000 L CNN
-F 1 "M2" H 9100 6255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 9000 6300 50  0001 C CNN
-F 3 "~" H 9000 6300 50  0001 C CNN
-	1    9000 6300
+P 9100 6300
+F 0 "H4" H 9200 6346 50  0000 L CNN
+F 1 "M2" H 9200 6255 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 9100 6300 50  0001 C CNN
+F 3 "~" H 9100 6300 50  0001 C CNN
+	1    9100 6300
 	1    0    0    -1  
 $EndComp
-Text Notes 8050 6000 0    79   ~ 16
+Text Notes 8150 6000 0    79   ~ 16
 Mounting Holes
 Text Notes 7350 900  0    59   ~ 0
 Voltage monitoring range: Up to 13V (3s LiPo 12.6V) 
@@ -593,7 +593,7 @@ AR Path="/5FD9E07D/5FE12F4E" Ref="C?"  Part="1"
 AR Path="/5FDD4B9C/5FE12F4E" Ref="C?"  Part="1" 
 AR Path="/5FE12F4E" Ref="C1"  Part="1" 
 F 0 "C1" V 9600 1300 50  0000 L CNN
-F 1 "1uF 16V X7R 20%" V 9700 1000 50  0000 L CNN
+F 1 "1uF 16V X7R 10%" V 9700 1000 50  0000 L CNN
 F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 9488 1200 50  0001 C CNN
 F 3 "~" H 9450 1350 50  0001 C CNN
 	1    9450 1350
