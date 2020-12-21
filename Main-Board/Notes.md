@@ -14,14 +14,16 @@ Footprints to make
 - Crystal (Double check)
 
 To Do:
-- Debug port? Extra spare PWM?
 - Double check interupt pins and ESC compatible 
-- Molex connectors? - ESC and lights connectors?
 - Layout 2 layer?
 - Name the nets
-- Extra receiver port?
-- Order pre crimped leads
+- Order pre crimped leads (multicolor)
 - Double check actual PWM for the RGB????
 - Use JST connectors? Vertical?
 - Add reverse polarity? - Key power differently???
 - Renumber everything
+- Total power dissapotion from LEDs?
+- PDB board
+- Bright LEDs?
+- Look at actual arduino???
+- BOM and skim all component footprints and stuff
