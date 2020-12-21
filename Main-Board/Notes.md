@@ -27,3 +27,6 @@ To Do:
 - Bright LEDs?
 - Look at actual arduino???
 - BOM and skim all component footprints and stuff
+- MPU 6050 drop in -> Have some in stock....
+- CH340G -> Serial interface?
+- Ferrite bead?
