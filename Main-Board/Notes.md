@@ -4,6 +4,7 @@
 - Name the nets (set up design rules for routing)
 - Bright LEDs?
 - IMU orientation? - Silkscreen
+- Fix the one TX / D1 connection 
 
 Power routing on bottom?????
 
