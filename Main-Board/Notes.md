@@ -5,7 +5,8 @@
 - Bright LEDs?
 - IMU orientation? - Silkscreen
 - Fix the one TX / D1 connection 
-
+- Label everything
+- Add 0.1 uf cap on usb
 Power routing on bottom?????
 
 
