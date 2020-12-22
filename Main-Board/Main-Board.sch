@@ -250,21 +250,6 @@ Master Indicator LED
 Text Notes 2500 4850 0    79   ~ 16
 ESC and Light Connections
 $Comp
-L Custom:LED_RGB D1
-U 1 1 6009D7CE
-P 7850 4550
-F 0 "D1" H 7850 5047 50  0000 C CNN
-F 1 "LED_RGB" H 7850 4956 50  0000 C CNN
-F 2 "Custom:RGB_LED" H 7850 4500 50  0001 C CNN
-F 3 "~" H 7850 4500 50  0001 C CNN
-F 4 "Everlight Electronics Co Ltd" H 7850 4550 50  0001 C CNN "Manufacturer"
-F 5 "EAST1616RGBA4" H 7850 4550 50  0001 C CNN "Manufacturer #"
-F 6 "1080-EAST1616RGBA4CT-ND" H 7850 4550 50  0001 C CNN "Digi-Key #"
-F 7 "https://www.digikey.ca/en/products/detail/everlight-electronics-co-ltd/EAST1616RGBA4/11200796" H 7850 4550 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
-	1    7850 4550
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR09
 U 1 1 600A2F32
 P 7250 4550
@@ -313,13 +298,9 @@ Wire Wire Line
 Wire Wire Line
 	8750 4150 9000 4150
 Wire Wire Line
-	9000 4550 8750 4550
-Wire Wire Line
 	9000 4950 8750 4950
 Wire Wire Line
 	8200 4950 8450 4950
-Wire Wire Line
-	8050 4550 8450 4550
 Text GLabel 1000 3650 0    50   Input ~ 0
 D4
 Text GLabel 1000 3800 0    50   Input ~ 0
@@ -990,4 +971,23 @@ Wire Wire Line
 Wire Wire Line
 	7200 2050 7200 1950
 Connection ~ 7200 1950
+$Comp
+L Custom:LED_RGB D1
+U 1 1 6009D7CE
+P 7850 4550
+F 0 "D1" H 7850 5047 50  0000 C CNN
+F 1 "LED_RGB" H 7850 4956 50  0000 C CNN
+F 2 "Custom:RGB_LED" H 7850 4500 50  0001 C CNN
+F 3 "~" H 7850 4500 50  0001 C CNN
+F 4 "Everlight Electronics Co Ltd" H 7850 4550 50  0001 C CNN "Manufacturer"
+F 5 "EAST1616RGBA4" H 7850 4550 50  0001 C CNN "Manufacturer #"
+F 6 "1080-EAST1616RGBA4CT-ND" H 7850 4550 50  0001 C CNN "Digi-Key #"
+F 7 "https://www.digikey.ca/en/products/detail/everlight-electronics-co-ltd/EAST1616RGBA4/11200796" H 7850 4550 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
+	1    7850 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8050 4550 8450 4550
+Wire Wire Line
+	8750 4550 9000 4550
 $EndSCHEMATC
