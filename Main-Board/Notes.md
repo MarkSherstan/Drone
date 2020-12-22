@@ -3,7 +3,10 @@
 - Double check interupt pins and ESC compatible
 - Name the nets (set up design rules for routing)
 - Bright LEDs?
-- IMU orientation? 
+- IMU orientation? - Silkscreen
+
+Power routing on bottom?????
+
 
 # Additional BOM Items:
 - MPU 6050 drop in -> Have some in stock....
