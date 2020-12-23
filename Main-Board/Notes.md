@@ -1,14 +1,9 @@
 # Flight Controller
 # To Do
-- Double check interupt pins and ESC compatible
-- Name the nets (set up design rules for routing)
 - Bright LEDs?
 - IMU orientation? - Silkscreen
-- Fix the one TX / D1 connection 
 - Label everything
-- Add 0.1 uf cap on usb
-Power routing on bottom?????
-
+- Do 3.3 board with minimal stuff on it (MPU6050?)
 
 # Additional BOM Items:
 - MPU 6050 drop in -> Have some in stock....
