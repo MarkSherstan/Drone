@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Main-Board-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -237,13 +236,13 @@ Battery_Monitor
 Wire Wire Line
 	9350 2200 9600 2200
 Connection ~ 9350 2200
-Text GLabel 2350 2700 2    59   Input ~ 0
-IMU_SCL_LH
 Text GLabel 2350 2850 2    59   Input ~ 0
+IMU_SCL_LH
+Text GLabel 2350 2700 2    59   Input ~ 0
 IMU_SDA_LH
-Text GLabel 1000 2700 0    50   Input ~ 0
-A5_SCL
 Text GLabel 1000 2850 0    50   Input ~ 0
+A5_SCL
+Text GLabel 1000 2700 0    50   Input ~ 0
 A4_SDA
 Text Notes 7900 3800 0    79   ~ 16
 Master Indicator LED
@@ -350,7 +349,7 @@ Wire Wire Line
 Wire Wire Line
 	5200 2900 3850 2900
 Text GLabel 1000 3250 0    50   Input ~ 0
-D2
+D3
 Wire Wire Line
 	1000 3100 2350 3100
 Wire Wire Line
@@ -358,35 +357,35 @@ Wire Wire Line
 Wire Wire Line
 	2350 3400 1000 3400
 Wire Wire Line
-	1000 2700 2350 2700
-Wire Wire Line
 	1000 2850 2350 2850
 Wire Wire Line
+	1000 2700 2350 2700
+Wire Wire Line
 	1000 2450 2350 2450
-Text GLabel 5200 3150 2    50   Input ~ 0
+Text GLabel 5200 3350 2    50   Input ~ 0
 Light_1
-Text GLabel 5200 3300 2    50   Input ~ 0
+Text GLabel 5200 3500 2    50   Input ~ 0
 Light_2
-Text GLabel 5200 3450 2    50   Input ~ 0
+Text GLabel 5200 3650 2    50   Input ~ 0
 Light_3
-Text GLabel 5200 3600 2    50   Input ~ 0
+Text GLabel 5200 3800 2    50   Input ~ 0
 Light_4
-Text GLabel 3850 3150 0    50   Input ~ 0
-A1
-Text GLabel 3850 3300 0    50   Input ~ 0
+Text GLabel 3850 3350 0    50   Input ~ 0
 A2
-Text GLabel 3850 3450 0    50   Input ~ 0
+Text GLabel 3850 3500 0    50   Input ~ 0
 A3
-Text GLabel 3850 3600 0    50   Input ~ 0
+Text GLabel 3850 3650 0    50   Input ~ 0
+A6
+Text GLabel 3850 3800 0    50   Input ~ 0
 A7
 Wire Wire Line
-	3850 3150 5200 3150
+	3850 3350 5200 3350
 Wire Wire Line
-	5200 3300 3850 3300
+	5200 3500 3850 3500
 Wire Wire Line
-	3850 3450 5200 3450
+	3850 3650 5200 3650
 Wire Wire Line
-	5200 3600 3850 3600
+	5200 3800 3850 3800
 Text GLabel 1850 5550 2    50   Input ~ 0
 Light_1
 Text GLabel 3450 5550 2    50   Input ~ 0
@@ -618,9 +617,9 @@ Wire Wire Line
 	9950 1750 10150 1750
 Text Label 1350 2450 0    50   ~ 0
 Battery_Monitor
-Text Label 1550 2700 0    50   ~ 0
-SCL
 Text Label 1550 2850 0    50   ~ 0
+SCL
+Text Label 1550 2700 0    50   ~ 0
 SDA
 Text Label 1450 3100 0    50   ~ 0
 R_RGB_LED
@@ -669,9 +668,9 @@ F 3 "" H 1950 7500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 1000 3100 0    50   Input ~ 0
-D12
+D2
 Text GLabel 1000 3400 0    50   Input ~ 0
-D3
+D13
 Text Label 4350 2450 0    50   ~ 0
 Receiver_1
 Text Label 4350 2600 0    50   ~ 0
@@ -680,13 +679,13 @@ Text Label 4350 2750 0    50   ~ 0
 Receiver_3
 Text Label 4350 2900 0    50   ~ 0
 Receiver_4
-Text Label 4350 3150 0    50   ~ 0
+Text Label 4350 3350 0    50   ~ 0
 Light_1
-Text Label 4350 3300 0    50   ~ 0
+Text Label 4350 3500 0    50   ~ 0
 Light_2
-Text Label 4350 3450 0    50   ~ 0
+Text Label 4350 3650 0    50   ~ 0
 Light_3
-Text Label 4350 3600 0    50   ~ 0
+Text Label 4350 3800 0    50   ~ 0
 Light_4
 Wire Wire Line
 	1750 7500 1950 7500
@@ -869,21 +868,21 @@ F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM07B-GHS-T
 $EndComp
 Text Notes 4400 6500 0    79   ~ 16
 Aux Outputs
-Text GLabel 3850 3850 0    50   Input ~ 0
-D13
-Text GLabel 3850 4000 0    50   Input ~ 0
-A6
-Text GLabel 5200 3850 2    50   Input ~ 0
+Text GLabel 3850 4050 0    50   Input ~ 0
+D12
+Text GLabel 3850 4200 0    50   Input ~ 0
+A1
+Text GLabel 5200 4050 2    50   Input ~ 0
 Aux_Digital
-Text GLabel 5200 4000 2    50   Input ~ 0
+Text GLabel 5200 4200 2    50   Input ~ 0
 Aux_Analog
 Wire Wire Line
-	3850 3850 5200 3850
+	3850 4050 5200 4050
 Wire Wire Line
-	5200 4000 3850 4000
-Text Label 4300 3850 0    50   ~ 0
+	5200 4200 3850 4200
+Text Label 4300 4050 0    50   ~ 0
 Aux_Digital
-Text Label 4300 4000 0    50   ~ 0
+Text Label 4300 4200 0    50   ~ 0
 Aux_Analog
 Text GLabel 4800 7150 2    50   Input ~ 0
 Aux_Digital
@@ -978,4 +977,22 @@ Wire Wire Line
 	8050 4550 8450 4550
 Wire Wire Line
 	8750 4550 9000 4550
+Text GLabel 5200 3050 2    50   Input ~ 0
+Receiver_5
+Text GLabel 3850 3050 0    50   Input ~ 0
+D12
+Wire Wire Line
+	5200 3050 3850 3050
+Text Label 4350 3050 0    50   ~ 0
+Receiver_4
+Text GLabel 1950 7000 2    50   Input ~ 0
+Receiver_5
+Wire Wire Line
+	1750 7000 1950 7000
+Text Label 8200 4150 0    50   ~ 0
+B_RGB
+Text Label 8200 4550 0    50   ~ 0
+R_RGB
+Text Label 8200 4950 0    50   ~ 0
+G_RGB
 $EndSCHEMATC

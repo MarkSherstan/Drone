@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Main-Board-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -517,6 +516,6 @@ F 7 "https://www.digikey.ca/en/products/detail/on-semiconductor/BSS138/244210" H
 $EndComp
 Text Notes 4650 1800 0    79   ~ 16
 Inertial Measurement Unit (IMU)
-Text Notes 4550 4250 0    79   ~ 16
-Bidirectional Logic Level Conversion
+Text Notes 3750 4300 0    79   ~ 16
+Bidirectional Logic Level Conversion and I2C Pull Up Resistors
 $EndSCHEMATC
