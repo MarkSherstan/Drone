@@ -375,6 +375,26 @@ X 3 3 150 0 50 L 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
+# Device_Varistor
+#
+DEF Device_Varistor RV 0 0 N Y 1 F N
+F0 "RV" 125 0 50 V V C CNN
+F1 "Device_Varistor" -125 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ RV_*
+ Varistor*
+$ENDFPLIST
+DRAW
+T 0 -70 -80 50 0 0 0 U Normal 0 C C
+S -40 -100 40 100 0 1 10 N
+P 3 0 1 0 -75 100 -75 50 75 -50 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # MCU_Microchip_ATmega_ATmega32U4-AU
 #
 DEF MCU_Microchip_ATmega_ATmega32U4-AU U 0 20 Y Y 1 F N

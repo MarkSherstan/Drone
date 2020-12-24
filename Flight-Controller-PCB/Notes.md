@@ -4,6 +4,7 @@
 - IMU orientation? - Silkscreen
 - Label everything
 - Do 3.3 board with minimal stuff on it (MPU6050?)
+- Double check varistor pads
 
 # Additional BOM Items:
 - MPU 6050 drop in -> Have some in stock....
