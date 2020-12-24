@@ -14,7 +14,7 @@
 # Future
 - Over actuated design? 
 - ATMEGA 2560?
-
+- TEST THE CRYSTAL - How much time are we loosing? Different caps??
 
 # Other
 ## PDB board
