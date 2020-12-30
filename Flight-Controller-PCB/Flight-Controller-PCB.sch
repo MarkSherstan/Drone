@@ -111,51 +111,6 @@ F 3 "" H 8200 2850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8200 1450 8200 1650
-$Comp
-L Device:R R?
-U 1 1 60061C0F
-P 8600 4150
-AR Path="/5FD99B6C/60061C0F" Ref="R?"  Part="1" 
-AR Path="/5FD9E07D/60061C0F" Ref="R?"  Part="1" 
-AR Path="/5FDD4B9C/60061C0F" Ref="R?"  Part="1" 
-AR Path="/60061C0F" Ref="R3"  Part="1" 
-F 0 "R3" V 8807 4150 50  0000 C CNN
-F 1 "100 ohm 5%" V 8716 4150 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4150 50  0001 C CNN
-F 3 "~" H 8600 4150 50  0001 C CNN
-	1    8600 4150
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 600625FC
-P 8600 4550
-AR Path="/5FD99B6C/600625FC" Ref="R?"  Part="1" 
-AR Path="/5FD9E07D/600625FC" Ref="R?"  Part="1" 
-AR Path="/5FDD4B9C/600625FC" Ref="R?"  Part="1" 
-AR Path="/600625FC" Ref="R4"  Part="1" 
-F 0 "R4" V 8807 4550 50  0000 C CNN
-F 1 "150 ohm 5%" V 8716 4550 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4550 50  0001 C CNN
-F 3 "~" H 8600 4550 50  0001 C CNN
-	1    8600 4550
-	0    1    1    0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 60062A76
-P 8600 4950
-AR Path="/5FD99B6C/60062A76" Ref="R?"  Part="1" 
-AR Path="/5FD9E07D/60062A76" Ref="R?"  Part="1" 
-AR Path="/5FDD4B9C/60062A76" Ref="R?"  Part="1" 
-AR Path="/60062A76" Ref="R5"  Part="1" 
-F 0 "R5" V 8807 4950 50  0000 C CNN
-F 1 "100 ohm 5%" V 8716 4950 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4950 50  0001 C CNN
-F 3 "~" H 8600 4950 50  0001 C CNN
-	1    8600 4950
-	0    1    1    0   
-$EndComp
 Text Notes 1550 750  0    79   ~ 16
 Microcontroller and Inertial Measurement Unit (IMU)
 $Comp
@@ -244,62 +199,14 @@ Text GLabel 1000 2850 0    50   Input ~ 0
 A5_SCL
 Text GLabel 1000 2700 0    50   Input ~ 0
 A4_SDA
-Text Notes 7900 3800 0    79   ~ 16
-Master Indicator LED
 Text Notes 2500 4850 0    79   ~ 16
 ESC and Light Connections
-$Comp
-L power:GND #PWR09
-U 1 1 600A2F32
-P 7250 4550
-F 0 "#PWR09" H 7250 4300 50  0001 C CNN
-F 1 "GND" H 7255 4377 50  0000 C CNN
-F 2 "" H 7250 4550 50  0001 C CNN
-F 3 "" H 7250 4550 50  0001 C CNN
-	1    7250 4550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	7650 4350 7550 4350
-Wire Wire Line
-	7550 4350 7550 4550
-Wire Wire Line
-	7550 4550 7650 4550
-Wire Wire Line
-	7650 4750 7550 4750
-Wire Wire Line
-	7550 4750 7550 4550
-Connection ~ 7550 4550
-Wire Wire Line
-	8050 4350 8200 4350
-Wire Wire Line
-	8200 4350 8200 4150
-Wire Wire Line
-	8200 4950 8200 4750
-Wire Wire Line
-	8200 4750 8050 4750
-Text GLabel 9000 4550 2    50   Input ~ 0
-R_RGB_LED
-Text GLabel 9000 4150 2    50   Input ~ 0
-B_RGB_LED
-Text GLabel 9000 4950 2    50   Input ~ 0
-G_RGB_LED
 Text GLabel 2350 3100 2    50   Input ~ 0
 R_RGB_LED
 Text GLabel 2350 3400 2    50   Input ~ 0
 B_RGB_LED
 Text GLabel 2350 3250 2    50   Input ~ 0
 G_RGB_LED
-Wire Wire Line
-	7250 4550 7550 4550
-Wire Wire Line
-	8200 4150 8450 4150
-Wire Wire Line
-	8750 4150 9000 4150
-Wire Wire Line
-	9000 4950 8750 4950
-Wire Wire Line
-	8200 4950 8450 4950
 Text GLabel 1000 3650 0    50   Input ~ 0
 D4
 Text GLabel 1000 3800 0    50   Input ~ 0
@@ -517,48 +424,48 @@ Wire Wire Line
 $Comp
 L Mechanical:MountingHole H1
 U 1 1 5FDEB61F
-P 7900 6300
-F 0 "H1" H 8000 6346 50  0000 L CNN
-F 1 "M2" H 8000 6255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 7900 6300 50  0001 C CNN
-F 3 "~" H 7900 6300 50  0001 C CNN
-	1    7900 6300
+P 7900 6550
+F 0 "H1" H 8000 6596 50  0000 L CNN
+F 1 "M2" H 8000 6505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 7900 6550 50  0001 C CNN
+F 3 "~" H 7900 6550 50  0001 C CNN
+	1    7900 6550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 5FDEDAAD
-P 8300 6300
-F 0 "H2" H 8400 6346 50  0000 L CNN
-F 1 "M2" H 8400 6255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 8300 6300 50  0001 C CNN
-F 3 "~" H 8300 6300 50  0001 C CNN
-	1    8300 6300
+P 8300 6550
+F 0 "H2" H 8400 6596 50  0000 L CNN
+F 1 "M2" H 8400 6505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 8300 6550 50  0001 C CNN
+F 3 "~" H 8300 6550 50  0001 C CNN
+	1    8300 6550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H3
 U 1 1 5FDEF850
-P 8700 6300
-F 0 "H3" H 8800 6346 50  0000 L CNN
-F 1 "M2" H 8800 6255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 8700 6300 50  0001 C CNN
-F 3 "~" H 8700 6300 50  0001 C CNN
-	1    8700 6300
+P 8700 6550
+F 0 "H3" H 8800 6596 50  0000 L CNN
+F 1 "M2" H 8800 6505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 8700 6550 50  0001 C CNN
+F 3 "~" H 8700 6550 50  0001 C CNN
+	1    8700 6550
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H4
 U 1 1 5FDF1549
-P 9100 6300
-F 0 "H4" H 9200 6346 50  0000 L CNN
-F 1 "M2" H 9200 6255 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 9100 6300 50  0001 C CNN
-F 3 "~" H 9100 6300 50  0001 C CNN
-	1    9100 6300
+P 9100 6550
+F 0 "H4" H 9200 6596 50  0000 L CNN
+F 1 "M2" H 9200 6505 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad" H 9100 6550 50  0001 C CNN
+F 3 "~" H 9100 6550 50  0001 C CNN
+	1    9100 6550
 	1    0    0    -1  
 $EndComp
-Text Notes 8150 6000 0    79   ~ 16
+Text Notes 8150 6250 0    79   ~ 16
 Mounting Holes
 Text Notes 7350 900  0    59   ~ 0
 Voltage monitoring range: Up to 13V (3s LiPo 12.6V) 
@@ -958,25 +865,6 @@ Wire Wire Line
 Wire Wire Line
 	7200 2050 7200 1950
 Connection ~ 7200 1950
-$Comp
-L Custom:LED_RGB D1
-U 1 1 6009D7CE
-P 7850 4550
-F 0 "D1" H 7850 5047 50  0000 C CNN
-F 1 "LED_RGB" H 7850 4956 50  0000 C CNN
-F 2 "Custom:RGB_LED" H 7850 4500 50  0001 C CNN
-F 3 "~" H 7850 4500 50  0001 C CNN
-F 4 "Everlight Electronics Co Ltd" H 7850 4550 50  0001 C CNN "Manufacturer"
-F 5 "EAST1616RGBA4" H 7850 4550 50  0001 C CNN "Manufacturer #"
-F 6 "1080-EAST1616RGBA4CT-ND" H 7850 4550 50  0001 C CNN "Digi-Key #"
-F 7 "https://www.digikey.ca/en/products/detail/everlight-electronics-co-ltd/EAST1616RGBA4/11200796" H 7850 4550 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
-	1    7850 4550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8050 4550 8450 4550
-Wire Wire Line
-	8750 4550 9000 4550
 Text GLabel 5200 3050 2    50   Input ~ 0
 Receiver_5
 Text GLabel 3850 3050 0    50   Input ~ 0
@@ -989,10 +877,230 @@ Text GLabel 1950 7000 2    50   Input ~ 0
 Receiver_5
 Wire Wire Line
 	1750 7000 1950 7000
-Text Label 8200 4150 0    50   ~ 0
+Text Notes 7900 3450 0    79   ~ 16
+Master Indicator LEDs
+$Comp
+L Device:R R?
+U 1 1 60061C0F
+P 8600 3700
+AR Path="/5FD99B6C/60061C0F" Ref="R?"  Part="1" 
+AR Path="/5FD9E07D/60061C0F" Ref="R?"  Part="1" 
+AR Path="/5FDD4B9C/60061C0F" Ref="R?"  Part="1" 
+AR Path="/60061C0F" Ref="R3"  Part="1" 
+F 0 "R3" V 8807 3700 50  0000 C CNN
+F 1 "100 ohm 5%" V 8716 3700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 3700 50  0001 C CNN
+F 3 "~" H 8600 3700 50  0001 C CNN
+	1    8600 3700
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 600625FC
+P 8600 4100
+AR Path="/5FD99B6C/600625FC" Ref="R?"  Part="1" 
+AR Path="/5FD9E07D/600625FC" Ref="R?"  Part="1" 
+AR Path="/5FDD4B9C/600625FC" Ref="R?"  Part="1" 
+AR Path="/600625FC" Ref="R4"  Part="1" 
+F 0 "R4" V 8807 4100 50  0000 C CNN
+F 1 "150 ohm 5%" V 8716 4100 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4100 50  0001 C CNN
+F 3 "~" H 8600 4100 50  0001 C CNN
+	1    8600 4100
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 60062A76
+P 8600 4500
+AR Path="/5FD99B6C/60062A76" Ref="R?"  Part="1" 
+AR Path="/5FD9E07D/60062A76" Ref="R?"  Part="1" 
+AR Path="/5FDD4B9C/60062A76" Ref="R?"  Part="1" 
+AR Path="/60062A76" Ref="R5"  Part="1" 
+F 0 "R5" V 8807 4500 50  0000 C CNN
+F 1 "100 ohm 5%" V 8716 4500 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 4500 50  0001 C CNN
+F 3 "~" H 8600 4500 50  0001 C CNN
+	1    8600 4500
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	9150 3900 9000 3900
+Wire Wire Line
+	9000 3900 9000 3700
+Wire Wire Line
+	9000 4500 9000 4300
+Wire Wire Line
+	9000 4300 9150 4300
+Text GLabel 8200 4100 0    50   Input ~ 0
+R_RGB_LED
+Text GLabel 8200 3700 0    50   Input ~ 0
+B_RGB_LED
+Text GLabel 8200 4500 0    50   Input ~ 0
+G_RGB_LED
+Wire Wire Line
+	9000 3700 8750 3700
+Wire Wire Line
+	8450 3700 8200 3700
+Wire Wire Line
+	8200 4500 8450 4500
+Wire Wire Line
+	9000 4500 8750 4500
+$Comp
+L Custom:LED_RGB D1
+U 1 1 6009D7CE
+P 9350 4100
+F 0 "D1" H 9350 4597 50  0000 C CNN
+F 1 "LED_RGB" H 9350 4506 50  0000 C CNN
+F 2 "Custom:RGB_LED" H 9350 4050 50  0001 C CNN
+F 3 "~" H 9350 4050 50  0001 C CNN
+F 4 "Everlight Electronics Co Ltd" H 9350 4100 50  0001 C CNN "Manufacturer"
+F 5 "EAST1616RGBA4" H 9350 4100 50  0001 C CNN "Manufacturer #"
+F 6 "1080-EAST1616RGBA4CT-ND" H 9350 4100 50  0001 C CNN "Digi-Key #"
+F 7 "https://www.digikey.ca/en/products/detail/everlight-electronics-co-ltd/EAST1616RGBA4/11200796" H 9350 4100 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
+	1    9350 4100
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	9150 4100 8750 4100
+Wire Wire Line
+	8450 4100 8200 4100
+Text Label 9000 3700 2    50   ~ 0
 B_RGB
-Text Label 8200 4550 0    50   ~ 0
+Text Label 9000 4100 2    50   ~ 0
 R_RGB
-Text Label 8200 4950 0    50   ~ 0
+Text Label 9000 4500 2    50   ~ 0
 G_RGB
+Wire Wire Line
+	9950 4100 9650 4100
+Connection ~ 9650 4100
+Wire Wire Line
+	9650 4300 9650 4100
+Wire Wire Line
+	9550 4300 9650 4300
+Wire Wire Line
+	9650 4100 9550 4100
+Wire Wire Line
+	9650 3900 9650 4100
+Wire Wire Line
+	9550 3900 9650 3900
+$Comp
+L power:GND #PWR09
+U 1 1 600A2F32
+P 9950 4100
+F 0 "#PWR09" H 9950 3850 50  0001 C CNN
+F 1 "GND" H 9955 3927 50  0000 C CNN
+F 2 "" H 9950 4100 50  0001 C CNN
+F 3 "" H 9950 4100 50  0001 C CNN
+	1    9950 4100
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 603EC936
+P 9350 5150
+F 0 "D?" H 9343 4895 50  0000 C CNN
+F 1 "LED" H 9343 4986 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 9350 5150 50  0001 C CNN
+F 3 "~" H 9350 5150 50  0001 C CNN
+	1    9350 5150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 603F17D7
+P 9350 5650
+F 0 "D?" H 9343 5395 50  0000 C CNN
+F 1 "LED" H 9343 5486 50  0000 C CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 9350 5650 50  0001 C CNN
+F 3 "~" H 9350 5650 50  0001 C CNN
+	1    9350 5650
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 6040BA96
+P 7750 5650
+F 0 "#PWR?" H 7750 5500 50  0001 C CNN
+F 1 "+3.3V" H 7765 5823 50  0000 C CNN
+F 2 "" H 7750 5650 50  0001 C CNN
+F 3 "" H 7750 5650 50  0001 C CNN
+	1    7750 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 6040BA8E
+P 7750 5150
+F 0 "#PWR?" H 7750 5000 50  0001 C CNN
+F 1 "+5V" H 7765 5323 50  0000 C CNN
+F 2 "" H 7750 5150 50  0001 C CNN
+F 3 "" H 7750 5150 50  0001 C CNN
+	1    7750 5150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 60451094
+P 8600 5150
+AR Path="/5FD99B6C/60451094" Ref="R?"  Part="1" 
+AR Path="/5FD9E07D/60451094" Ref="R?"  Part="1" 
+AR Path="/5FDD4B9C/60451094" Ref="R?"  Part="1" 
+AR Path="/60451094" Ref="R?"  Part="1" 
+F 0 "R?" V 8807 5150 50  0000 C CNN
+F 1 "?? ohm 5%" V 8716 5150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 5150 50  0001 C CNN
+F 3 "~" H 8600 5150 50  0001 C CNN
+	1    8600 5150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8750 5150 9200 5150
+$Comp
+L power:GND #PWR?
+U 1 1 6046EADD
+P 9950 5150
+F 0 "#PWR?" H 9950 4900 50  0001 C CNN
+F 1 "GND" H 9955 4977 50  0000 C CNN
+F 2 "" H 9950 5150 50  0001 C CNN
+F 3 "" H 9950 5150 50  0001 C CNN
+	1    9950 5150
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	9500 5150 9950 5150
+$Comp
+L power:GND #PWR?
+U 1 1 60476348
+P 9950 5650
+F 0 "#PWR?" H 9950 5400 50  0001 C CNN
+F 1 "GND" H 9955 5477 50  0000 C CNN
+F 2 "" H 9950 5650 50  0001 C CNN
+F 3 "" H 9950 5650 50  0001 C CNN
+	1    9950 5650
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	9500 5650 9950 5650
+$Comp
+L Device:R R?
+U 1 1 60479F73
+P 8600 5650
+AR Path="/5FD99B6C/60479F73" Ref="R?"  Part="1" 
+AR Path="/5FD9E07D/60479F73" Ref="R?"  Part="1" 
+AR Path="/5FDD4B9C/60479F73" Ref="R?"  Part="1" 
+AR Path="/60479F73" Ref="R?"  Part="1" 
+F 0 "R?" V 8807 5650 50  0000 C CNN
+F 1 "?? ohm 5%" V 8716 5650 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 8530 5650 50  0001 C CNN
+F 3 "~" H 8600 5650 50  0001 C CNN
+	1    8600 5650
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8750 5650 9200 5650
+Wire Wire Line
+	7750 5650 8450 5650
+Wire Wire Line
+	7750 5150 8450 5150
 $EndSCHEMATC
