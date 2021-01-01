@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Flight-Controller-PCB-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -542,36 +543,36 @@ Text Label 1500 3950 0    50   ~ 0
 ESC_3
 Text Label 1500 4100 0    50   ~ 0
 ESC_4
-Text Notes 1700 6500 0    79   ~ 16
+Text Notes 1100 6500 0    79   ~ 16
 Receiver
-Text GLabel 1950 7400 2    50   Input ~ 0
+Text GLabel 1350 7350 2    50   Input ~ 0
 Receiver_1
-Text GLabel 1950 7300 2    50   Input ~ 0
+Text GLabel 1350 7250 2    50   Input ~ 0
 Receiver_2
-Text GLabel 1950 7100 2    50   Input ~ 0
+Text GLabel 1350 7050 2    50   Input ~ 0
 Receiver_3
-Text GLabel 1950 7200 2    50   Input ~ 0
+Text GLabel 1350 7150 2    50   Input ~ 0
 Receiver_4
 $Comp
 L power:+5V #PWR018
 U 1 1 5FE81BA9
-P 1950 6850
-F 0 "#PWR018" H 1950 6700 50  0001 C CNN
-F 1 "+5V" H 1965 7023 50  0000 C CNN
-F 2 "" H 1950 6850 50  0001 C CNN
-F 3 "" H 1950 6850 50  0001 C CNN
-	1    1950 6850
+P 1350 6800
+F 0 "#PWR018" H 1350 6650 50  0001 C CNN
+F 1 "+5V" H 1365 6973 50  0000 C CNN
+F 2 "" H 1350 6800 50  0001 C CNN
+F 3 "" H 1350 6800 50  0001 C CNN
+	1    1350 6800
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR021
 U 1 1 5FE821AC
-P 1950 7500
-F 0 "#PWR021" H 1950 7250 50  0001 C CNN
-F 1 "GND" H 1955 7327 50  0000 C CNN
-F 2 "" H 1950 7500 50  0001 C CNN
-F 3 "" H 1950 7500 50  0001 C CNN
-	1    1950 7500
+P 1350 7450
+F 0 "#PWR021" H 1350 7200 50  0001 C CNN
+F 1 "GND" H 1355 7277 50  0000 C CNN
+F 2 "" H 1350 7450 50  0001 C CNN
+F 3 "" H 1350 7450 50  0001 C CNN
+	1    1350 7450
 	1    0    0    -1  
 $EndComp
 Text GLabel 1000 3100 0    50   Input ~ 0
@@ -595,19 +596,19 @@ Light_3
 Text Label 4350 3800 0    50   ~ 0
 Light_4
 Wire Wire Line
-	1750 7500 1950 7500
+	1150 7450 1350 7450
 Wire Wire Line
-	1750 6900 1950 6900
+	1150 6850 1350 6850
 Wire Wire Line
-	1950 6900 1950 6850
+	1350 6850 1350 6800
 Wire Wire Line
-	1750 7400 1950 7400
+	1150 7350 1350 7350
 Wire Wire Line
-	1750 7300 1950 7300
+	1150 7250 1350 7250
 Wire Wire Line
-	1950 7100 1750 7100
+	1350 7050 1150 7050
 Wire Wire Line
-	1750 7200 1950 7200
+	1150 7150 1350 7150
 Wire Wire Line
 	7150 2250 7200 2250
 Wire Wire Line
@@ -761,19 +762,19 @@ Wire Wire Line
 $Comp
 L Connector_Generic:Conn_01x07 J6
 U 1 1 5FF977CD
-P 1550 7200
-F 0 "J6" H 1468 6675 50  0000 C CNN
-F 1 "Receiver" H 1468 6766 50  0000 C CNN
-F 2 "Connector_JST:JST_GH_BM07B-GHS-TBT_1x07-1MP_P1.25mm_Vertical" H 1550 7200 50  0001 C CNN
-F 3 "~" H 1550 7200 50  0001 C CNN
-F 4 "JST Sales America Inc." H 1550 7200 50  0001 C CNN "Manufacturer"
-F 5 "BM07B-GHS-TBT(LF)(SN)(N)" H 1550 7200 50  0001 C CNN "Manufacturer #"
-F 6 "455-1583-1-ND" H 1550 7200 50  0001 C CNN "Digi-Key #"
-F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM07B-GHS-TBT-LF-SN-N/807805?s=N4IgTCBcDaIEIFkAMB2OBaA4gCQMroBU4CQBdAXyA" H 1550 7200 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
-	1    1550 7200
+P 950 7150
+F 0 "J6" H 868 6625 50  0000 C CNN
+F 1 "Receiver" H 868 6716 50  0000 C CNN
+F 2 "Connector_JST:JST_GH_BM07B-GHS-TBT_1x07-1MP_P1.25mm_Vertical" H 950 7150 50  0001 C CNN
+F 3 "~" H 950 7150 50  0001 C CNN
+F 4 "JST Sales America Inc." H 950 7150 50  0001 C CNN "Manufacturer"
+F 5 "BM07B-GHS-TBT(LF)(SN)(N)" H 950 7150 50  0001 C CNN "Manufacturer #"
+F 6 "455-1583-1-ND" H 950 7150 50  0001 C CNN "Digi-Key #"
+F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM07B-GHS-TBT-LF-SN-N/807805?s=N4IgTCBcDaIEIFkAMB2OBaA4gCQMroBU4CQBdAXyA" H 950 7150 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
+	1    950  7150
 	-1   0    0    1   
 $EndComp
-Text Notes 4400 6500 0    79   ~ 16
+Text Notes 4900 6500 0    79   ~ 16
 Aux Outputs
 Text GLabel 3850 4050 0    50   Input ~ 0
 D12
@@ -791,55 +792,55 @@ Text Label 4300 4050 0    50   ~ 0
 Aux_Digital
 Text Label 4300 4200 0    50   ~ 0
 Aux_Analog
-Text GLabel 4800 7150 2    50   Input ~ 0
+Text GLabel 5300 7150 2    50   Input ~ 0
 Aux_Digital
-Text GLabel 4800 7250 2    50   Input ~ 0
+Text GLabel 5300 7250 2    50   Input ~ 0
 Aux_Analog
 $Comp
 L Connector_Generic:Conn_01x04 J7
 U 1 1 5FFD0529
-P 4400 7250
-F 0 "J7" H 4318 6825 50  0000 C CNN
-F 1 "Aux" H 4318 6916 50  0000 C CNN
-F 2 "Connector_JST:JST_GH_BM04B-GHS-TBT_1x04-1MP_P1.25mm_Vertical" H 4400 7250 50  0001 C CNN
-F 3 "~" H 4400 7250 50  0001 C CNN
-F 4 "JST Sales America Inc." H 4400 7250 50  0001 C CNN "Manufacturer"
-F 5 "BM04B-GHS-TBT(LF)(SN)(N)" H 4400 7250 50  0001 C CNN "Manufacturer #"
-F 6 "455-1580-1-ND" H 4400 7250 50  0001 C CNN "Digi-Key #"
-F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM04B-GHS-TBT-LF-SN-N/807802?s=N4IgTCBcDaIEIFkAMAWOBaA4gCQMroBU4CQBdAXyA" H 4400 7250 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
-	1    4400 7250
+P 4900 7250
+F 0 "J7" H 4818 6825 50  0000 C CNN
+F 1 "Aux" H 4818 6916 50  0000 C CNN
+F 2 "Connector_JST:JST_GH_BM04B-GHS-TBT_1x04-1MP_P1.25mm_Vertical" H 4900 7250 50  0001 C CNN
+F 3 "~" H 4900 7250 50  0001 C CNN
+F 4 "JST Sales America Inc." H 4900 7250 50  0001 C CNN "Manufacturer"
+F 5 "BM04B-GHS-TBT(LF)(SN)(N)" H 4900 7250 50  0001 C CNN "Manufacturer #"
+F 6 "455-1580-1-ND" H 4900 7250 50  0001 C CNN "Digi-Key #"
+F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM04B-GHS-TBT-LF-SN-N/807802?s=N4IgTCBcDaIEIFkAMAWOBaA4gCQMroBU4CQBdAXyA" H 4900 7250 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
+	1    4900 7250
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:GND #PWR020
 U 1 1 5FFD3AC4
-P 4800 7350
-F 0 "#PWR020" H 4800 7100 50  0001 C CNN
-F 1 "GND" H 4805 7177 50  0000 C CNN
-F 2 "" H 4800 7350 50  0001 C CNN
-F 3 "" H 4800 7350 50  0001 C CNN
-	1    4800 7350
+P 5300 7350
+F 0 "#PWR020" H 5300 7100 50  0001 C CNN
+F 1 "GND" H 5305 7177 50  0000 C CNN
+F 2 "" H 5300 7350 50  0001 C CNN
+F 3 "" H 5300 7350 50  0001 C CNN
+	1    5300 7350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR019
 U 1 1 5FFD70B9
-P 4800 7050
-F 0 "#PWR019" H 4800 6900 50  0001 C CNN
-F 1 "+5V" H 4815 7223 50  0000 C CNN
-F 2 "" H 4800 7050 50  0001 C CNN
-F 3 "" H 4800 7050 50  0001 C CNN
-	1    4800 7050
+P 5300 7050
+F 0 "#PWR019" H 5300 6900 50  0001 C CNN
+F 1 "+5V" H 5315 7223 50  0000 C CNN
+F 2 "" H 5300 7050 50  0001 C CNN
+F 3 "" H 5300 7050 50  0001 C CNN
+	1    5300 7050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4600 7050 4800 7050
+	5100 7050 5300 7050
 Wire Wire Line
-	4600 7350 4800 7350
+	5100 7350 5300 7350
 Wire Wire Line
-	4600 7250 4800 7250
+	5100 7250 5300 7250
 Wire Wire Line
-	4600 7150 4800 7150
+	5100 7150 5300 7150
 $Comp
 L Connector_Generic:Conn_01x06 J1
 U 1 1 6004E81C
@@ -873,10 +874,10 @@ Wire Wire Line
 	5200 3050 3850 3050
 Text Label 4350 3050 0    50   ~ 0
 Receiver_4
-Text GLabel 1950 7000 2    50   Input ~ 0
+Text GLabel 1350 6950 2    50   Input ~ 0
 Receiver_5
 Wire Wire Line
-	1750 7000 1950 7000
+	1150 6950 1350 6950
 Text Notes 7900 3450 0    79   ~ 16
 Master Indicator LEDs
 $Comp
@@ -1103,4 +1104,65 @@ Wire Wire Line
 	7750 5650 8450 5650
 Wire Wire Line
 	7750 5150 8450 5150
+$Comp
+L Connector_Generic:Conn_02x03_Odd_Even J?
+U 1 1 6036A900
+P 3350 7200
+AR Path="/5FDD4B9C/6036A900" Ref="J?"  Part="1" 
+AR Path="/6036A900" Ref="J?"  Part="1" 
+F 0 "J?" H 3400 7517 50  0000 C CNN
+F 1 "ICSP" H 3400 7426 50  0000 C CNN
+F 2 "" H 3350 7200 50  0001 C CNN
+F 3 "~" H 3350 7200 50  0001 C CNN
+	1    3350 7200
+	1    0    0    -1  
+$EndComp
+Text GLabel 2950 7100 0    50   Input ~ 0
+MISO
+Text GLabel 3850 7200 2    50   Input ~ 0
+MOSI
+Text GLabel 2950 7200 0    50   Input ~ 0
+SCK
+$Comp
+L power:+5V #PWR?
+U 1 1 6036A909
+P 3850 7100
+AR Path="/5FDD4B9C/6036A909" Ref="#PWR?"  Part="1" 
+AR Path="/6036A909" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3850 6950 50  0001 C CNN
+F 1 "+5V" H 3865 7273 50  0000 C CNN
+F 2 "" H 3850 7100 50  0001 C CNN
+F 3 "" H 3850 7100 50  0001 C CNN
+	1    3850 7100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 6036A90F
+P 3850 7300
+AR Path="/5FDD4B9C/6036A90F" Ref="#PWR?"  Part="1" 
+AR Path="/6036A90F" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 3850 7050 50  0001 C CNN
+F 1 "GND" H 3855 7127 50  0000 C CNN
+F 2 "" H 3850 7300 50  0001 C CNN
+F 3 "" H 3850 7300 50  0001 C CNN
+	1    3850 7300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 7100 3850 7100
+Wire Wire Line
+	3850 7200 3650 7200
+Wire Wire Line
+	3650 7300 3850 7300
+Wire Wire Line
+	2950 7100 3150 7100
+Text GLabel 2950 7300 0    50   Input ~ 0
+RESET
+Wire Wire Line
+	2950 7300 3150 7300
+Wire Wire Line
+	3150 7200 2950 7200
+Text Notes 3250 6500 0    79   ~ 16
+ICSP
 $EndSCHEMATC
