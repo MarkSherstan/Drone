@@ -5,6 +5,7 @@
 - Label everything
 - Do 3.3 board with minimal stuff on it (MPU6050?)
 - Double check varistor pads
+- Order pre criped leads and connectors
 
 # Additional BOM Items:
 - MPU 6050 drop in -> Have some in stock....
@@ -27,6 +28,11 @@
 ## PDB board
 - 2 Oz 
 - Have proper mating connectors
+
+## LED board!
+- LED
+- CAP
+- RES
 
 ## ESCs
 - Whats the plan?
