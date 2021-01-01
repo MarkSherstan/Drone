@@ -12,6 +12,8 @@
 - Mating housing for JST-GH connectors
 - Order pre crimped leads (multicolor)
 - Do I have extra BSS138?
+- DOuble check temperature of components 
+
 
 # Future
 ## Mechanical 
