@@ -433,9 +433,9 @@ Text GLabel 1350 7500 2    50   Input ~ 0
 Receiver_1
 Text GLabel 1350 7400 2    50   Input ~ 0
 Receiver_2
-Text GLabel 1350 7200 2    50   Input ~ 0
-Receiver_3
 Text GLabel 1350 7300 2    50   Input ~ 0
+Receiver_3
+Text GLabel 1350 7200 2    50   Input ~ 0
 Receiver_4
 $Comp
 L power:+5V #PWR03
@@ -486,9 +486,9 @@ Wire Wire Line
 Wire Wire Line
 	1150 7400 1350 7400
 Wire Wire Line
-	1350 7200 1150 7200
+	1350 7300 1150 7300
 Wire Wire Line
-	1150 7300 1350 7300
+	1150 7200 1350 7200
 Wire Wire Line
 	7350 2250 7400 2250
 Wire Wire Line
@@ -611,7 +611,7 @@ Receiver_5
 Wire Wire Line
 	5200 3000 3850 3000
 Text Label 4350 3000 0    50   ~ 0
-Receiver_4
+Receiver_5
 Text GLabel 1350 7100 2    50   Input ~ 0
 Receiver_5
 Wire Wire Line
