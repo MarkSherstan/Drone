@@ -20,12 +20,12 @@ U 1 1 5FF23492
 P 1850 4350
 F 0 "J1" H 1930 4342 50  0000 L CNN
 F 1 "Conn_01x02" H 1930 4251 50  0000 L CNN
-F 2 "Connector_JST:JST_GH_BM02B-GHS-TBT_1x02-1MP_P1.25mm_Vertical" H 1850 4350 50  0001 C CNN
+F 2 "Connector_JST:JST_GH_SM02B-GHS-TB_1x02-1MP_P1.25mm_Horizontal" H 1850 4350 50  0001 C CNN
 F 3 "~" H 1850 4350 50  0001 C CNN
 F 4 "JST Sales America Inc." H 1850 4350 50  0001 C CNN "Manufacturer"
-F 5 "BM02B-GHS-TBT(LF)(SN)(N)" H 1850 4350 50  0001 C CNN "Manufacturer #"
-F 6 "455-1578-1-ND" H 1850 4350 50  0001 C CNN "Digi-Key #"
-F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM02B-GHS-TBT-LF-SN-N/807800" H 1850 4350 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
+F 5 "SM02B-GHS-TB(LF)(SN)" H 1850 4350 50  0001 C CNN "Manufacturer #"
+F 6 "455-1564-1-ND" H 1850 4350 50  0001 C CNN "Digi-Key #"
+F 7 "https://www.digikey.ca/en/products/detail/jst-sales-america-inc/SM02B-GHS-TB-LF-SN/807786?s=N4IgTCBcDaIMoFkAMYBCBaA4gCTiAugL5A" H 1850 4350 50  0001 C CNN "Digi-Key LinkDigi LinkDigi-Key Link"
 	1    1850 4350
 	-1   0    0    1   
 $EndComp
