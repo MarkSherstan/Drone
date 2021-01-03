@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Flight-Controller-PCB-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -909,10 +908,6 @@ Text GLabel 1000 2400 0    50   Input ~ 0
 A0
 Text GLabel 3850 3300 0    50   Input ~ 0
 A1
-Text GLabel 1000 4050 0    50   Input ~ 0
-D7
-Text GLabel 1000 3900 0    50   Input ~ 0
-D6
 Text GLabel 1000 3200 0    50   Input ~ 0
 D12
 Text GLabel 1000 2650 0    50   Input ~ 0
@@ -1151,4 +1146,8 @@ F 3 "" H 6000 5500 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5350 5500 6000 5500
+Text GLabel 1000 3900 0    50   Input ~ 0
+D6
+Text GLabel 1000 4050 0    50   Input ~ 0
+D7
 $EndSCHEMATC

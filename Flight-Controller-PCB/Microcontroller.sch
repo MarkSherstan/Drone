@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Flight-Controller-PCB-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -120,9 +119,11 @@ $EndComp
 Wire Wire Line
 	8900 2050 8900 1950
 $Comp
-L MCU_Microchip_ATmega:ATmega32U4-AU U3
+L Flight-Controller-PCB-rescue:ATmega32U4-AU-MCU_Microchip_ATmega-Flight-Controller-PCB-rescue U3
 U 1 1 5FE513CE
 P 2950 3850
+AR Path="/5FE513CE" Ref="U3"  Part="1" 
+AR Path="/5FDD4B9C/5FE513CE" Ref="U3"  Part="1" 
 F 0 "U3" H 2950 1961 50  0000 C CNN
 F 1 "ATmega32U4-AU" H 2950 1870 50  0000 C CNN
 F 2 "Package_QFP:TQFP-44_10x10mm_P0.8mm" H 2950 3850 50  0001 C CIN
