@@ -30,6 +30,7 @@
 ## PDB board
 - 2 Oz 
 - Have proper mating connectors
+- Future put all regulation on this board
 
 ## LED board!
 - LED
