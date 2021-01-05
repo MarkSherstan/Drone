@@ -1,19 +1,13 @@
 # Flight Controller
 # To Do
-- Bright LEDs?
-- IMU orientation? - Silkscreen
 - Label everything
-- Do 3.3 board with minimal stuff on it (MPU6050?)
-- Double check varistor pads
-- Order pre criped leads and connectors
 
 # Additional BOM Items:
 - MPU 6050 drop in -> Have some in stock....
 - Mating housing for JST-GH connectors
 - Order pre crimped leads (multicolor)
 - Do I have extra BSS138?
-- DOuble check temperature of components 
-
+- Double check temperature of components 
 
 # Future
 ## Mechanical 
@@ -21,26 +15,17 @@
 
 ## Electrical 
 - ATMEGA 2560
--  Add Polyfuses? 
+- Add Polyfuses? 
+- PDB also ESC (active cooling?)
+- Do 3.3 board with minimal stuff on it (MPU6050?)
+- PDB takes care of all regulation?
 
 ## Software
 - Test the crystal: How much time are we loosing? Try different caps.
 
 # Other
-## PDB board
-- 2 Oz 
-- Have proper mating connectors
-- Future put all regulation on this board
-
-## LED board!
-- LED
-- CAP
-- RES
-
 ## ESCs
 - Whats the plan?
-
-
 
 ## Calcs
 CL= (CX1 * CX2)/(CX1 + CX2) + CSTRAY
@@ -55,7 +40,6 @@ CX1 = CX2 = 2*(CL-CSTRAY)
 CSTRAY approx 4pF
 
 22/2 = 11 - 4 = 7 ish 
-
 
 
 https://blog.adafruit.com/2012/01/24/choosing-the-right-crystal-and-caps-for-your-design/
