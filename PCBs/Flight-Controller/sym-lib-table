@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name Custom)(type Legacy)(uri ${KIPRJMOD}/Custom-Components/Custom.lib)(options "")(descr ""))
+  (lib (name Flight-Controller-PCB-rescue)(type Legacy)(uri ${KIPRJMOD}/Flight-Controller-PCB-rescue.lib)(options "")(descr ""))
+)

@@ -1,0 +1,388 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 1 1
+Title "Power Distribution Board"
+Date "2021-01-03"
+Rev "A"
+Comp "Mark Sherstan"
+Comment1 "Manufacture with 2 Oz copper"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector_Generic:Conn_01x02 J1
+U 1 1 5FF276FB
+P 7050 2750
+F 0 "J1" H 6968 2425 50  0000 C CNN
+F 1 "Power in SMD" H 6968 2516 50  0000 C CNN
+F 2 "Custom:SMD-Power" H 7050 2750 50  0001 C CNN
+F 3 "~" H 7050 2750 50  0001 C CNN
+	1    7050 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L Connector_Generic:Conn_01x06 J8
+U 1 1 5FF27D85
+P 8350 4900
+F 0 "J8" H 8268 4375 50  0000 C CNN
+F 1 "Flight Controller" H 8268 4466 50  0000 C CNN
+F 2 "Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal" H 8350 4900 50  0001 C CNN
+F 3 "~" H 8350 4900 50  0001 C CNN
+	1    8350 4900
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR014
+U 1 1 5FF2918F
+P 8850 4600
+F 0 "#PWR014" H 8850 4450 50  0001 C CNN
+F 1 "VDD" H 8867 4773 50  0000 C CNN
+F 2 "" H 8850 4600 50  0001 C CNN
+F 3 "" H 8850 4600 50  0001 C CNN
+	1    8850 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 4800 8550 4700
+Wire Wire Line
+	8550 4700 8550 4600
+Connection ~ 8550 4700
+Wire Wire Line
+	8550 4600 8850 4600
+Connection ~ 8550 4600
+Wire Wire Line
+	8550 4900 8550 5000
+Wire Wire Line
+	8550 5000 8550 5100
+Connection ~ 8550 5000
+$Comp
+L power:GND #PWR016
+U 1 1 5FF29FEA
+P 8850 5100
+F 0 "#PWR016" H 8850 4850 50  0001 C CNN
+F 1 "GND" H 8855 4927 50  0000 C CNN
+F 2 "" H 8850 5100 50  0001 C CNN
+F 3 "" H 8850 5100 50  0001 C CNN
+	1    8850 5100
+	1    0    0    -1  
+$EndComp
+Connection ~ 8550 5100
+Wire Wire Line
+	8550 5100 8850 5100
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5FF2CFF8
+P 3100 4650
+F 0 "H1" H 3200 4696 50  0000 L CNN
+F 1 "M2" H 3200 4605 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO14580_Pad" H 3100 4650 50  0001 C CNN
+F 3 "~" H 3100 4650 50  0001 C CNN
+	1    3100 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5FF2E103
+P 3550 4650
+F 0 "H2" H 3650 4696 50  0000 L CNN
+F 1 "M2" H 3650 4605 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO14580_Pad" H 3550 4650 50  0001 C CNN
+F 3 "~" H 3550 4650 50  0001 C CNN
+	1    3550 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5FF2E54D
+P 3100 4950
+F 0 "H3" H 3200 4996 50  0000 L CNN
+F 1 "M2" H 3200 4905 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO14580_Pad" H 3100 4950 50  0001 C CNN
+F 3 "~" H 3100 4950 50  0001 C CNN
+	1    3100 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 5FF2E7BB
+P 3550 4950
+F 0 "H4" H 3650 4996 50  0000 L CNN
+F 1 "M2" H 3650 4905 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.2mm_M2_ISO14580_Pad" H 3550 4950 50  0001 C CNN
+F 3 "~" H 3550 4950 50  0001 C CNN
+	1    3550 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VDD #PWR01
+U 1 1 5FF313BE
+P 7550 2650
+F 0 "#PWR01" H 7550 2500 50  0001 C CNN
+F 1 "VDD" H 7567 2823 50  0000 C CNN
+F 2 "" H 7550 2650 50  0001 C CNN
+F 3 "" H 7550 2650 50  0001 C CNN
+	1    7550 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR07
+U 1 1 5FF318E4
+P 7550 2750
+F 0 "#PWR07" H 7550 2500 50  0001 C CNN
+F 1 "GND" H 7555 2577 50  0000 C CNN
+F 2 "" H 7550 2750 50  0001 C CNN
+F 3 "" H 7550 2750 50  0001 C CNN
+	1    7550 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7250 2750 7550 2750
+Wire Wire Line
+	7550 2650 7250 2650
+$Comp
+L Connector_Generic:Conn_01x02 J4
+U 1 1 5FF351D4
+P 2850 2750
+F 0 "J4" H 2768 2425 50  0000 C CNN
+F 1 "Corner 2" H 2768 2516 50  0000 C CNN
+F 2 "Custom:Corner-Pad" H 2850 2750 50  0001 C CNN
+F 3 "~" H 2850 2750 50  0001 C CNN
+	1    2850 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR04
+U 1 1 5FF35C04
+P 3200 2650
+F 0 "#PWR04" H 3200 2500 50  0001 C CNN
+F 1 "VDD" H 3217 2823 50  0000 C CNN
+F 2 "" H 3200 2650 50  0001 C CNN
+F 3 "" H 3200 2650 50  0001 C CNN
+	1    3200 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR010
+U 1 1 5FF3636C
+P 3200 2750
+F 0 "#PWR010" H 3200 2500 50  0001 C CNN
+F 1 "GND" H 3205 2577 50  0000 C CNN
+F 2 "" H 3200 2750 50  0001 C CNN
+F 3 "" H 3200 2750 50  0001 C CNN
+	1    3200 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3050 2650 3200 2650
+Wire Wire Line
+	3200 2750 3050 2750
+$Comp
+L Connector_Generic:Conn_01x02 J3
+U 1 1 5FF3DF27
+P 1950 2750
+F 0 "J3" H 1868 2425 50  0000 C CNN
+F 1 "Corner 1" H 1868 2516 50  0000 C CNN
+F 2 "Custom:Corner-Pad" H 1950 2750 50  0001 C CNN
+F 3 "~" H 1950 2750 50  0001 C CNN
+	1    1950 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR03
+U 1 1 5FF3DF2D
+P 2300 2650
+F 0 "#PWR03" H 2300 2500 50  0001 C CNN
+F 1 "VDD" H 2317 2823 50  0000 C CNN
+F 2 "" H 2300 2650 50  0001 C CNN
+F 3 "" H 2300 2650 50  0001 C CNN
+	1    2300 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR09
+U 1 1 5FF3DF33
+P 2300 2750
+F 0 "#PWR09" H 2300 2500 50  0001 C CNN
+F 1 "GND" H 2305 2577 50  0000 C CNN
+F 2 "" H 2300 2750 50  0001 C CNN
+F 3 "" H 2300 2750 50  0001 C CNN
+	1    2300 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 2650 2300 2650
+Wire Wire Line
+	2300 2750 2150 2750
+$Comp
+L Connector_Generic:Conn_01x02 J5
+U 1 1 5FF400FC
+P 3700 2750
+F 0 "J5" H 3618 2425 50  0000 C CNN
+F 1 "Corner 3" H 3618 2516 50  0000 C CNN
+F 2 "Custom:Corner-Pad" H 3700 2750 50  0001 C CNN
+F 3 "~" H 3700 2750 50  0001 C CNN
+	1    3700 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR05
+U 1 1 5FF40102
+P 4050 2650
+F 0 "#PWR05" H 4050 2500 50  0001 C CNN
+F 1 "VDD" H 4067 2823 50  0000 C CNN
+F 2 "" H 4050 2650 50  0001 C CNN
+F 3 "" H 4050 2650 50  0001 C CNN
+	1    4050 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR011
+U 1 1 5FF40108
+P 4050 2750
+F 0 "#PWR011" H 4050 2500 50  0001 C CNN
+F 1 "GND" H 4055 2577 50  0000 C CNN
+F 2 "" H 4050 2750 50  0001 C CNN
+F 3 "" H 4050 2750 50  0001 C CNN
+	1    4050 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 2650 4050 2650
+Wire Wire Line
+	4050 2750 3900 2750
+$Comp
+L Connector_Generic:Conn_01x02 J6
+U 1 1 5FF415C6
+P 4500 2750
+F 0 "J6" H 4418 2425 50  0000 C CNN
+F 1 "Corner 4" H 4418 2516 50  0000 C CNN
+F 2 "Custom:Corner-Pad" H 4500 2750 50  0001 C CNN
+F 3 "~" H 4500 2750 50  0001 C CNN
+	1    4500 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR06
+U 1 1 5FF415CC
+P 4850 2650
+F 0 "#PWR06" H 4850 2500 50  0001 C CNN
+F 1 "VDD" H 4867 2823 50  0000 C CNN
+F 2 "" H 4850 2650 50  0001 C CNN
+F 3 "" H 4850 2650 50  0001 C CNN
+	1    4850 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR012
+U 1 1 5FF415D2
+P 4850 2750
+F 0 "#PWR012" H 4850 2500 50  0001 C CNN
+F 1 "GND" H 4855 2577 50  0000 C CNN
+F 2 "" H 4850 2750 50  0001 C CNN
+F 3 "" H 4850 2750 50  0001 C CNN
+	1    4850 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 2650 4850 2650
+Wire Wire Line
+	4850 2750 4700 2750
+$Comp
+L Connector_Generic:Conn_01x02 J2
+U 1 1 5FF513A7
+P 8300 2750
+F 0 "J2" H 8218 2425 50  0000 C CNN
+F 1 "Power in THR" H 8218 2516 50  0000 C CNN
+F 2 "Custom:THR-Power" H 8300 2750 50  0001 C CNN
+F 3 "~" H 8300 2750 50  0001 C CNN
+	1    8300 2750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR02
+U 1 1 5FF513AD
+P 8800 2650
+F 0 "#PWR02" H 8800 2500 50  0001 C CNN
+F 1 "VDD" H 8817 2823 50  0000 C CNN
+F 2 "" H 8800 2650 50  0001 C CNN
+F 3 "" H 8800 2650 50  0001 C CNN
+	1    8800 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR08
+U 1 1 5FF513B3
+P 8800 2750
+F 0 "#PWR08" H 8800 2500 50  0001 C CNN
+F 1 "GND" H 8805 2577 50  0000 C CNN
+F 2 "" H 8800 2750 50  0001 C CNN
+F 3 "" H 8800 2750 50  0001 C CNN
+	1    8800 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8500 2750 8800 2750
+Wire Wire Line
+	8800 2650 8500 2650
+$Comp
+L Connector_Generic:Conn_01x06 J7
+U 1 1 5FF55721
+P 7000 4850
+F 0 "J7" H 6918 4325 50  0000 C CNN
+F 1 "Flight Controller" H 6918 4416 50  0000 C CNN
+F 2 "Connector_JST:JST_GH_BM06B-GHS-TBT_1x06-1MP_P1.25mm_Vertical" H 7000 4850 50  0001 C CNN
+F 3 "~" H 7000 4850 50  0001 C CNN
+	1    7000 4850
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:VDD #PWR013
+U 1 1 5FF55727
+P 7500 4550
+F 0 "#PWR013" H 7500 4400 50  0001 C CNN
+F 1 "VDD" H 7517 4723 50  0000 C CNN
+F 2 "" H 7500 4550 50  0001 C CNN
+F 3 "" H 7500 4550 50  0001 C CNN
+	1    7500 4550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7200 4750 7200 4650
+Wire Wire Line
+	7200 4650 7200 4550
+Connection ~ 7200 4650
+Wire Wire Line
+	7200 4550 7500 4550
+Connection ~ 7200 4550
+Wire Wire Line
+	7200 4850 7200 4950
+Wire Wire Line
+	7200 4950 7200 5050
+Connection ~ 7200 4950
+$Comp
+L power:GND #PWR015
+U 1 1 5FF55735
+P 7500 5050
+F 0 "#PWR015" H 7500 4800 50  0001 C CNN
+F 1 "GND" H 7505 4877 50  0000 C CNN
+F 2 "" H 7500 5050 50  0001 C CNN
+F 3 "" H 7500 5050 50  0001 C CNN
+	1    7500 5050
+	1    0    0    -1  
+$EndComp
+Connection ~ 7200 5050
+Wire Wire Line
+	7200 5050 7500 5050
+Text Notes 3200 2150 0    79   ~ 16
+ESC Power
+Text Notes 7550 2150 0    79   ~ 16
+Battery In
+Text Notes 2900 4350 0    79   ~ 16
+Mounting Holes
+Text Notes 7200 4200 0    79   ~ 16
+Flight Controller Power
+$EndSCHEMATC
