@@ -2,14 +2,16 @@
 Mechanical, electrical, and software package for a custom quadcopter drone.
 
 ## Mechanical 
+Designed using Fusion 360 and 3D printed on a Prusa MK3 printer. 
 
 ## Electrical
-### Flight Controller
-### Power Distribution Board 
-### Lights 
+Custom PCBs designed in KiCad for the brain, power distribution, and signal indication. 
+- Flight Controller
+- Power Distribution Board 
+- Lights 
 
 ## Software
-
+C++ and custom libraries for controlling and stabilizing the UAV. Compiled with PlatformIO.
 
 ## Future Ideas
 ### Mechanical 
