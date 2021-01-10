@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:Power-cache
 EELAYER 30 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -32,6 +33,9 @@ F 0 "J8" H 8268 4375 50  0000 C CNN
 F 1 "Flight Controller" H 8268 4466 50  0000 C CNN
 F 2 "Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal" H 8350 4900 50  0001 C CNN
 F 3 "~" H 8350 4900 50  0001 C CNN
+F 4 "JST Sales America Inc." H 8350 4900 50  0001 C CNN "Manufacturer"
+F 5 "SM06B-GHS-TB(LF)(SN)" H 8350 4900 50  0001 C CNN "Manufacturer #"
+F 6 "455-1568-1-ND" H 8350 4900 50  0001 C CNN "Digi-Key #"
 	1    8350 4900
 	-1   0    0    1   
 $EndComp
@@ -335,7 +339,10 @@ P 7000 4850
 F 0 "J7" H 6918 4325 50  0000 C CNN
 F 1 "Flight Controller" H 6918 4416 50  0000 C CNN
 F 2 "Connector_JST:JST_GH_BM06B-GHS-TBT_1x06-1MP_P1.25mm_Vertical" H 7000 4850 50  0001 C CNN
-F 3 "~" H 7000 4850 50  0001 C CNN
+F 3 "" H 7000 4850 50  0001 C CNN
+F 4 "JST Sales America Inc." H 7000 4850 50  0001 C CNN "Manufacturer"
+F 5 "BM06B-GHS-TBT(LF)(SN)(N)" H 7000 4850 50  0001 C CNN "Manufacturer #"
+F 6 "455-1582-1-ND" H 7000 4850 50  0001 C CNN "Digi-Key #"
 	1    7000 4850
 	-1   0    0    1   
 $EndComp

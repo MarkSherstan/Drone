@@ -1,0 +1,10 @@
+Reference(s),Qty,Value,LibPart,Footprint,Digi-Key #,Manufacturer,Manufacturer #
+"H1, H2, H3, H4",4,M2,Mechanical:MountingHole,MountingHole:MountingHole_2.2mm_M2_ISO14580_Pad,,,
+J1,1,Power in SMD,Connector_Generic:Conn_01x02,Custom:SMD-Power,,,
+J2,1,Power in THR,Connector_Generic:Conn_01x02,Custom:THR-Power,,,
+J3,1,Corner 1,Connector_Generic:Conn_01x02,Custom:Corner-Pad,,,
+J4,1,Corner 2,Connector_Generic:Conn_01x02,Custom:Corner-Pad,,,
+J5,1,Corner 3,Connector_Generic:Conn_01x02,Custom:Corner-Pad,,,
+J6,1,Corner 4,Connector_Generic:Conn_01x02,Custom:Corner-Pad,,,
+J7,1,Flight Controller,Connector_Generic:Conn_01x06,Connector_JST:JST_GH_BM06B-GHS-TBT_1x06-1MP_P1.25mm_Vertical,455-1582-1-ND,JST Sales America Inc.,BM06B-GHS-TBT(LF)(SN)(N)
+J8,1,Flight Controller,Connector_Generic:Conn_01x06,Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal,455-1568-1-ND,JST Sales America Inc.,SM06B-GHS-TB(LF)(SN)
