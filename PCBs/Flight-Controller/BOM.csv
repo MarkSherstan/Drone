@@ -1,6 +1,6 @@
 Reference(s),Qty,Value,LibPart,Footprint,Digi-Key #,Manufacturer,Manufacturer #,Digi-Key Link
 "C1, C10, C11, C12, C18, C22",6,1uF 16V X7R 10%,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
-"C2, C6, C9, C13, C14, C15, C21",7,0.1uF 16V X7R 10%,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
+"C2, C6, C9, C13, C14, C15, C21, C23",8,0.1uF 16V X7R 10%,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
 C3,1,10nF 16V X7R 10%,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
 C4,1,0.47uF 16V X7R 10%,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
 C5,1,2.2uF 16V X7R 10%,Device:C,Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
@@ -13,7 +13,7 @@ D1,1,LED_RGB,Custom:LED_RGB,Custom:RGB_LED,1080-EAST1616RGBA4CT-ND,Everlight Ele
 D4,1,75V 150mA,Device:D,Diode_SMD:D_0603_1608Metric_Pad1.05x0.95mm_HandSolder,TS4148CRZGCT-ND,Taiwan Semiconductor Corporation,TS4148C RZG,https://www.digikey.ca/en/products/detail/taiwan-semiconductor-corporation/TS4148C-RZG/7359811?s=N4IgjCBcpgbFoDGUBmBDANgZwKYBoQB7KAbRAGYBOAJgBZ4BdAgBwBcoQBlVgJwEsAdgHMQAXwKV40EMkjps%2BIqRC0ADAHZK5ABwgmINh279hYgmErbKCGaky4CxSGVV6W7SF16CR4kAFpqG1leAFdFJzIAVjcDDxAxUVEgA
 "D5, D6",2,Orange 2V 20mA,Device:LED,LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
 F1,1,PTC 15V 500mA,Device:Polyfuse_Small,Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder,283-3140-1-ND,Eaton - Electronics Division,PTS120615V050,https://www.digikey.ca/en/products/detail/eaton-electronics-division/PTS120615V050/2639137
-FB1,1,Ferrite 30 ohm 1 line,Device:Ferrite_Bead,Diode_SMD:D_0603_1608Metric_Pad1.05x0.95mm_HandSolder,MH1608-300YCT-ND,Bourns Inc.,MH1608-300Y,https://www.digikey.ca/en/products/detail/bourns-inc/MH1608-300Y/1970497?s=N4IgjCBcpgbFoDGUBmBDANgZwKYBoQB7KAbRAGYBOAJgBZ4BdAgBwBcoQBlVgJwEsAdgHMQAXwLUI0EMkjps%2BIqQoAOSrQCsjFu0hdegkePCU1CGaky4CxSGQAMIJiDYdu-YWInUVj6bPlrJTsKewACAHkACwBbLDCAATCwe3sAWQAJAC8nHQ4AYUIAV2YMHAATAFUBPlYIlDScNCwinhwvEABaanNZXiLFWzINXJddEDFRUSA
+FB1,1,Ferrite 30 ohm 1 line,Device:Ferrite_Bead,Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,MH1608-300YCT-ND,Bourns Inc.,MH1608-300Y,https://www.digikey.ca/en/products/detail/bourns-inc/MH1608-300Y/1970497?s=N4IgjCBcpgbFoDGUBmBDANgZwKYBoQB7KAbRAGYBOAJgBZ4BdAgBwBcoQBlVgJwEsAdgHMQAXwLUI0EMkjps%2BIqQoAOSrQCsjFu0hdegkePCU1CGaky4CxSGQAMIJiDYdu-YWInUVj6bPlrJTsKewACAHkACwBbLDCAATCwe3sAWQAJAC8nHQ4AYUIAV2YMHAATAFUBPlYIlDScNCwinhwvEABaanNZXiLFWzINXJddEDFRUSA
 "H1, H2, H3, H4",4,M2,Mechanical:MountingHole,MountingHole:MountingHole_2.2mm_M2_ISO7380_Pad,,,,
 J1,1,ESC_1,Connector_Generic:Conn_01x05,Connector_JST:JST_GH_BM05B-GHS-TBT_1x05-1MP_P1.25mm_Vertical,455-1581-1-ND,JST Sales America Inc.,BM05B-GHS-TBT(LF)(SN)(N),https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM05B-GHS-TBT-LF-SN-N/807803?s=N4IgTCBcDaIEIFkAMBWOBaA4gCQMroBU4CQBdAXyA
 J2,1,Receiver,Connector_Generic:Conn_01x07,Connector_JST:JST_GH_BM07B-GHS-TBT_1x07-1MP_P1.25mm_Vertical,455-1583-1-ND,JST Sales America Inc.,BM07B-GHS-TBT(LF)(SN)(N),https://www.digikey.ca/en/products/detail/jst-sales-america-inc/BM07B-GHS-TBT-LF-SN-N/807805?s=N4IgTCBcDaIEIFkAMB2OBaA4gCQMroBU4CQBdAXyA
@@ -34,11 +34,11 @@ R7,1,55 ohm 5%,Device:R,Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder
 "R8, R9, R10, R11, R12, R13, R14, R17, R18, R19",10,10 kohm 5%,Device:R,Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
 "R15, R16",2,1 kohm 5%,Device:R,Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
 "R20, R21",2,22 ohm 1%,Device:R,Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,,,,
-"RV1, RV2",2,5V 0.5pF,Device:Varistor,Diode_SMD:D_0603_1608Metric_Pad1.05x0.95mm_HandSolder,CG0603MLC-05ECT-ND,Bourns Inc.,CG0603MLC-05E,https://www.digikey.ca/en/products/detail/bourns-inc/CG0603MLC-05E/2538084
+"RV1, RV2",2,5V 0.5pF,Device:Varistor,Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder,CG0603MLC-05ECT-ND,Bourns Inc.,CG0603MLC-05E,https://www.digikey.ca/en/products/detail/bourns-inc/CG0603MLC-05E/2538084
 SW1,1,Push-Switch,Custom:Push-Switch,Custom:Switch,CKN10361CT-ND,C&K,RS-187R05A2-DS MT RT,https://www.digikey.ca/en/products/detail/c-k/RS-187R05A2-DS-MT-RT/2747186?s=N4IgTCBcDaIMIGkByBGADAZgGwrgFQFokAREAXQF8g
 U1,1,MCP6001U,Amplifier_Operational:MCP6001U,Package_TO_SOT_SMD:SOT-23-5,MCP6001UT-I/OTCT-ND,Microchip Technology,MCP6001UT-I/OT,https://www.digikey.ca/en/products/detail/microchip-technology/MCP6001UT-I-OT/562450
 U2,1,ICM-20689,Custom:ICM-20689,Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.8x2.8mm,1428-1059-1-ND,TDK InvenSense,ICM-20689,https://www.digikey.ca/en/products/detail/tdk-invensense/ICM-20689/5872869
-U3,1,ATmega32U4-AU,MCU_Microchip_ATmega:ATmega32U4-AU,Package_QFP:TQFP-44_10x10mm_P0.8mm,ATMEGA32U4RC-AU-ND,Microchip Technology,ATMEGA32U4RC-AU,https://www.digikey.ca/en/products/detail/microchip-technology/ATMEGA32U4RC-AU/2507982
+U3,1,ATmega32U4-AU,Flight-Controller-PCB-rescue:ATmega32U4-AU-MCU_Microchip_ATmega-Flight-Controller-PCB-rescue,Package_QFP:TQFP-44_10x10mm_P0.8mm,ATMEGA32U4RC-AU-ND,Microchip Technology,ATMEGA32U4RC-AU,https://www.digikey.ca/en/products/detail/microchip-technology/ATMEGA32U4RC-AU/2507982
 U4,1,LM1117-5.0,Custom:LM1117-5.0,Package_TO_SOT_SMD:SOT-223,LM1117IMP-5.0/NOPBCT-ND,Texas Instruments,LM1117IMP-5.0/NOPB,https://www.digikey.ca/en/products/detail/texas-instruments/LM1117IMP-5-0-NOPB/482940
 U5,1,LP2985-3.3,Regulator_Linear:LP2985-3.3,Package_TO_SOT_SMD:SOT-23-5,296-18476-1-ND,Texas Instruments,LP2985-33DBVR,https://www.digikey.ca/en/products/detail/texas-instruments/LP2985-33DBVR/809759
 Y1,1,"16MHz, CL 7pF",Device:Crystal,Custom:Crystal,535-14027-1-ND,Abracon LLC,ABM8W-16.0000MHZ-7-D1X-T3,https://www.digikey.ca/en/products/detail/abracon-llc/ABM8W-16-0000MHZ-7-D1X-T3/7172798
