@@ -2,13 +2,19 @@
 #include <arduino.h>
 
 void FlightControl::setUpDigitalPins(){
-    // LEDs
+    // RGB LEDs
     pinMode(R_LED, OUTPUT);
     pinMode(G_LED, OUTPUT);
     pinMode(B_LED, OUTPUT);
+
+    // Arm LEDs
+    pinMode(LIGHT_1, OUTPUT);
+    pinMode(LIGHT_2, OUTPUT);
+    pinMode(LIGHT_3, OUTPUT);
+    pinMode(LIGHT_4, OUTPUT);
 }
 
-void FlightControl::status(char input){
+void FlightControl::statusLight(char input){
     // Color based on state input
     switch (input){
       case 'R':
@@ -74,6 +80,32 @@ void FlightControl::status(char input){
         digitalWrite(B_LED, 0);
         break;
     }
+}
+
+void FlightControl::monitorBattery(){
+  // Monitor battery voltage
+  int analogRaw = analogRead(BATTERY);
+  float voltageRaw = analogRaw * (5.0 / 1023.0);
+  float batteryVoltage = voltageRaw * (battery.R1 + battery.R2) / battery.R2;
+
+  // Flash lights if battery is starting to get low
+  if (batteryVoltage < (battery.nominalCellVoltage * battery.numCells)){ 
+  }
+}
+
+/// @brief Configure flight battery for voltage monitoring
+/// @param numCells Number of battery cells (3s LiPo = 3)
+/// @param nominalCellVoltage Nominal voltage per cell of battery (LiPo: 3.7 V/cell)
+/// @param fullCellVoltage Full voltage per cell of battery (LiPo: 4.2 V/cell)
+/// @param R1 Value of first resistor in voltage divider circuit use the same units as R2
+/// @param R2 Value of second resistor in voltage divider circuit use the same units as R1
+/// @return None
+void FlightControl::configureBattery(float numCells, float nominalCellVoltage, float fullCellVoltage, float R1, float R2){
+  battery.numCells = numCells;
+  battery.nominalCellVoltage = nominalCellVoltage;
+  battery.fullCellVoltage = fullCellVoltage;
+  battery.R1 = R1;
+  battery.R2 = R2;
 }
 
 void FlightControl::startTimeSync(long loopTimeMicroSec){

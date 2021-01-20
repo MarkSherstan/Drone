@@ -22,6 +22,11 @@
 #define AUX_A     A5
 #define AUX_D     10
 
+// Battery monitoring structure
+struct batt_t {
+  float numCells, nominalCellVoltage, fullCellVoltage, R1, R2;
+};
+
 // Class
 class FlightControl{
 private:
@@ -31,15 +36,20 @@ private:
   long timeToDelay;
   unsigned long _trackedTime;
 
+  // Battery Monitoring
+  batt_t battery;
+
 public:
   // Constructor
   FlightControl() = default;
 
   // Functions
   void setUpDigitalPins();
-  void status(char input);
+  void statusLight(char input);
   void startTimeSync(long loopTimeMicroSec);
   void timeSync();
+  void monitorBattery();
+  void configureBattery(float numCells = 3, float nominalCellVoltage = 3.7, float fullCellVoltage = 4.2, float R1 = 3.24, float R2 = 2.00);
 };
 
 #endif // FLIGHTCONTROL_H
