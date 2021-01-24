@@ -142,6 +142,20 @@ void IMU::readProcessedData() {
   imu_cal.gz /= _gRes;
 }
 
+/// @brief Calculate the attitude of the sensor in degrees using a complementary filter
+void IMU::calculateAttitude(float dt, float tau) {
+  // Read calibrated data
+  readProcessedData();
+
+  // Complementary filter
+  float accelPitch = atan2(imu_cal.ay, imu_cal.az) * (180 / M_PI);
+  float accelRoll = atan2(imu_cal.ax, imu_cal.az) * (180 / M_PI);
+
+  attitude.roll = (tau)*(attitude.roll - imu_cal.gy*dt) + (1-tau)*(accelRoll);
+  attitude.pitch = (tau)*(attitude.pitch + imu_cal.gx*dt) + (1-tau)*(accelPitch);
+  attitude.yaw += imu_cal.gz*dt;
+}
+
 /// @brief Write bytes to specific registers on the IMU. 
 /// @param byte0 The main register to be written.
 /// @param byte1 The command to be written. 
