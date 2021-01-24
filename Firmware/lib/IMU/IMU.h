@@ -69,11 +69,14 @@ public:
   // Functions
   float getAres(int Ascale);
   float getGres(int Gscale);
+  void gyroCalibration(int numCalPoints);
+  void readProcessedData();
   void readRawData();
 
   // Variables
   float _aRes, _gRes;
   float temperature; 
+  gyro_cal_t gyro_cal;
   imu_t imu_raw;
   imu_t imu_cal;
 

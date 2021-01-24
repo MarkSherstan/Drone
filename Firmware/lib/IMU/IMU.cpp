@@ -84,7 +84,6 @@ float IMU::getGres(int Gscale) {
   }
 }
 
-
 /// @brief Read raw data from IMU and bit shift
 void IMU::readRawData() {
   // Subroutine for reading the raw data
@@ -103,6 +102,44 @@ void IMU::readRawData() {
   imu_raw.gx = Wire.read()<<8 | Wire.read();
   imu_raw.gy = Wire.read()<<8 | Wire.read();
   imu_raw.gz = Wire.read()<<8 | Wire.read();
+}
+
+/// @brief Find offsets for each axis of gyroscope.
+/// @param numCalPoints Number of data points to average.
+void IMU::gyroCalibration(int numCalPoints) {
+  // Save specified number of data values
+  for (int ii = 0; ii < numCalPoints; ii++){
+    readRawData();
+    gyro_cal.x += imu_raw.gx;
+    gyro_cal.y += imu_raw.gy;
+    gyro_cal.z += imu_raw.gz;
+  }
+
+  // Average the saved data points  
+  gyro_cal.x /= (float)numCalPoints;
+  gyro_cal.y /= (float)numCalPoints;
+  gyro_cal.z /= (float)numCalPoints;
+}
+
+/// @brief Calculate the real world sensor values
+void IMU::readProcessedData() {
+  // Get the raw values from the IMU
+  readRawData();
+
+  // Convert accelerometer values from raw data to g
+  imu_cal.ax = imu_raw.ax / _aRes;
+  imu_cal.ay = imu_raw.ay / _aRes;
+  imu_cal.az = imu_raw.az / _aRes;
+
+  // Remove gyro offset
+  imu_cal.gx = imu_raw.gx - gyro_cal.x;
+  imu_cal.gy = imu_raw.gy - gyro_cal.y;
+  imu_cal.gz = imu_raw.gz - gyro_cal.z;
+
+  // Convert gyro values to deg/s
+  imu_cal.gx /= _gRes;
+  imu_cal.gy /= _gRes;
+  imu_cal.gz /= _gRes;
 }
 
 /// @brief Write bytes to specific registers on the IMU. 
