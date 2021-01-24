@@ -3,9 +3,11 @@
 #include <Wire.h>
 #include "FlightControl.h"
 
-/// @brief Set the IMU address and check for positive connection.
+/// @brief Set the IMU address, check for connection, reset IMU, and set full range scale.
 /// @param addr Hexadecimal address based on AD0 pin - 0x68 low or 0x69 high.
-IMU::IMU(unsigned char addr) {
+/// @param aScale Set accelerometer full scale range: 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
+/// @param gScale Set gyroscope full scale range: 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
+IMU::IMU(unsigned char addr, int aScale, int gScale) {
   // Set address
   _addr = addr;
 
@@ -15,72 +17,62 @@ IMU::IMU(unsigned char addr) {
   Wire.endTransmission();
   Wire.requestFrom(_addr, 1);
 
-  // Either show green and reset the IMU or show red
+  // Either change indicator LED green and configure the IMU or change LED to red
   if (Wire.read() == 0x98){
-    write2bytes(PWR_MGMT_1, 0x00);
     FC.statusLight('G');
+    write2bytes(PWR_MGMT_1, 0x00);
+    setAccFullScaleRange(aScale);
+    setGyroFullScaleRange(gScale);
   } else {
     FC.statusLight('R');
   }
 }
 
 /// @brief Set the accelerometer full scale range.
-/// @param Ascale Set 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
-/// @return Sensitivity scale factor in LSB/g.
-float IMU::getAres(int Ascale) {
-  switch (Ascale){
+/// @param aScale Set 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
+void IMU::setAccFullScaleRange(int aScale) {
+  switch (aScale){
     case AFS_2G:
       // 2g
-      _aRes = 16384.0;
+      aRes = 16384.0;
       write2bytes(ACCEL_CONFIG, 0x00);
-      return _aRes;
     case AFS_4G:
       // 4g
-      _aRes = 8192.0;
+      aRes = 8192.0;
       write2bytes(ACCEL_CONFIG, 0x08);
-      return _aRes;
     case AFS_8G:
       // 8g
-      _aRes = 4096.0;
+      aRes = 4096.0;
       write2bytes(ACCEL_CONFIG, 0x10);
-      return _aRes;
     case AFS_16G:
       // 16g
-      _aRes = 2048.0;
+      aRes = 2048.0;
       write2bytes(ACCEL_CONFIG, 0x18);
-      return _aRes;
     default:
-      return 0;
   }
 }
 
 /// @brief Set the gyroscope full scale range.
-/// @param Gscale Set 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
-/// @return Sensitivity scale factor in LSB/(°/s).
-float IMU::getGres(int Gscale) {
-  switch (Gscale){
+/// @param gScale Set 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
+void IMU::setGyroFullScaleRange(int gScale) {
+  switch (gScale){
     case GFS_250DPS:
       // 250 deg/s
-      _gRes = 131.0;
+      gRes = 131.0;
       write2bytes(GYRO_CONFIG, 0x00);
-      return _gRes;
     case GFS_500DPS:
       // 500 deg/s
-      _gRes = 65.5;
+      gRes = 65.5;
       write2bytes(GYRO_CONFIG, 0x08);
-      return _gRes;
     case GFS_1000DPS:
       // 1000 deg/s
-      _gRes = 32.8;
+      gRes = 32.8;
       write2bytes(GYRO_CONFIG, 0x10);
-      return _gRes;
     case GFS_2000DPS:
       // 2000 deg/s
-      _gRes = 16.4;
+      gRes = 16.4;
       write2bytes(GYRO_CONFIG, 0x18);
-      return _gRes;
     default:
-      return 0;
   }
 }
 
@@ -127,9 +119,9 @@ void IMU::readProcessedData() {
   readRawData();
 
   // Convert accelerometer values from raw data to g
-  imu_cal.ax = imu_raw.ax / _aRes;
-  imu_cal.ay = imu_raw.ay / _aRes;
-  imu_cal.az = imu_raw.az / _aRes;
+  imu_cal.ax = imu_raw.ax / aRes;
+  imu_cal.ay = imu_raw.ay / aRes;
+  imu_cal.az = imu_raw.az / aRes;
 
   // Remove gyro offset
   imu_cal.gx = imu_raw.gx - gyro_cal.x;
@@ -137,13 +129,13 @@ void IMU::readProcessedData() {
   imu_cal.gz = imu_raw.gz - gyro_cal.z;
 
   // Convert gyro values to deg/s
-  imu_cal.gx /= _gRes;
-  imu_cal.gy /= _gRes;
-  imu_cal.gz /= _gRes;
+  imu_cal.gx /= gRes;
+  imu_cal.gy /= gRes;
+  imu_cal.gz /= gRes;
 }
 
 /// @brief Calculate the attitude of the sensor in degrees using a complementary filter
-void IMU::calculateAttitude(float dt, float tau) {
+void IMU::calcAttitude(float dt, float tau) {
   // Read calibrated data
   readProcessedData();
 

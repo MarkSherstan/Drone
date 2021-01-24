@@ -2,7 +2,7 @@
 #ifndef IMU_H
 #define IMU_H
 
-// IMU configuration and check registries
+// IMU configuration
 #define AD0_LOW         0x68
 #define AD0_HIGH        0x69
 #define WHO_AM_I        0x75
@@ -28,7 +28,7 @@
 #define GYRO_ZOUT_H     0x47
 #define GYRO_ZOUT_L     0x48
 
-// Full scale range
+// Full scale ranges
 #define AFS_2G  0
 #define AFS_4G  1
 #define AFS_8G  2
@@ -59,24 +59,25 @@ class IMU{
 private:
   // Functions
   void write2bytes(unsigned char byte0, unsigned char byte1);
+  void setAccFullScaleRange(int aScale);
+  void setGyroFullScaleRange(int gScale);
 
   // Variables
   unsigned char _addr;
-
+  float aRes, gRes;
+  
 public:
   // Configure
-  IMU(unsigned char addr);
+  IMU(unsigned char addr, int aScale, int gScale);
 
   // Functions
-  float getAres(int Ascale);
-  float getGres(int Gscale);
   void gyroCalibration(int numCalPoints);
   void readProcessedData();
   void readRawData();
-  void calculateAttitude(float dt, float tau=0.98);
+  void calcAttitude(float dt, float tau=0.98);
 
   // Variables
-  float _aRes, _gRes;
+  
   float temperature; 
   gyro_cal_t gyro_cal;
   imu_t imu_raw;
