@@ -69,9 +69,14 @@ public:
   // Functions
   float getAres(int Ascale);
   float getGres(int Gscale);
+  void readRawData();
 
   // Variables
   float _aRes, _gRes;
+  float temperature; 
+  imu_t imu_raw;
+  imu_t imu_cal;
+
 };
 
 #endif // IMU_H

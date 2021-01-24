@@ -84,6 +84,27 @@ float IMU::getGres(int Gscale) {
   }
 }
 
+
+/// @brief Read raw data from IMU and bit shift
+void IMU::readRawData() {
+  // Subroutine for reading the raw data
+  Wire.beginTransmission(_addr);
+  Wire.write(ACCEL_XOUT_H);
+  Wire.endTransmission();
+  Wire.requestFrom(_addr, 14);
+
+  // Read raw data
+  imu_raw.ax = Wire.read() << 8 | Wire.read();
+  imu_raw.ay = Wire.read() << 8 | Wire.read();
+  imu_raw.az = Wire.read() << 8 | Wire.read();
+
+  temperature = Wire.read() <<8 | Wire.read();
+
+  imu_raw.gx = Wire.read()<<8 | Wire.read();
+  imu_raw.gy = Wire.read()<<8 | Wire.read();
+  imu_raw.gz = Wire.read()<<8 | Wire.read();
+}
+
 /// @brief Write bytes to specific registers on the IMU. 
 /// @param byte0 The main register to be written.
 /// @param byte1 The command to be written. 
