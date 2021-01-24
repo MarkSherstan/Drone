@@ -67,21 +67,22 @@ private:
   float aRes, gRes;
   
 public:
-  // Configure
+  // Config
   IMU(unsigned char addr, int aScale, int gScale);
 
   // Functions
+  void startTimer();
   void gyroCalibration(int numCalPoints=2000);
   void readProcessedData();
   void readRawData();
-  void calcAttitude(float dt, float tau=0.98);
+  void calcAttitude(float tau=0.98);
 
   // Variables
-  
-  float temperature; 
-  gyro_cal_t gyro_cal;
-  imu_t imu_raw;
-  imu_t imu_cal;
+  float temperature;
+  long timer; 
+  gyro_cal_t gyroCal;
+  imu_t imuRaw;
+  imu_t imuProcessed;
   attitude_t attitude;
 };
 

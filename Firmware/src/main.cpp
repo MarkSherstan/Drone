@@ -12,7 +12,12 @@ void setup() {
 
   // Calibrate the IMU
   imu.gyroCalibration();
+
+  // Start timer(s)
+  imu.startTimer();
 }
 
 void loop() {
+  // Calculate body frame attitude
+  imu.calcAttitude();
 }

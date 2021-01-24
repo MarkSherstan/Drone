@@ -15,7 +15,7 @@ IMU::IMU(unsigned char addr, int aScale, int gScale) {
   Wire.beginTransmission(_addr);
   Wire.write(WHO_AM_I);
   Wire.endTransmission();
-  Wire.requestFrom(_addr, 1);
+  Wire.requestFrom((int)_addr, 1);
 
   // Either change indicator LED green and configure the IMU or change LED to red
   if (Wire.read() == 0x98){
@@ -86,24 +86,24 @@ void IMU::setGyroFullScaleRange(int gScale) {
   }
 }
 
-/// @brief Read raw data from IMU and bit shift
+/// @brief Read raw data from IMU
 void IMU::readRawData() {
   // Subroutine for reading the raw data
   Wire.beginTransmission(_addr);
   Wire.write(ACCEL_XOUT_H);
   Wire.endTransmission();
-  Wire.requestFrom(_addr, 14);
+  Wire.requestFrom((int)_addr, 14);
 
   // Read raw data
-  imu_raw.ax = Wire.read() << 8 | Wire.read();
-  imu_raw.ay = Wire.read() << 8 | Wire.read();
-  imu_raw.az = Wire.read() << 8 | Wire.read();
+  imuRaw.ax = Wire.read() << 8 | Wire.read();
+  imuRaw.ay = Wire.read() << 8 | Wire.read();
+  imuRaw.az = Wire.read() << 8 | Wire.read();
 
   temperature = Wire.read() <<8 | Wire.read();
 
-  imu_raw.gx = Wire.read()<<8 | Wire.read();
-  imu_raw.gy = Wire.read()<<8 | Wire.read();
-  imu_raw.gz = Wire.read()<<8 | Wire.read();
+  imuRaw.gx = Wire.read()<<8 | Wire.read();
+  imuRaw.gy = Wire.read()<<8 | Wire.read();
+  imuRaw.gz = Wire.read()<<8 | Wire.read();
 }
 
 /// @brief Find offsets for each axis of gyroscope.
@@ -112,16 +112,16 @@ void IMU::gyroCalibration(int numCalPoints) {
   // Save specified number of data values
   for (int ii = 0; ii < numCalPoints; ii++){
     readRawData();
-    gyro_cal.x += imu_raw.gx;
-    gyro_cal.y += imu_raw.gy;
-    gyro_cal.z += imu_raw.gz;
+    gyroCal.x += imuRaw.gx;
+    gyroCal.y += imuRaw.gy;
+    gyroCal.z += imuRaw.gz;
     delay(3);
   }
 
-  // Average the saved data points  
-  gyro_cal.x /= (float)numCalPoints;
-  gyro_cal.y /= (float)numCalPoints;
-  gyro_cal.z /= (float)numCalPoints;
+  // Average the saved data points to find the gyroscope offset
+  gyroCal.x /= (float)numCalPoints;
+  gyroCal.y /= (float)numCalPoints;
+  gyroCal.z /= (float)numCalPoints;
 }
 
 /// @brief Calculate the real world sensor values
@@ -129,34 +129,39 @@ void IMU::readProcessedData() {
   // Get the raw values from the IMU
   readRawData();
 
-  // Convert accelerometer values from raw data to g
-  imu_cal.ax = imu_raw.ax / aRes;
-  imu_cal.ay = imu_raw.ay / aRes;
-  imu_cal.az = imu_raw.az / aRes;
+  // Convert accelerometer values from raw data to g's
+  imuProcessed.ax = imuRaw.ax / aRes;
+  imuProcessed.ay = imuRaw.ay / aRes;
+  imuProcessed.az = imuRaw.az / aRes;
 
-  // Remove gyro offset
-  imu_cal.gx = imu_raw.gx - gyro_cal.x;
-  imu_cal.gy = imu_raw.gy - gyro_cal.y;
-  imu_cal.gz = imu_raw.gz - gyro_cal.z;
+  // Compensate for gyro offset
+  imuProcessed.gx = imuRaw.gx - gyroCal.x;
+  imuProcessed.gy = imuRaw.gy - gyroCal.y;
+  imuProcessed.gz = imuRaw.gz - gyroCal.z;
 
   // Convert gyro values to deg/s
-  imu_cal.gx /= gRes;
-  imu_cal.gy /= gRes;
-  imu_cal.gz /= gRes;
+  imuProcessed.gx /= gRes;
+  imuProcessed.gy /= gRes;
+  imuProcessed.gz /= gRes;
 }
 
 /// @brief Calculate the attitude of the sensor in degrees using a complementary filter
-void IMU::calcAttitude(float dt, float tau) {
+/// @param tau Time constant relating to the weighting of gyroscope vs accelerometer.
+void IMU::calcAttitude(float tau) {
+  // Find dt
+  float dt = (micros() - timer) / 1e-6;
+  timer = micros();
+
   // Read calibrated data
   readProcessedData();
 
   // Complementary filter
-  float accelPitch = atan2(imu_cal.ay, imu_cal.az) * (180 / M_PI);
-  float accelRoll = atan2(imu_cal.ax, imu_cal.az) * (180 / M_PI);
+  float accelPitch = atan2(imuProcessed.ay, imuProcessed.az) * (180 / M_PI);
+  float accelRoll = atan2(imuProcessed.ax, imuProcessed.az) * (180 / M_PI);
 
-  attitude.roll = (tau)*(attitude.roll - imu_cal.gy*dt) + (1-tau)*(accelRoll);
-  attitude.pitch = (tau)*(attitude.pitch + imu_cal.gx*dt) + (1-tau)*(accelPitch);
-  attitude.yaw += imu_cal.gz*dt;
+  attitude.roll = (tau)*(attitude.roll - imuProcessed.gy*dt) + (1-tau)*(accelRoll);
+  attitude.pitch = (tau)*(attitude.pitch + imuProcessed.gx*dt) + (1-tau)*(accelPitch);
+  attitude.yaw += imuProcessed.gz*dt;
 }
 
 /// @brief Write bytes to specific registers on the IMU. 
@@ -167,4 +172,9 @@ void IMU::write2bytes(unsigned char byte0, unsigned char byte1) {
   Wire.write(byte0);
   Wire.write(byte1);
   Wire.endTransmission();
+}
+
+/// @brief Starts a timer to be used for the complementary filter
+void IMU::startTimer() {
+  timer = micros();
 }
