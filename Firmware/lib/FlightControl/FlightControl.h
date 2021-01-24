@@ -40,10 +40,7 @@ private:
   batt_t battery;
 
 public:
-  // Constructor
-  FlightControl() = default;
-
-  // Functions
+  FlightControl();
   void setUpDigitalPins();
   void statusLight(char input);
   void startTimeSync(long loopTimeMicroSec);
@@ -51,5 +48,7 @@ public:
   void monitorBattery();
   void configureBattery(float numCells = 3, float nominalCellVoltage = 3.7, float fullCellVoltage = 4.2, float R1 = 3.24, float R2 = 2.00);
 };
+
+extern FlightControl FC;
 
 #endif // FLIGHTCONTROL_H
