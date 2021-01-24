@@ -36,19 +36,24 @@ void IMU::setAccFullScaleRange(int aScale) {
       // 2g
       aRes = 16384.0;
       write2bytes(ACCEL_CONFIG, 0x00);
+      break;
     case AFS_4G:
       // 4g
       aRes = 8192.0;
       write2bytes(ACCEL_CONFIG, 0x08);
+      break;
     case AFS_8G:
       // 8g
       aRes = 4096.0;
       write2bytes(ACCEL_CONFIG, 0x10);
+      break;
     case AFS_16G:
       // 16g
       aRes = 2048.0;
       write2bytes(ACCEL_CONFIG, 0x18);
+      break;
     default:
+      break;
   }
 }
 
@@ -60,19 +65,24 @@ void IMU::setGyroFullScaleRange(int gScale) {
       // 250 deg/s
       gRes = 131.0;
       write2bytes(GYRO_CONFIG, 0x00);
+      break;
     case GFS_500DPS:
       // 500 deg/s
       gRes = 65.5;
       write2bytes(GYRO_CONFIG, 0x08);
+      break;
     case GFS_1000DPS:
       // 1000 deg/s
       gRes = 32.8;
       write2bytes(GYRO_CONFIG, 0x10);
+      break;
     case GFS_2000DPS:
       // 2000 deg/s
       gRes = 16.4;
       write2bytes(GYRO_CONFIG, 0x18);
+      break;
     default:
+      break;
   }
 }
 
@@ -105,6 +115,7 @@ void IMU::gyroCalibration(int numCalPoints) {
     gyro_cal.x += imu_raw.gx;
     gyro_cal.y += imu_raw.gy;
     gyro_cal.z += imu_raw.gz;
+    delay(3);
   }
 
   // Average the saved data points  

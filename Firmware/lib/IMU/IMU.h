@@ -71,7 +71,7 @@ public:
   IMU(unsigned char addr, int aScale, int gScale);
 
   // Functions
-  void gyroCalibration(int numCalPoints);
+  void gyroCalibration(int numCalPoints=2000);
   void readProcessedData();
   void readRawData();
   void calcAttitude(float dt, float tau=0.98);
