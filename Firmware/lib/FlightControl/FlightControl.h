@@ -43,7 +43,7 @@ private:
   batt_t battery;
 
 public:
-  FlightControl();
+  FlightControl() = default;
   void setUpDigitalPins();
   void statusLight(char color);
   void stabilizeLoopRate();
