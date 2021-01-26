@@ -44,14 +44,12 @@ private:
 
 public:
   FlightControl() = default;
+  static void statusLight(char color);
   void setUpDigitalPins();
-  void statusLight(char color);
   void stabilizeLoopRate();
   void startTimers(int loopRateHz=200);
   void monitorBattery();
   void configureBattery(float numCells=3, float nominalCellVoltage=3.7, float fullCellVoltage=4.2, float R1=3.24, float R2=2.00);
 };
-
-extern FlightControl FC;
 
 #endif // FLIGHTCONTROL_H

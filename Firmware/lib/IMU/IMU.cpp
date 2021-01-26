@@ -19,12 +19,12 @@ IMU::IMU(unsigned char addr, int aScale, int gScale) {
 
   // Either change indicator LED green and configure the IMU or change LED to red
   if (Wire.read() == 0x98){
-    FC.statusLight('G');
+    FlightControl::statusLight('G');
     write2bytes(PWR_MGMT_1, 0x00);
     setAccFullScaleRange(aScale);
     setGyroFullScaleRange(gScale);
   } else {
-    FC.statusLight('R');
+    FlightControl::statusLight('R');
   }
 }
 
