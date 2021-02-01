@@ -9,11 +9,12 @@ gains_t rollGains {.P=1.0, .I=2.0, .D=3.0};
 gains_t pitchGains{.P=1.0, .I=2.0, .D=3.0};
 gains_t yawGains  {.P=1.0, .I=2.0, .D=3.0};
 
-// Connect to the IMU and configure the full scale range
+// Initialize the PID controller, configure the IMU, and start general flight control functions
+PID pid(rollGains, pitchGains, yawGains);
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
 FlightControl FC;
-PID pid(rollGains, pitchGains, yawGains);
 
+// Initialization
 void setup() {
   // Start up I2C
   Wire.begin();
@@ -28,10 +29,12 @@ void setup() {
   imu.gyroCalibration();
 
   // Start timer(s)
+  pid.startTimer();
   imu.startTimer();
   FC.startTimers();
 }
 
+// Main loop
 void loop() {
   // Calculate body frame attitude
   imu.calcAttitude();

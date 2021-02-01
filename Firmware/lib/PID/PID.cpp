@@ -10,3 +10,8 @@ PID::PID(gains_t rollGains, gains_t pitchGains, gains_t yawGains) {
   _pitchGains = pitchGains;
   _yawGains = yawGains;
 }
+
+/// @brief Starts a timer to be used for the PID controller
+void PID::startTimer() {
+  timer = micros();
+}
