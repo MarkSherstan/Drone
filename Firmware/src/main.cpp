@@ -32,6 +32,11 @@ void setup() {
   // Calibrate the gyroscope
   imu.gyroCalibration();
 
+  // Reset the controller
+  rollPID.reset();
+  pitchPID.reset();
+  yawPID.reset();
+
   // Start timer(s)
   imu.startTimer();
   FC.startTimers();

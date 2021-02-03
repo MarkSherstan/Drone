@@ -8,9 +8,9 @@ PID::PID(gains_t gains) {
   timer = micros();
 }
 
-/// @brief PID controller
-/// @param actual Actual value 
-/// @param desired Desired value
+/// @brief PID controller.
+/// @param actual Actual value. 
+/// @param desired Desired value.
 float PID::update(float actual, float desired) {
   // Calculate dt
   float dt = (micros() - timer) / 1e-6;
@@ -27,4 +27,11 @@ float PID::update(float actual, float desired) {
 
   // Return value 
   return (_gains.P * error) + (_gains.I * I) + (_gains.D * D);
+}
+
+
+/// @brief Reset the controller to prevent integral wind up and timing errors.
+void PID::reset() {
+  integral = 0;
+  timer = micros();
 }
