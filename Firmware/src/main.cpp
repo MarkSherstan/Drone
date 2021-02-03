@@ -9,11 +9,12 @@ gains_t rollGains {.P=1.0, .I=2.0, .D=3.0};
 gains_t pitchGains{.P=1.0, .I=2.0, .D=3.0};
 gains_t yawGains  {.P=1.0, .I=2.0, .D=3.0};
 
-// Prepare the controller struct
-controlVals_t rollControl, pitchControl, yawControl;
+// Configure and start the PID controller
+PID rollPID(rollGains);
+PID pitchPID(pitchGains);
+PID yawPID(yawGains);
 
-// Initialize the PID controller, configure the IMU, and start general flight control functions
-PID pid(rollGains, pitchGains, yawGains);
+// Configure the IMU, and start general flight control functions
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
 FlightControl FC;
 
@@ -32,7 +33,6 @@ void setup() {
   imu.gyroCalibration();
 
   // Start timer(s)
-  pid.startTimer();
   imu.startTimer();
   FC.startTimers();
 }
@@ -41,6 +41,11 @@ void setup() {
 void loop() {
   // Calculate body frame attitude
   imu.calcAttitude();
+
+  // Run PID controller 
+  rollPID.update(imu.attitude.roll);
+  pitchPID.update(imu.attitude.pitch);
+  yawPID.update(imu.attitude.yaw);
 
   // Check battery voltage
   FC.monitorBattery();
