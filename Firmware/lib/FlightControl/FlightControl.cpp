@@ -1,7 +1,7 @@
 #include "FlightControl.h"
 #include <arduino.h>
 
-/// @brief Set digital pins as outputs.
+/// @brief Set digital pins as outputs or interupts.
 void FlightControl::setUpDigitalPins(){
   // RGB LEDs
   pinMode(R_LED, OUTPUT);
@@ -13,6 +13,14 @@ void FlightControl::setUpDigitalPins(){
   pinMode(LIGHT_2, OUTPUT);
   pinMode(LIGHT_3, OUTPUT);
   pinMode(LIGHT_4, OUTPUT);
+
+  // Receiver pin interupts
+  PCICR |= (1 << PCIE0);
+  PCMSK0 |= (1 << PCINT1);
+  PCMSK0 |= (1 << PCINT2);
+  PCMSK0 |= (1 << PCINT3);
+  PCMSK0 |= (1 << PCINT4);
+  PCMSK0 |= (1 << PCINT5);
 }
 
 /// @brief Configure flight battery for voltage monitoring
@@ -157,7 +165,7 @@ void FlightControl::stabilizeLoopRate(){
 }
 
 /// @brief Used in interrupt service routine to read current receiver values sent by the transmitter
-void FlightControl::receiver(){
+void FlightControl::receiverInterrupt(){
   // Get current time
   currentTime = micros();
 
@@ -170,7 +178,7 @@ void FlightControl::receiver(){
   }
   else if(lastChannel1 == 1){
     lastChannel1 = 0;
-    RX.CH1 = currentTime - timer1;
+    rawRX.CH1 = currentTime - timer1;
   }
 
   // Channel 2
@@ -182,7 +190,7 @@ void FlightControl::receiver(){
   }
   else if(lastChannel2 == 1){
     lastChannel2 = 0;
-    RX.CH2 = currentTime - timer2;
+    rawRX.CH2 = currentTime - timer2;
   }
 
   // Channel 3
@@ -194,7 +202,7 @@ void FlightControl::receiver(){
   }
   else if(lastChannel3 == 1){
     lastChannel3 = 0;
-    RX.CH3 = currentTime - timer3;
+    rawRX.CH3 = currentTime - timer3;
   }
 
   // Channel 4
@@ -206,7 +214,7 @@ void FlightControl::receiver(){
   }
   else if(lastChannel4 == 1){
     lastChannel4 = 0;
-    RX.CH4 = currentTime - timer4;
+    rawRX.CH4 = currentTime - timer4;
   }
 
   // Channel 5
@@ -218,6 +226,36 @@ void FlightControl::receiver(){
   }
   else if(lastChannel5 == 1){
     lastChannel5 = 0;
-    RX.CH5 = currentTime - timer5;
+    rawRX.CH5 = currentTime - timer5;
   }
+}
+
+/// @brief Save calibration values of the RC receiver to ensure inputs are scaled correctly.
+/// @param channelCal1 Low, high, center, and direction of RC channel 1 based off calibration
+/// @param channelCal2 Low, high, center, and direction of RC channel 2 based off calibration
+/// @param channelCal3 Low, high, center, and direction of RC channel 3 based off calibration
+/// @param channelCal4 Low, high, center, and direction of RC channel 4 based off calibration
+/// @param channelCal5 Low, high, center, and direction of RC channel 5 based off calibration
+void FlightControl::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5){
+  _channelCal1 = channelCal1;
+  _channelCal2 = channelCal2;
+  _channelCal3 = channelCal3;
+  _channelCal4 = channelCal4;
+  _channelCal5 = channelCal5;
+}
+
+/// @brief Process the receiver value based on calibration
+void FlightControl::receiver(){
+  RX.CH1 = processReceiverInterrupt(rawRX.CH1, _channelCal1);
+  RX.CH2 = processReceiverInterrupt(rawRX.CH2, _channelCal2);
+  RX.CH3 = processReceiverInterrupt(rawRX.CH3, _channelCal3);
+  RX.CH4 = processReceiverInterrupt(rawRX.CH4, _channelCal4);
+  RX.CH5 = processReceiverInterrupt(rawRX.CH5, _channelCal5);
+}
+
+/// @brief Process the raw interupt receiver value to a properly scaled receiver value based on a prior calibration. 
+/// @param input Raw input value received by the interupt.
+/// @param calibration RC calibration value structure. 
+int FlightControl::processReceiverInterrupt(int input, channel_t calibration){
+
 }

@@ -9,6 +9,13 @@ gains_t rollGains {.P=1.0, .I=2.0, .D=3.0};
 gains_t pitchGains{.P=1.0, .I=2.0, .D=3.0};
 gains_t yawGains  {.P=1.0, .I=2.0, .D=3.0};
 
+// Set receiver calibration values
+channel_t channelCal1{.low=1000, .high=2000, .center=1500, .direction=1};
+channel_t channelCal2{.low=1000, .high=2000, .center=1500, .direction=1};
+channel_t channelCal3{.low=1000, .high=2000, .center=1500, .direction=1};
+channel_t channelCal4{.low=1000, .high=2000, .center=1500, .direction=1};
+channel_t channelCal5{.low=1000, .high=2000, .center=1500, .direction=1};
+
 // Configure and start the PID controller
 PID rollPID(rollGains);
 PID pitchPID(pitchGains);
@@ -28,6 +35,9 @@ void setup() {
 
   // Configure battery for voltage monitoring
   FC.configureBattery();
+
+  // Save the radio calibration values
+  FC.saveReceiverCalibration(channelCal1, channelCal2, channelCal3, channelCal4, channelCal5);
 
   // Calibrate the gyroscope
   imu.gyroCalibration();
@@ -61,5 +71,5 @@ void loop() {
 
 // Interrupt service routine for RC channels 
 ISR(PCINT0_vect){
-  FC.receiver();
+  FC.receiverInterrupt();
 }
