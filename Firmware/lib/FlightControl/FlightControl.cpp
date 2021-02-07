@@ -154,3 +154,69 @@ void FlightControl::stabilizeLoopRate(){
   // Save previous time
   previousTime = micros();
 }
+
+/// @brief Used in interrupt service routine to read current values sent by the transmitter
+void FlightControl::radio(){
+  // Get current time
+  currentTime = micros();
+
+  // Channel 1
+  if(PINB & B00000001){
+    if(lastChannel1 == 0){
+      lastChannel1 = 1;
+      timer1 = currentTime;
+    }
+  }
+  else if(lastChannel1 == 1){
+    lastChannel1 = 0;
+    receiver[1] = currentTime - timer1;
+  }
+
+  // Channel 2
+  if(PINB & B00000010){
+    if(lastChannel2 == 0){
+      lastChannel2 = 1;
+      timer2 = currentTime;
+    }
+  }
+  else if(lastChannel2 == 1){
+    lastChannel2 = 0;
+    receiver[2] = currentTime - timer2;
+  }
+
+  // Channel 3
+  if(PINB & B00000100){
+    if(lastChannel3 == 0){
+      lastChannel3 = 1;
+      timer3 = currentTime;
+    }
+  }
+  else if(lastChannel3 == 1){
+    lastChannel3 = 0;
+    receiver[3] = currentTime - timer3;
+  }
+
+  // Channel 4
+  if(PINB & B00001000){
+    if(lastChannel4 == 0){
+      lastChannel4 = 1;
+      timer4 = currentTime;
+    }
+  }
+  else if(lastChannel4 == 1){
+    lastChannel4 = 0;
+    receiver[4] = currentTime - timer4;
+  }
+
+  // Channel 5
+  if(PINB & B00010000){
+    if(lastChannel5 == 0){
+      lastChannel5 = 1;
+      timer5 = currentTime;
+    }
+  }
+  else if(lastChannel5 == 1){
+    lastChannel5 = 0;
+    receiver[5] = currentTime - timer5;
+  }
+}
