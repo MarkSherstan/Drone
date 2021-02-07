@@ -61,5 +61,5 @@ void loop() {
 
 // Interrupt service routine for RC channels 
 ISR(PCINT0_vect){
-  FC.radio();
+  FC.receiver();
 }

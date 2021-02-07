@@ -138,6 +138,7 @@ void FlightControl::flashLights(){
 void FlightControl::startTimers(int loopRateHz){
   lightTimer = micros();
   loopTimer = micros();
+  currentTime = micros();
   desiredLoopRateMicroSec = (1.0 / (float)loopRateHz) * 1e6;
 }
 
@@ -155,8 +156,8 @@ void FlightControl::stabilizeLoopRate(){
   previousTime = micros();
 }
 
-/// @brief Used in interrupt service routine to read current values sent by the transmitter
-void FlightControl::radio(){
+/// @brief Used in interrupt service routine to read current receiver values sent by the transmitter
+void FlightControl::receiver(){
   // Get current time
   currentTime = micros();
 
@@ -169,7 +170,7 @@ void FlightControl::radio(){
   }
   else if(lastChannel1 == 1){
     lastChannel1 = 0;
-    receiver[1] = currentTime - timer1;
+    RX.CH1 = currentTime - timer1;
   }
 
   // Channel 2
@@ -181,7 +182,7 @@ void FlightControl::radio(){
   }
   else if(lastChannel2 == 1){
     lastChannel2 = 0;
-    receiver[2] = currentTime - timer2;
+    RX.CH2 = currentTime - timer2;
   }
 
   // Channel 3
@@ -193,7 +194,7 @@ void FlightControl::radio(){
   }
   else if(lastChannel3 == 1){
     lastChannel3 = 0;
-    receiver[3] = currentTime - timer3;
+    RX.CH3 = currentTime - timer3;
   }
 
   // Channel 4
@@ -205,7 +206,7 @@ void FlightControl::radio(){
   }
   else if(lastChannel4 == 1){
     lastChannel4 = 0;
-    receiver[4] = currentTime - timer4;
+    RX.CH4 = currentTime - timer4;
   }
 
   // Channel 5
@@ -217,6 +218,6 @@ void FlightControl::radio(){
   }
   else if(lastChannel5 == 1){
     lastChannel5 = 0;
-    receiver[5] = currentTime - timer5;
+    RX.CH5 = currentTime - timer5;
   }
 }

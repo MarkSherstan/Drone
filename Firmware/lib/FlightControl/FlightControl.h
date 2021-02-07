@@ -28,6 +28,9 @@ struct batt_t {
 };
 
 // Radio structure
+struct receiver_t {
+  int CH1, CH2, CH3, CH4, CH5;
+};
 
 // Class
 class FlightControl{
@@ -41,6 +44,10 @@ private:
   long desiredLoopRateMicroSec;
   long previousTime;
 
+  // Receiver
+  unsigned long timer1, timer2, timer3, timer4, timer5, currentTime;
+  char lastChannel1, lastChannel2, lastChannel3, lastChannel4, lastChannel5;
+
   // Battery Monitoring
   batt_t battery;
 
@@ -52,11 +59,10 @@ public:
   void startTimers(int loopRateHz=200);
   void monitorBattery();
   void configureBattery(float numCells=3, float nominalCellVoltage=3.7, float fullCellVoltage=4.2, float R1=3.24, float R2=2.00);
+  void receiver();
 
-  void radio();
-  unsigned long timer1, timer2, timer3, timer4, timer5, currentTime;
-  char lastChannel1, lastChannel2, lastChannel3, lastChannel4, lastChannel5;
-  int receiver[6];
+  // Receiver 
+  receiver_t RX;
 };
 
 #endif // FLIGHTCONTROL_H
