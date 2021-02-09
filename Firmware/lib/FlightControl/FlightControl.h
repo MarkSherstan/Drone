@@ -29,7 +29,7 @@ struct batt_t {
 
 // Receiver calibration
 struct channel_t {
-  int low, high, center, direction;
+  int low, high, center, reverse;
 };
 
 // Receiver structure

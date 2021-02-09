@@ -256,6 +256,22 @@ void FlightControl::receiver(){
 /// @brief Process the raw interupt receiver value to a properly scaled receiver value based on a prior calibration. 
 /// @param input Raw input value received by the interupt.
 /// @param calibration RC calibration value structure. 
+/// @return Processed receiver value.
 int FlightControl::processReceiverInterrupt(int input, channel_t calibration){
-
+  // Input value is on the low side
+  if(input < calibration.center){
+    if(input < calibration.low) input = calibration.low;
+    int diff = ((long)(calibration.center - input) * (long)500) / (calibration.center - calibration.low);
+    if(calibration.reverse == 1) return 1500 + diff;
+    else return 1500 - diff;
+  }
+  // Input value is on the high side
+  else if(input > calibration.center){
+    if(input > calibration.high) input = calibration.high;
+    int diff = ((long)(input - calibration.center) * (long)500) / (calibration.high - calibration.center);
+    if(calibration.reverse == 1) return 1500 - diff;
+    else return 1500 + diff;
+  }
+  // Input value is dead center
+  else return 1500;
 }
