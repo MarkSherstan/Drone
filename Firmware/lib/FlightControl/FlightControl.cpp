@@ -8,11 +8,11 @@ void FlightControl::setUpDigitalPins(){
   pinMode(G_LED, OUTPUT);
   pinMode(B_LED, OUTPUT);
 
-  // Arm LEDs
-  pinMode(LIGHT_1, OUTPUT);
-  pinMode(LIGHT_2, OUTPUT);
-  pinMode(LIGHT_3, OUTPUT);
-  pinMode(LIGHT_4, OUTPUT);
+  // Turn on LEDs located on the arms
+  pinMode(LIGHT_1, OUTPUT); digitalWrite(LIGHT_1, HIGH);
+  pinMode(LIGHT_2, OUTPUT); digitalWrite(LIGHT_2, HIGH);
+  pinMode(LIGHT_3, OUTPUT); digitalWrite(LIGHT_3, HIGH);
+  pinMode(LIGHT_4, OUTPUT); digitalWrite(LIGHT_4, HIGH);
 
   // Receiver pin interupts
   PCICR |= (1 << PCIE0);
@@ -21,6 +21,9 @@ void FlightControl::setUpDigitalPins(){
   PCMSK0 |= (1 << PCINT3);
   PCMSK0 |= (1 << PCINT4);
   PCMSK0 |= (1 << PCINT5);
+
+  // Set status LED to white to start
+  statusLight('W');
 }
 
 /// @brief Configure flight battery for voltage monitoring
@@ -275,3 +278,14 @@ int FlightControl::processReceiverInterrupt(int input, channel_t calibration){
   // Input value is dead center
   else return 1500;
 }
+
+/// @brief Arm the drone if throttle is low and switch is toggled
+// void FlightControl::checkArmState(){
+//   while(true){
+//     receiver();
+//     stabilizeLoopRate();
+//     if ((RX.CH3 < 1100) && (RX.CH5 > 1600)){
+//       break;
+//     }
+//   }
+// }
