@@ -18,7 +18,7 @@ channel_t channelCal5{.low=1000, .high=2000, .center=1500, .reverse=0};
 
 // Start general flight control functions and prep for IMU connection
 FlightControl FC;
-IMU imu(AD0_LOW);
+IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
 
 // Configure and start the PID controller
 PID rollPID(rollGains);
@@ -30,8 +30,8 @@ void setup() {
   // Start up I2C
   Wire.begin();
 
-  // Start the IMU
-  imu.connect(AFS_4G, GFS_500DPS);
+  // Connect to the IMU
+  imu.connect();
 
   // Configure the digital pins
   FC.setUpDigitalPins();
