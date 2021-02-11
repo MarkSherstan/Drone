@@ -16,19 +16,22 @@ channel_t channelCal3{.low=1000, .high=2000, .center=1500, .reverse=0};
 channel_t channelCal4{.low=1000, .high=2000, .center=1500, .reverse=0};
 channel_t channelCal5{.low=1000, .high=2000, .center=1500, .reverse=0};
 
+// Start general flight control functions and prep for IMU connection
+FlightControl FC;
+IMU imu(AD0_LOW);
+
 // Configure and start the PID controller
 PID rollPID(rollGains);
 PID pitchPID(pitchGains);
 PID yawPID(yawGains);
 
-// Configure the IMU, and start general flight control functions
-IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
-FlightControl FC;
-
 // Initialization
 void setup() {
   // Start up I2C
   Wire.begin();
+
+  // Start the IMU
+  imu.connect(AFS_4G, GFS_500DPS);
 
   // Configure the digital pins
   FC.setUpDigitalPins();
@@ -40,7 +43,9 @@ void setup() {
   FC.saveReceiverCalibration(channelCal1, channelCal2, channelCal3, channelCal4, channelCal5);
 
   // Calibrate the gyroscope
+  FC.statusLight('B');
   imu.gyroCalibration();
+  FC.statusLight('G');
 
   // Reset the controller
   rollPID.reset();
