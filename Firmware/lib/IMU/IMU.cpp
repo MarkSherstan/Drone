@@ -3,15 +3,17 @@
 #include <Wire.h>
 #include "FlightControl.h"
 
-/// @brief Set the IMU address, check for connection, reset IMU, and set full range scale.
+/// @brief Set the IMU address.
 /// @param addr Hexadecimal address based on AD0 pin - 0x68 low or 0x69 high.
+IMU::IMU(unsigned char addr) {
+  _addr = addr;
+}
+
+/// @brief Check for connection, reset IMU, and set full range scale.
 /// @param aScale Set accelerometer full scale range: 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
 /// @param gScale Set gyroscope full scale range: 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
-IMU::IMU(unsigned char addr, int aScale, int gScale) {
-  // Set address
-  _addr = addr;
-
-  // Find who the IMU is
+void IMU::connect(int aScale, int gScale) {
+    // Find who the IMU is
   Wire.beginTransmission(_addr);
   Wire.write(WHO_AM_I);
   Wire.endTransmission();
@@ -19,7 +21,7 @@ IMU::IMU(unsigned char addr, int aScale, int gScale) {
 
   // Either change indicator LED green and configure the IMU or change LED to red
   if (Wire.read() == 0x98){
-    FlightControl::statusLight('G');
+    FlightControl::statusLight('C');
     write2bytes(PWR_MGMT_1, 0x00);
     setAccFullScaleRange(aScale);
     setGyroFullScaleRange(gScale);

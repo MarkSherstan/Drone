@@ -68,7 +68,7 @@ private:
   
 public:
   // Config
-  IMU(unsigned char addr, int aScale, int gScale);
+  IMU(unsigned char addr);
 
   // Functions
   void startTimer();
@@ -76,6 +76,7 @@ public:
   void readProcessedData();
   void readRawData();
   void calcAttitude(float tau=0.98);
+  void connect(int aScale, int gScale);
 
   // Variables
   float temperature;
