@@ -16,3 +16,6 @@ Mechanical, electrical, and software package for a custom quadcopter drone.
 * Magenta - 
 * Yellow - 
 * White - Initial start up
+
+## Other notes
+Tantalum cpacitors polarized footprint (C17 C19 C20)
