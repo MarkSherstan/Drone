@@ -54,7 +54,6 @@ private:
   unsigned long timer1, timer2, timer3, timer4, timer5, currentTime;
   char lastChannel1, lastChannel2, lastChannel3, lastChannel4, lastChannel5;
   channel_t _channelCal1, _channelCal2, _channelCal3, _channelCal4, _channelCal5;
-  receiver_t rawRX;
 
   // Battery Monitoring
   batt_t battery;
@@ -73,6 +72,7 @@ public:
 
   // Receiver 
   receiver_t RX;
+  receiver_t rawRX;
 };
 
 #endif // FLIGHTCONTROL_H
