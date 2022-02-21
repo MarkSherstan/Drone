@@ -18,7 +18,7 @@ struct receiver_t
 };
 
 // Class
-class RX
+class Receiver
 {
     private:
         // Functions
@@ -31,11 +31,11 @@ class RX
 
     public:
         // Config
-        RX() = default;
+        Receiver() = default;
 
         void saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5);
 
-        void receiver();
+        void receiverA();
         void startTimer();
         void receiverInterrupt();
         void configInterruptPins();

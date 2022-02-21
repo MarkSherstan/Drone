@@ -1,6 +1,6 @@
-#include "RX.h"
+#include "Receiver.h"
 
-void RX::configureInterruptPins()
+void Receiver::configureInterruptPins()
 {
     // Receiver pin interupts
     PCICR |= (1 << PCIE0);
@@ -12,7 +12,7 @@ void RX::configureInterruptPins()
 }
 
 
-void RX::startTimer()
+void Receiver::startTimer()
 {
     // Start a timer
     currentTime = micros();
@@ -21,7 +21,7 @@ void RX::startTimer()
 
 
 /// @brief Used in interrupt service routine to read current receiver values sent by the transmitter
-void RX::receiverInterrupt()
+void Receiver::receiverInterrupt()
 {
     // Get current time
     currentTime = micros();
@@ -108,7 +108,7 @@ void RX::receiverInterrupt()
 /// @param channelCal3 Low, high, center, and direction of RC channel 3 based off calibration
 /// @param channelCal4 Low, high, center, and direction of RC channel 4 based off calibration
 /// @param channelCal5 Low, high, center, and direction of RC channel 5 based off calibration
-void RX::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5)
+void Receiver::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5)
 {
     _channelCal1 = channelCal1;
     _channelCal2 = channelCal2;
@@ -118,7 +118,7 @@ void RX::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, c
 }
 
 /// @brief Process the receiver value based on calibration
-void RX::receiver()
+void Receiver::receiverA()
 {
     rx.CH1 = processReceiverInterrupt(rawRX.CH1, _channelCal1);
     rx.CH2 = processReceiverInterrupt(rawRX.CH2, _channelCal2);
@@ -131,7 +131,7 @@ void RX::receiver()
 /// @param input Raw input value received by the interupt.
 /// @param calibration RC calibration value structure.
 /// @return Processed receiver value.
-int RX::processReceiverInterrupt(int input, channel_t calibration)
+int Receiver::processReceiverInterrupt(int input, channel_t calibration)
 {
     // Input value is on the low side
     if (input < calibration.center)
