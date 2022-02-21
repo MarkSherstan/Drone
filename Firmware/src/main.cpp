@@ -10,11 +10,11 @@ Gains pGains{.P = 1.0, .I = 2.0, .D = 3.0};
 Gains yGains{.P = 1.0, .I = 2.0, .D = 3.0};
 
 // Set receiver calibration values
-channel_t ch1cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t ch2cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t ch3cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t ch4cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t ch5cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+ChannelCal ch1cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+ChannelCal ch2cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+ChannelCal ch3cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+ChannelCal ch4cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+ChannelCal ch5cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
 
 // IMU connection, general flight control, and receiver classes
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
@@ -36,9 +36,8 @@ void setup()
     FC.configDigitalPins();
     RX.configInterruptPins();
 
-    // Save battery and receiver calibration
-    FC.configureBattery();
-    RX.saveReceiverCalibration(ch1cal, ch2cal, ch3cal, ch4cal, ch5cal);
+    // Save receiver calibration
+    RX.saveReceiverCal(ch1cal, ch2cal, ch3cal, ch4cal, ch5cal);
 
     // Calibrate the gyroscope
     imu.calibrateGyro();
@@ -54,7 +53,6 @@ void setup()
     // Start timers
     imu.startTimer();
     FC.startTimer();
-    RX.startTimer();
 }
 
 // Main loop
@@ -72,14 +70,14 @@ void loop()
     yPID.update(imu.attitude.y);
 
     // Check battery voltage
-    FC.monitorBattery();
+    FC.checkBatteryLevels();
 
     // Stabilize the loop rate
     FC.stabilizeLoopRate();
 }
 
-// // Interrupt service routine for RC channels
-// ISR(PCINT0_vect)
-// {
-//     RX.receiverInterrupt();
-// }
+// Interrupt service routine for receiver
+ISR(PCINT0_vect)
+{
+    RX.receiverInterrupt();
+}
