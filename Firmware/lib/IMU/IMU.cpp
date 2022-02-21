@@ -27,10 +27,10 @@ void IMU::begin()
     // Pass: LED cyan and configure the IMU | Fail: LED red
     if (Wire.read() == 0x98)
     {
-        FlightControl::statusLight('C');
         write2bytes(PWR_MGMT_1, 0x00);
         setAccFullScaleRange(_aScale);
         setGyroFullScaleRange(_gScale);
+        FlightControl::statusLight('C');
     }
     else
     {
