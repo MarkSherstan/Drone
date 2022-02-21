@@ -1,142 +1,83 @@
 #include <Arduino.h>
-#include <Wire.h>
 #include "FlightControl.h"
+#include "Receiver.h"
 #include "IMU.h"
 #include "PID.h"
 
 // Set PID values
-gains_t rollGains {.P=1.0, .I=2.0, .D=3.0};
-gains_t pitchGains{.P=1.0, .I=2.0, .D=3.0};
-gains_t yawGains  {.P=1.0, .I=2.0, .D=3.0};
+Gains rGains{.P = 1.0, .I = 2.0, .D = 3.0};
+Gains pGains{.P = 1.0, .I = 2.0, .D = 3.0};
+Gains yGains{.P = 1.0, .I = 2.0, .D = 3.0};
 
 // Set receiver calibration values
-channel_t channelCal1{.low=1000, .high=2000, .center=1500, .reverse=0};
-channel_t channelCal2{.low=1000, .high=2000, .center=1500, .reverse=0};
-channel_t channelCal3{.low=1000, .high=2000, .center=1500, .reverse=0};
-channel_t channelCal4{.low=1000, .high=2000, .center=1500, .reverse=0};
-channel_t channelCal5{.low=1000, .high=2000, .center=1500, .reverse=0};
+ChannelCal ch1cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch2cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch3cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch4cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch5cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
 
-// Start general flight control functions and prep for IMU connection
-FlightControl FC;
+// IMU connection, general flight control, and receiver classes
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
+FlightControl FC;
+Receiver RX;
 
 // Configure and start the PID controller
-PID rollPID(rollGains);
-PID pitchPID(pitchGains);
-PID yawPID(yawGains);
+PID rPID(rGains);
+PID pPID(pGains);
+PID yPID(yGains);
 
 // Initialization
-void setup() {
-  // Start up I2C
-  Wire.begin();
+void setup()
+{
+    // Start the IMU
+    imu.begin();
 
-  // Connect to the IMU
-  imu.connect();
+    // Configure digital pins
+    FC.configDigitalPins();
+    RX.configInterruptPins();
 
-  // Configure the digital pins
-  FC.setUpDigitalPins();
+    // Save receiver calibration
+    RX.saveReceiverCal(ch1cal, ch2cal, ch3cal, ch4cal, ch5cal);
 
-  // Configure battery for voltage monitoring
-  FC.configureBattery();
+    // Calibrate the gyroscope
+    imu.calibrateGyro();
 
-  // Save the radio calibration values
-  FC.saveReceiverCalibration(channelCal1, channelCal2, channelCal3, channelCal4, channelCal5);
+    // Signal system is ready with green light
+    FC.statusLight('G');
 
-  // Calibrate the gyroscope
-  FC.statusLight('B');
-  imu.gyroCalibration();
-  FC.statusLight('G');
+    // Reset the controllers
+    rPID.reset();
+    pPID.reset();
+    yPID.reset();
 
-  // Reset the controller
-  rollPID.reset();
-  pitchPID.reset();
-  yawPID.reset();
-
-  // Start timer(s)
-  imu.startTimer();
-  FC.startTimers();
+    // Start timers
+    imu.startTimer();
+    FC.startTimer();
 }
 
 // Main loop
-void loop() {
-  // Calculate body frame attitude
-  imu.calcAttitude();
+void loop()
+{
+    // Calculate body frame attitude
+    imu.calcAttitude();
 
-  // Update the receiver inputs
-  FC.receiver();
+    // Update the receiver inputs
+    RX.update();
 
-  // Run PID controller 
-  rollPID.update(imu.attitude.roll);
-  pitchPID.update(imu.attitude.pitch);
-  yawPID.update(imu.attitude.yaw);
+    // Run PID controller
+    rPID.update(imu.attitude.r);
+    pPID.update(imu.attitude.p);
+    yPID.update(imu.attitude.y);
 
-  // Check battery voltage
-  FC.monitorBattery();
+    // Check battery voltage
+    FC.checkBatteryLevels();
 
-  // Stabilize the loop rate
-  FC.stabilizeLoopRate();
+    // Stabilize the loop rate
+    FC.stabilizeLoopRate();
 }
 
-// Interrupt service routine for RC channels 
-ISR(PCINT0_vect){
-  FC.receiverInterrupt();
+// Interrupt service routine for receiver
+ISR(PCINT0_vect)
+{
+    RX.receiverInterrupt();
 }
-
-
-
-// // Start general flight control function
-// FlightControl FC;
-
-// // Initialization
-// void setup() {
-//   // Start a serial port
-//   Serial.begin(9600);
-
-//   // Configure the digital pins
-//   FC.setUpDigitalPins();
-
-//   // Start timer
-//   FC.startTimers();
-// }
-
-// // Main loop
-// void loop() {
-//   // Small Delay
-//   delay(250);
-  
-//   // Print values
-//   Serial.print("Roll:");
-//   if(FC.rawRX.CH1 - 1480 < 0)Serial.print("<<<");
-//   else if(FC.rawRX.CH1 - 1520 > 0)Serial.print(">>>");
-//   else Serial.print("-+-");
-//   Serial.print(FC.rawRX.CH1);
-  
-//   Serial.print("  Pitch:");
-//   if(FC.rawRX.CH2 - 1480 < 0)Serial.print("^^^");
-//   else if(FC.rawRX.CH2 - 1520 > 0)Serial.print("vvv");
-//   else Serial.print("-+-");
-//   Serial.print(FC.rawRX.CH2);
-  
-//   Serial.print("  Thrust:");
-//   if(FC.rawRX.CH3 - 1480 < 0)Serial.print("vvv");
-//   else if(FC.rawRX.CH3 - 1520 > 0)Serial.print("^^^");
-//   else Serial.print("-+-");
-//   Serial.print(FC.rawRX.CH3);
-  
-//   Serial.print("  Yaw:");
-//   if(FC.rawRX.CH4 - 1480 < 0)Serial.print("<<<");
-//   else if(FC.rawRX.CH4 - 1520 > 0)Serial.print(">>>");
-//   else Serial.print("-+-");
-//   Serial.print(FC.rawRX.CH4);
-
-//   Serial.print("  Switch:");
-//   if(FC.rawRX.CH5 - 1480 < 0)Serial.print("vvv");
-//   else if(FC.rawRX.CH5 - 1520 > 0)Serial.print("^^^");
-//   else Serial.print("-+-");
-//   Serial.println(FC.rawRX.CH5);
-// }
-
-// // Interrupt service routine for RC channels 
-// ISR(PCINT0_vect){
-//   FC.receiverInterrupt();
-// }
