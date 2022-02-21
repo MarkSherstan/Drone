@@ -1,13 +1,10 @@
 #include "IMU.h"
-#include <arduino.h>
-#include <Wire.h>
-#include "FlightControl.h"
 
 /// @brief Set the IMU address.
 /// @param addr Hexadecimal address based on AD0 pin - 0x68 low or 0x69 high.
 /// @param aScale Set accelerometer full scale range: 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
 /// @param gScale Set gyroscope full scale range: 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
-IMU::IMU(unsigned char addr, int aScale, int gScale)
+IMU::IMU(uint8_t addr, uint8_t aScale, uint8_t gScale)
 {
     _addr = addr;
     _aScale = aScale;
@@ -39,7 +36,7 @@ void IMU::connect()
 
 /// @brief Set the accelerometer full scale range.
 /// @param aScale Set 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
-void IMU::setAccFullScaleRange(int aScale)
+void IMU::setAccFullScaleRange(uint8_t aScale)
 {
     switch (aScale)
     {
@@ -70,7 +67,7 @@ void IMU::setAccFullScaleRange(int aScale)
 
 /// @brief Set the gyroscope full scale range.
 /// @param gScale Set 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
-void IMU::setGyroFullScaleRange(int gScale)
+void IMU::setGyroFullScaleRange(uint8_t gScale)
 {
     switch (gScale)
     {
@@ -122,10 +119,10 @@ void IMU::readRawData()
 
 /// @brief Find offsets for each axis of gyroscope.
 /// @param numCalPoints Number of data points to average.
-void IMU::gyroCalibration(int numCalPoints)
+void IMU::gyroCalibration(uint16_t numCalPoints)
 {
     // Save specified number of data values
-    for (int ii = 0; ii < numCalPoints; ii++)
+    for (uint16_t ii = 0; ii < numCalPoints; ii++)
     {
         readRawData();
         gyroCal.x += imuRaw.gx;
@@ -185,7 +182,7 @@ void IMU::calcAttitude(float tau)
 /// @brief Write bytes to specific registers on the IMU.
 /// @param byte0 The main register to be written.
 /// @param byte1 The command to be written.
-void IMU::write2bytes(unsigned char byte0, unsigned char byte1)
+void IMU::write2bytes(uint8_t byte0, uint8_t byte1)
 {
     Wire.beginTransmission(_addr);
     Wire.write(byte0);
