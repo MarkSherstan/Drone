@@ -5,9 +5,9 @@
 #include "PID.h"
 
 // Set PID values
-Gains rollGains{.P = 1.0, .I = 2.0, .D = 3.0};
-Gains pitchGains{.P = 1.0, .I = 2.0, .D = 3.0};
-Gains yawGains{.P = 1.0, .I = 2.0, .D = 3.0};
+Gains rGains{.P = 1.0, .I = 2.0, .D = 3.0};
+Gains pGains{.P = 1.0, .I = 2.0, .D = 3.0};
+Gains yGains{.P = 1.0, .I = 2.0, .D = 3.0};
 
 // Set receiver calibration values
 channel_t channelCal1{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
@@ -21,9 +21,9 @@ FlightControl FC;
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
 
 // Configure and start the PID controller
-PID rollPID(rollGains);
-PID pitchPID(pitchGains);
-PID yawPID(yawGains);
+PID rPID(rGains);
+PID pPID(pGains);
+PID yPID(yGains);
 
 // Initialization
 void setup()
@@ -32,7 +32,7 @@ void setup()
     Wire.begin();
 
     // Connect to the IMU
-    imu.connect();
+    imu.begin();
 
     // Configure the digital pins
     FC.setUpDigitalPins();
@@ -45,13 +45,13 @@ void setup()
 
     // Calibrate the gyroscope
     FC.statusLight('B');
-    imu.gyroCalibration();
+    imu.calibrateGyro();
     FC.statusLight('G');
 
     // Reset the controller
-    rollPID.reset();
-    pitchPID.reset();
-    yawPID.reset();
+    rPID.reset();
+    pPID.reset();
+    yPID.reset();
 
     // Start timer(s)
     imu.startTimer();
@@ -68,9 +68,9 @@ void loop()
     FC.receiver();
 
     // Run PID controller
-    rollPID.update(imu.attitude.roll);
-    pitchPID.update(imu.attitude.pitch);
-    yawPID.update(imu.attitude.yaw);
+    rPID.update(imu.attitude.r);
+    pPID.update(imu.attitude.p);
+    yPID.update(imu.attitude.y);
 
     // Check battery voltage
     FC.monitorBattery();
