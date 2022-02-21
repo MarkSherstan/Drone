@@ -2,6 +2,9 @@
 #ifndef FLIGHTCONTROL_H
 #define FLIGHTCONTROL_H
 
+// Libraries
+#include <arduino.h>
+
 // Pinout
 #define BATTERY A0
 
@@ -19,11 +22,8 @@
 #define G_LED 12
 #define B_LED 13
 
-#define AUX_A A5
-#define AUX_D 10
-
 // Battery monitoring structure
-struct batt_t
+struct Battery
 {
     float numCells, nominalCellVoltage, fullCellVoltage, R1, R2;
 };
@@ -60,7 +60,7 @@ class FlightControl
         channel_t _channelCal1, _channelCal2, _channelCal3, _channelCal4, _channelCal5;
 
         // Battery Monitoring
-        batt_t battery;
+        Battery battery;
 
     public:
         FlightControl() = default;
