@@ -85,7 +85,7 @@ class IMU
         void readProcessedData();
         void readRawData();
         void calcAttitude(float tau = 0.98);
-        void connect();
+        void begin();
 
         // Variables
         float temperature;

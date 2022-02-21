@@ -1,7 +1,7 @@
 #include "IMU.h"
 
-/// @brief Set the IMU address.
-/// @param addr Hexadecimal address based on AD0 pin - 0x68 low or 0x69 high.
+/// @brief Set the IMU address and full scale ranges. 
+/// @param addr Hex address based on AD0 pin - 0x68 low or 0x69 high.
 /// @param aScale Set accelerometer full scale range: 0 for ±2g, 1 for ±4g, 2 for ±8g, and 3 for ±16g.
 /// @param gScale Set gyroscope full scale range: 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
 IMU::IMU(uint8_t addr, uint8_t aScale, uint8_t gScale)
@@ -12,15 +12,15 @@ IMU::IMU(uint8_t addr, uint8_t aScale, uint8_t gScale)
 }
 
 /// @brief Check for connection, reset IMU, and set full range scale.
-void IMU::connect()
+void IMU::begin()
 {
     // Find who the IMU is
     Wire.beginTransmission(_addr);
     Wire.write(WHO_AM_I);
     Wire.endTransmission();
-    Wire.requestFrom((int)_addr, 1);
+    Wire.requestFrom(_addr, 1);
 
-    // Either change indicator LED cyan and configure the IMU or change status LED to red
+    // Pass: LED cyan and configure the IMU | Fail: LED red
     if (Wire.read() == 0x98)
     {
         FlightControl::statusLight('C');
@@ -41,26 +41,23 @@ void IMU::setAccFullScaleRange(uint8_t aScale)
     switch (aScale)
     {
     case AFS_2G:
-        // 2g
         aRes = 16384.0;
         write2bytes(ACCEL_CONFIG, 0x00);
         break;
     case AFS_4G:
-        // 4g
         aRes = 8192.0;
         write2bytes(ACCEL_CONFIG, 0x08);
         break;
     case AFS_8G:
-        // 8g
         aRes = 4096.0;
         write2bytes(ACCEL_CONFIG, 0x10);
         break;
     case AFS_16G:
-        // 16g
         aRes = 2048.0;
         write2bytes(ACCEL_CONFIG, 0x18);
         break;
     default:
+        FlightControl::statusLight('R');
         break;
     }
 }
@@ -72,26 +69,23 @@ void IMU::setGyroFullScaleRange(uint8_t gScale)
     switch (gScale)
     {
     case GFS_250DPS:
-        // 250 deg/s
         gRes = 131.0;
         write2bytes(GYRO_CONFIG, 0x00);
         break;
     case GFS_500DPS:
-        // 500 deg/s
         gRes = 65.5;
         write2bytes(GYRO_CONFIG, 0x08);
         break;
     case GFS_1000DPS:
-        // 1000 deg/s
         gRes = 32.8;
         write2bytes(GYRO_CONFIG, 0x10);
         break;
     case GFS_2000DPS:
-        // 2000 deg/s
         gRes = 16.4;
         write2bytes(GYRO_CONFIG, 0x18);
         break;
     default:
+        FlightControl::statusLight('R');
         break;
     }
 }
@@ -103,7 +97,7 @@ void IMU::readRawData()
     Wire.beginTransmission(_addr);
     Wire.write(ACCEL_XOUT_H);
     Wire.endTransmission();
-    Wire.requestFrom((int)_addr, 14);
+    Wire.requestFrom(_addr, 14);
 
     // Read raw data
     imuRaw.ax = Wire.read() << 8 | Wire.read();
@@ -121,7 +115,7 @@ void IMU::readRawData()
 /// @param numCalPoints Number of data points to average.
 void IMU::gyroCalibration(uint16_t numCalPoints)
 {
-    // Save specified number of data values
+    // Save specified number of points
     for (uint16_t ii = 0; ii < numCalPoints; ii++)
     {
         readRawData();
@@ -140,10 +134,10 @@ void IMU::gyroCalibration(uint16_t numCalPoints)
 /// @brief Calculate the real world sensor values
 void IMU::readProcessedData()
 {
-    // Get the raw values from the IMU
+    // Get raw values from the IMU
     readRawData();
 
-    // Convert accelerometer values from raw data to g's
+    // Convert accelerometer values to g's
     imuProcessed.ax = imuRaw.ax / aRes;
     imuProcessed.ay = imuRaw.ay / aRes;
     imuProcessed.az = imuRaw.az / aRes;
@@ -174,8 +168,8 @@ void IMU::calcAttitude(float tau)
     float accelPitch = atan2(imuProcessed.ay, imuProcessed.az) * (180 / M_PI);
     float accelRoll = atan2(imuProcessed.ax, imuProcessed.az) * (180 / M_PI);
 
-    attitude.roll = (tau) * (attitude.roll - imuProcessed.gy * dt) + (1 - tau) * (accelRoll);
-    attitude.pitch = (tau) * (attitude.pitch + imuProcessed.gx * dt) + (1 - tau) * (accelPitch);
+    attitude.roll = tau * (attitude.roll - imuProcessed.gy * dt) + (1 - tau) * accelRoll;
+    attitude.pitch = tau * (attitude.pitch + imuProcessed.gx * dt) + (1 - tau) * accelPitch;
     attitude.yaw += imuProcessed.gz * dt;
 }
 
