@@ -13,7 +13,7 @@
 #define MAX_YAW_DEG    30
 #define MIN_YAW_DEG   -30
 
-// PID gains data structure
+// PID gains struct
 struct Gains
 {
     float P, I, D;

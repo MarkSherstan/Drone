@@ -1,16 +1,16 @@
 #include "PID.h"
 
-/// @brief Initialize the PID gains and start a timer.
-/// @param gains PID gains for control.
+/// @brief Initialize the PID gains and start a timer
+/// @param gains PID gains for control
 PID::PID(Gains gains)
 {
     _gains = gains;
     timer = micros();
 }
 
-/// @brief PID controller.
-/// @param actual Actual value.
-/// @param desired Desired value.
+/// @brief PID controller
+/// @param actual Actual value
+/// @param desired Desired value
 float PID::update(float actual, float desired)
 {
     // Calculate dt
@@ -30,7 +30,7 @@ float PID::update(float actual, float desired)
     return (_gains.P * error) + (_gains.I * I) + (_gains.D * D);
 }
 
-/// @brief Reset the controller to prevent integral wind up and timing errors.
+/// @brief Reset the controller to prevent integral wind up and timing errors
 void PID::reset()
 {
     integral = 0;
