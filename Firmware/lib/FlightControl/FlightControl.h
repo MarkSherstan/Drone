@@ -48,9 +48,9 @@ class FlightControl
 
         // Functions
         void configureBattery(float numCells=3, float nominalCellVoltage=3.7, float fullCellVoltage=4.2, float R1=3.24, float R2=2.00);
-        void startTimers(uint16_t loopRateHz=200);
+        void startTimer(uint16_t loopRateHz=200);
         void stabilizeLoopRate();
-        void setUpDigitalPins();
+        void configDigitalPins();
         void monitorBattery();
 
         static void statusLight(char color);

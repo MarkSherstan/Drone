@@ -1,7 +1,7 @@
 #include "FlightControl.h"
 
 /// @brief Set digital pins
-void FlightControl::setUpDigitalPins()
+void FlightControl::configDigitalPins()
 {
     // RGB LEDs
     pinMode(R_LED, OUTPUT);
@@ -131,7 +131,7 @@ void FlightControl::flashLights()
 
 /// @brief Initiate timers and desired loop rates
 /// @param loopRateHz Desired loop rate in Hertz.
-void FlightControl::startTimers(uint16_t loopRateHz)
+void FlightControl::startTimer(uint16_t loopRateHz)
 {
     // Zero guard
     if (loopRateHz < 1)
