@@ -21,21 +21,6 @@ void FlightControl::configDigitalPins()
     digitalWrite(LIGHT_4, HIGH);
 }
 
-/// @brief Configure flight battery for voltage monitoring
-/// @param numCells Number of battery cells (3s LiPo = 3)
-/// @param nominalCellVoltage Nominal voltage per cell of battery (LiPo: 3.7 V/cell)
-/// @param fullCellVoltage Full voltage per cell of battery (LiPo: 4.2 V/cell)
-/// @param R1 Value of first resistor in voltage divider circuit use the same units as R2
-/// @param R2 Value of second resistor in voltage divider circuit use the same units as R1
-void FlightControl::configureBattery(float numCells, float nominalCellVoltage, float fullCellVoltage, float R1, float R2)
-{
-    battery.numCells = numCells;
-    battery.nominalCellVoltage = nominalCellVoltage;
-    battery.fullCellVoltage = fullCellVoltage;
-    battery.R1 = R1;
-    battery.R2 = R2;
-}
-
 /// @brief Sets the RGB light different colors to indicate the current status
 /// @param color Color options: Red 'R', Green 'G', Blue 'B', Cyan 'C', Magenta 'M', Yellow 'Y', and White 'W'
 void FlightControl::statusLight(char color)
@@ -88,15 +73,15 @@ void FlightControl::statusLight(char color)
 }
 
 /// @brief Read battery voltage and flash arm lights if voltage is getting low
-void FlightControl::monitorBattery()
+void FlightControl::checkBatteryLevels()
 {
     // Read battery voltage after it is passed through voltage divider and op-amp
     uint16_t analogRaw = analogRead(BATTERY_PIN);
     float voltageRaw = analogRaw * (5.0 / 1023.0);
-    float batteryVoltage = voltageRaw * (battery.R1 + battery.R2) / battery.R2;
+    float batteryVoltage = voltageRaw * (BATTERY_R1 + BATTERY_R2) / BATTERY_R2;
 
     // Flash lights if battery is starting to get low
-    if (batteryVoltage < (battery.nominalCellVoltage * battery.numCells))
+    if (batteryVoltage < (BATTERY_NOM_CELL * BATTERY_CELLS))
     {
         flashLights();
     }
