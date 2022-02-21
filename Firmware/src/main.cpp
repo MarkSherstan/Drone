@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include "FlightControl.h"
+#include "Receiver.h"
 #include "IMU.h"
 #include "PID.h"
-#include "RX.h"
 
 // Set PID values
 Gains rGains{.P = 1.0, .I = 2.0, .D = 3.0};
@@ -10,16 +10,16 @@ Gains pGains{.P = 1.0, .I = 2.0, .D = 3.0};
 Gains yGains{.P = 1.0, .I = 2.0, .D = 3.0};
 
 // Set receiver calibration values
-channel_t channelCal1{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t channelCal2{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t channelCal3{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t channelCal4{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
-channel_t channelCal5{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+channel_t ch1cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+channel_t ch2cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+channel_t ch3cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+channel_t ch4cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
+channel_t ch5cal{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
 
-// General flight control class and IMU connection
-RX rx;
-FlightControl FC;
+// IMU connection, general flight control, and receiver classes
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
+FlightControl FC;
+Receiver RX;
 
 // Configure and start the PID controller
 PID rPID(rGains);
@@ -36,14 +36,15 @@ void setup()
     FC.configDigitalPins();
     RX.configInterruptPins();
 
-    // Configure battery for voltage monitoring
+    // Save battery and receiver calibration
     FC.configureBattery();
-
-    // Save the radio calibration values
-    // FC.saveReceiverCalibration(channelCal1, channelCal2, channelCal3, channelCal4, channelCal5);
+    RX.saveReceiverCalibration(ch1cal, ch2cal, ch3cal, ch4cal, ch5cal);
 
     // Calibrate the gyroscope
     imu.calibrateGyro();
+
+    // Signal system is ready with green light
+    FC.statusLight('G');
 
     // Reset the controllers
     rPID.reset();
@@ -53,9 +54,7 @@ void setup()
     // Start timers
     imu.startTimer();
     FC.startTimer();
-
-    // Signal system is ready with green light
-    FC.statusLight('G');
+    RX.startTimer();
 }
 
 // Main loop
