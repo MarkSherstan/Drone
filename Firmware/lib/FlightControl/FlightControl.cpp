@@ -1,6 +1,6 @@
 #include "FlightControl.h"
 
-/// @brief Set digital pins as outputs or interupts.
+/// @brief Set digital pins
 void FlightControl::setUpDigitalPins()
 {
     // RGB LEDs
@@ -8,26 +8,17 @@ void FlightControl::setUpDigitalPins()
     pinMode(G_LED, OUTPUT);
     pinMode(B_LED, OUTPUT);
 
-    // Turn on LEDs located on the arms
+    // Configure arm LEDs
     pinMode(LIGHT_1, OUTPUT);
-    digitalWrite(LIGHT_1, HIGH);
     pinMode(LIGHT_2, OUTPUT);
-    digitalWrite(LIGHT_2, HIGH);
     pinMode(LIGHT_3, OUTPUT);
-    digitalWrite(LIGHT_3, HIGH);
     pinMode(LIGHT_4, OUTPUT);
+
+    // Turn on arm LEDs
+    digitalWrite(LIGHT_1, HIGH);
+    digitalWrite(LIGHT_2, HIGH);
+    digitalWrite(LIGHT_3, HIGH);
     digitalWrite(LIGHT_4, HIGH);
-
-    // Receiver pin interupts
-    PCICR |= (1 << PCIE0);
-    PCMSK0 |= (1 << PCINT1);
-    PCMSK0 |= (1 << PCINT2);
-    PCMSK0 |= (1 << PCINT3);
-    PCMSK0 |= (1 << PCINT4);
-    PCMSK0 |= (1 << PCINT5);
-
-    // Set status LED to white to start
-    statusLight('W');
 }
 
 /// @brief Configure flight battery for voltage monitoring
@@ -100,7 +91,7 @@ void FlightControl::statusLight(char color)
 void FlightControl::monitorBattery()
 {
     // Read battery voltage after it is passed through voltage divider and op-amp
-    int analogRaw = analogRead(BATTERY);
+    uint16_t analogRaw = analogRead(BATTERY_PIN);
     float voltageRaw = analogRaw * (5.0 / 1023.0);
     float batteryVoltage = voltageRaw * (battery.R1 + battery.R2) / battery.R2;
 
@@ -121,13 +112,13 @@ void FlightControl::monitorBattery()
 /// @brief Flash lights to indicate a low battery at 1 second intervals
 void FlightControl::flashLights()
 {
-    if ((micros() - lightTimer) > 1000)
+    if ((millis() - lightTimer) > 1000)
     {
         digitalWrite(LIGHT_1, HIGH);
         digitalWrite(LIGHT_2, HIGH);
         digitalWrite(LIGHT_3, HIGH);
         digitalWrite(LIGHT_4, HIGH);
-        lightTimer = micros();
+        lightTimer = millis();
     }
     else
     {
@@ -140,11 +131,34 @@ void FlightControl::flashLights()
 
 /// @brief Initiate timers and desired loop rates.
 /// @param loopRateHz Desired loop rate in Hertz.
-void FlightControl::startTimers(int loopRateHz)
+void FlightControl::startTimers(uint16_t loopRateHz)
 {
-    lightTimer = micros();
-    loopTimer = micros();
-    currentTime = micros();
+    // Zero guard
+    if (loopRateHz < 1)
+    {
+        loopRateHz = 1;
+    }
+    
+    // Calculate desired loop rate in micro seconds
     desiredLoopRateMicroSec = (1.0 / (float)loopRateHz) * 1e6;
+
+    // Start timers
+    lightTimer = millis();
+    loopTimer = micros();
 }
 
+/// @brief Add a delay so that there is a consistent loop rate
+void FlightControl::stabilizeLoopRate()
+{
+    // Calculate required delay
+    uint32_t timeToDelay = desiredLoopRateMicroSec - (micros() - previousTime);
+
+    // Execute the delay
+    if (timeToDelay > 0)
+    {
+        delayMicroseconds(timeToDelay);
+    }
+
+    // Save previous time for next itteration
+    previousTime = micros();
+}

@@ -6,7 +6,7 @@
 #include <arduino.h>
 
 // Pinout
-#define BATTERY A0
+#define BATTERY_PIN A0
 
 #define LIGHT_1 A1
 #define LIGHT_2 A2
@@ -28,7 +28,6 @@ struct Battery
     float numCells, nominalCellVoltage, fullCellVoltage, R1, R2;
 };
 
-
 // Class
 class FlightControl
 {
@@ -37,22 +36,24 @@ class FlightControl
         void flashLights();
 
         // Time Sync
-        long lightTimer;
-        long loopTimer;
-        long desiredLoopRateMicroSec;
-        long previousTime;
+        uint32_t lightTimer, loopTimer, previousTime;
+        uint32_t desiredLoopRateMicroSec;
 
         // Battery Monitoring
         Battery battery;
 
     public:
+        // Config
         FlightControl() = default;
-        static void statusLight(char color);
-        void setUpDigitalPins();
+
+        // Functions
+        void configureBattery(float numCells=3, float nominalCellVoltage=3.7, float fullCellVoltage=4.2, float R1=3.24, float R2=2.00);
+        void startTimers(uint16_t loopRateHz=200);
         void stabilizeLoopRate();
-        void startTimers(int loopRateHz = 200);
+        void setUpDigitalPins();
         void monitorBattery();
-        void configureBattery(float numCells = 3, float nominalCellVoltage = 3.7, float fullCellVoltage = 4.2, float R1 = 3.24, float R2 = 2.00);
+
+        static void statusLight(char color);
 };
 
 #endif // FLIGHTCONTROL_H
