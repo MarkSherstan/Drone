@@ -8,12 +8,13 @@
 // Structs
 struct ChannelCal
 {
-    uint16_t low, high, center, reverse;
+    uint16_t low, high, center;
+    bool reverse;
 };
 
-struct receiver_t
+struct ReceiverStream
 {
-    int CH1, CH2, CH3, CH4, CH5;
+    uint16_t CH1, CH2, CH3, CH4, CH5;
 };
 
 // Class
@@ -21,14 +22,15 @@ class Receiver
 {
     private:
         // Functions
-        int processReceiverInterrupt(int input, ChannelCal calibration);
+        uint16_t processRawStream(uint16_t input, ChannelCal calibration);
         
         // Variables
         uint32_t currentTime, timer1, timer2, timer3, timer4, timer5;
         uint8_t lastChannel1, lastChannel2, lastChannel3, lastChannel4, lastChannel5;
         
-        // Struct
+        // Struct(s)
         ChannelCal _ch1cal, _ch2cal, _ch3cal, _ch4cal, _ch5cal;
+        ReceiverStream raw;
 
     public:
         // Config
@@ -36,13 +38,12 @@ class Receiver
 
         // Functions
         void saveReceiverCal(ChannelCal ch1cal, ChannelCal ch2cal, ChannelCal ch3cal, ChannelCal ch4cal, ChannelCal ch5cal);
-        void receiverA();
-        void receiverInterrupt();
         void configInterruptPins();
+        void receiverInterrupt();
+        void update();
 
-        // Structs
-        receiver_t rx;
-        receiver_t rawRX;
+        // Struct(s)
+        ReceiverStream sticks;
 };
 
 #endif // RX_H
