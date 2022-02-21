@@ -36,7 +36,7 @@ class FlightControl
         void flashLights();
 
         // Time Sync
-        uint32_t lightTimer, loopTimer, previousTime;
+        uint32_t lightTimer, loopTimer;
         uint32_t desiredLoopRateMicroSec;
 
         // Battery Monitoring

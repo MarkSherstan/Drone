@@ -87,7 +87,7 @@ void FlightControl::statusLight(char color)
     }
 }
 
-/// @brief Read battery voltage and flash arm lights if voltage is getting low.
+/// @brief Read battery voltage and flash arm lights if voltage is getting low
 void FlightControl::monitorBattery()
 {
     // Read battery voltage after it is passed through voltage divider and op-amp
@@ -129,7 +129,7 @@ void FlightControl::flashLights()
     }
 }
 
-/// @brief Initiate timers and desired loop rates.
+/// @brief Initiate timers and desired loop rates
 /// @param loopRateHz Desired loop rate in Hertz.
 void FlightControl::startTimers(uint16_t loopRateHz)
 {
@@ -151,7 +151,7 @@ void FlightControl::startTimers(uint16_t loopRateHz)
 void FlightControl::stabilizeLoopRate()
 {
     // Calculate required delay
-    uint32_t timeToDelay = desiredLoopRateMicroSec - (micros() - previousTime);
+    uint32_t timeToDelay = desiredLoopRateMicroSec - (micros() - loopTimer);
 
     // Execute the delay
     if (timeToDelay > 0)
@@ -160,5 +160,5 @@ void FlightControl::stabilizeLoopRate()
     }
 
     // Save previous time for next itteration
-    previousTime = micros();
+    loopTimer = micros();
 }
