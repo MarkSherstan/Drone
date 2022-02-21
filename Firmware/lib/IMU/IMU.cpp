@@ -100,28 +100,28 @@ void IMU::readRawData()
     Wire.requestFrom(_addr, 14);
 
     // Read raw data
-    imuRaw.ax = Wire.read() << 8 | Wire.read();
-    imuRaw.ay = Wire.read() << 8 | Wire.read();
-    imuRaw.az = Wire.read() << 8 | Wire.read();
+    sensorRaw.ax = Wire.read() << 8 | Wire.read();
+    sensorRaw.ay = Wire.read() << 8 | Wire.read();
+    sensorRaw.az = Wire.read() << 8 | Wire.read();
 
     temperature = Wire.read() << 8 | Wire.read();
 
-    imuRaw.gx = Wire.read() << 8 | Wire.read();
-    imuRaw.gy = Wire.read() << 8 | Wire.read();
-    imuRaw.gz = Wire.read() << 8 | Wire.read();
+    sensorRaw.gx = Wire.read() << 8 | Wire.read();
+    sensorRaw.gy = Wire.read() << 8 | Wire.read();
+    sensorRaw.gz = Wire.read() << 8 | Wire.read();
 }
 
 /// @brief Find offsets for each axis of gyroscope.
 /// @param numCalPoints Number of data points to average.
-void IMU::gyroCalibration(uint16_t numCalPoints)
+void IMU::calibrateGyro(uint16_t numCalPoints)
 {
     // Save specified number of points
     for (uint16_t ii = 0; ii < numCalPoints; ii++)
     {
         readRawData();
-        gyroCal.x += imuRaw.gx;
-        gyroCal.y += imuRaw.gy;
-        gyroCal.z += imuRaw.gz;
+        gyroCal.x += sensorRaw.gx;
+        gyroCal.y += sensorRaw.gy;
+        gyroCal.z += sensorRaw.gz;
         delay(3);
     }
 
@@ -138,19 +138,19 @@ void IMU::readProcessedData()
     readRawData();
 
     // Convert accelerometer values to g's
-    imuProcessed.ax = imuRaw.ax / aRes;
-    imuProcessed.ay = imuRaw.ay / aRes;
-    imuProcessed.az = imuRaw.az / aRes;
+    sensorProcessed.ax = sensorRaw.ax / aRes;
+    sensorProcessed.ay = sensorRaw.ay / aRes;
+    sensorProcessed.az = sensorRaw.az / aRes;
 
     // Compensate for gyro offset
-    imuProcessed.gx = imuRaw.gx - gyroCal.x;
-    imuProcessed.gy = imuRaw.gy - gyroCal.y;
-    imuProcessed.gz = imuRaw.gz - gyroCal.z;
+    sensorProcessed.gx = sensorRaw.gx - gyroCal.x;
+    sensorProcessed.gy = sensorRaw.gy - gyroCal.y;
+    sensorProcessed.gz = sensorRaw.gz - gyroCal.z;
 
     // Convert gyro values to deg/s
-    imuProcessed.gx /= gRes;
-    imuProcessed.gy /= gRes;
-    imuProcessed.gz /= gRes;
+    sensorProcessed.gx /= gRes;
+    sensorProcessed.gy /= gRes;
+    sensorProcessed.gz /= gRes;
 }
 
 /// @brief Calculate the attitude of the sensor in degrees using a complementary filter
@@ -165,12 +165,12 @@ void IMU::calcAttitude(float tau)
     readProcessedData();
 
     // Complementary filter
-    float accelPitch = atan2(imuProcessed.ay, imuProcessed.az) * (180 / M_PI);
-    float accelRoll = atan2(imuProcessed.ax, imuProcessed.az) * (180 / M_PI);
+    float accelPitch = atan2(sensorProcessed.ay, sensorProcessed.az) * (180 / M_PI);
+    float accelRoll = atan2(sensorProcessed.ax, sensorProcessed.az) * (180 / M_PI);
 
-    attitude.roll = tau * (attitude.roll - imuProcessed.gy * dt) + (1 - tau) * accelRoll;
-    attitude.pitch = tau * (attitude.pitch + imuProcessed.gx * dt) + (1 - tau) * accelPitch;
-    attitude.yaw += imuProcessed.gz * dt;
+    attitude.r = tau * (attitude.r - sensorProcessed.gy * dt) + (1 - tau) * accelRoll;
+    attitude.p = tau * (attitude.p + sensorProcessed.gx * dt) + (1 - tau) * accelPitch;
+    attitude.y += sensorProcessed.gz * dt;
 }
 
 /// @brief Write bytes to specific registers on the IMU.

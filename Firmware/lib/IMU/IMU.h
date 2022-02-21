@@ -44,22 +44,20 @@
 #define GFS_1000DPS 2
 #define GFS_2000DPS 3
 
-// IMU data structure
-struct imu_t
+// Structures
+struct Sensor
 {
     float ax, ay, az, gx, gy, gz;
 };
 
-// Gyro calibration structure
-struct gyro_cal_t
+struct GyroCal
 {
     float x, y, z;
 };
 
-// Attitude structure
-struct attitude_t
+struct Attitude
 {
-    float roll, pitch, yaw;
+    float r, p, y;
 };
 
 // Class
@@ -68,8 +66,10 @@ class IMU
     private:
         // Functions
         void write2bytes(uint8_t byte0, uint8_t byte1);
-        void setAccFullScaleRange(uint8_t aScale);
         void setGyroFullScaleRange(uint8_t gScale);
+        void setAccFullScaleRange(uint8_t aScale);
+        void readProcessedData();
+        void readRawData();
 
         // Variables
         uint8_t _addr, _aScale, _gScale;
@@ -80,20 +80,20 @@ class IMU
         IMU(uint8_t addr, uint8_t aScale, uint8_t gScale);
 
         // Functions
-        void startTimer();
-        void gyroCalibration(uint16_t numCalPoints = 2000);
-        void readProcessedData();
-        void readRawData();
+        void calibrateGyro(uint16_t numCalPoints = 2000);
         void calcAttitude(float tau = 0.98);
+        void startTimer();
         void begin();
 
+        // Structs
+        Attitude attitude;
+        GyroCal gyroCal;
+        Sensor sensorRaw;
+        Sensor sensorProcessed;
+
         // Variables
-        float temperature;
+        int16_t temperature;
         uint32_t timer;
-        gyro_cal_t gyroCal;
-        imu_t imuRaw;
-        imu_t imuProcessed;
-        attitude_t attitude;
 };
 
 #endif // IMU_H
