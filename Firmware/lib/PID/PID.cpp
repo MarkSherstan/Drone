@@ -5,6 +5,8 @@
 PID::PID(Gains gains)
 {
     _gains = gains;
+    integral = 0;
+    prevError = 0;
     timer = micros();
 }
 
@@ -34,5 +36,6 @@ float PID::update(float actual, float desired)
 void PID::reset()
 {
     integral = 0;
+    prevError = 0;
     timer = micros();
 }

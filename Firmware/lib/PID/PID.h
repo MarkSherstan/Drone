@@ -26,7 +26,7 @@ class PID
         // Variables
         Gains _gains;
         float integral, prevError;
-        long timer;
+        uint32_t timer;
 
     public:
         // Config
