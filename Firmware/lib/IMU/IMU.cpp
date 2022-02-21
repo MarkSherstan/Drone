@@ -6,9 +6,13 @@
 /// @param gScale Set gyroscope full scale range: 0 for ±250°/s, 1 for ±500°/s, 2 for ±1000°/s, and 3 for ±2000°/s.
 IMU::IMU(uint8_t addr, uint8_t aScale, uint8_t gScale)
 {
+    // Save values
     _addr = addr;
     _aScale = aScale;
     _gScale = gScale;
+    
+    // Start up I2C
+    Wire.begin();
 }
 
 /// @brief Check for connection, reset IMU, and set full range scale.
