@@ -81,3 +81,62 @@ void loop() {
 ISR(PCINT0_vect){
   FC.receiverInterrupt();
 }
+
+
+
+// // Start general flight control function
+// FlightControl FC;
+
+// // Initialization
+// void setup() {
+//   // Start a serial port
+//   Serial.begin(9600);
+
+//   // Configure the digital pins
+//   FC.setUpDigitalPins();
+
+//   // Start timer
+//   FC.startTimers();
+// }
+
+// // Main loop
+// void loop() {
+//   // Small Delay
+//   delay(250);
+  
+//   // Print values
+//   Serial.print("Roll:");
+//   if(FC.rawRX.CH1 - 1480 < 0)Serial.print("<<<");
+//   else if(FC.rawRX.CH1 - 1520 > 0)Serial.print(">>>");
+//   else Serial.print("-+-");
+//   Serial.print(FC.rawRX.CH1);
+  
+//   Serial.print("  Pitch:");
+//   if(FC.rawRX.CH2 - 1480 < 0)Serial.print("^^^");
+//   else if(FC.rawRX.CH2 - 1520 > 0)Serial.print("vvv");
+//   else Serial.print("-+-");
+//   Serial.print(FC.rawRX.CH2);
+  
+//   Serial.print("  Thrust:");
+//   if(FC.rawRX.CH3 - 1480 < 0)Serial.print("vvv");
+//   else if(FC.rawRX.CH3 - 1520 > 0)Serial.print("^^^");
+//   else Serial.print("-+-");
+//   Serial.print(FC.rawRX.CH3);
+  
+//   Serial.print("  Yaw:");
+//   if(FC.rawRX.CH4 - 1480 < 0)Serial.print("<<<");
+//   else if(FC.rawRX.CH4 - 1520 > 0)Serial.print(">>>");
+//   else Serial.print("-+-");
+//   Serial.print(FC.rawRX.CH4);
+
+//   Serial.print("  Switch:");
+//   if(FC.rawRX.CH5 - 1480 < 0)Serial.print("vvv");
+//   else if(FC.rawRX.CH5 - 1520 > 0)Serial.print("^^^");
+//   else Serial.print("-+-");
+//   Serial.println(FC.rawRX.CH5);
+// }
+
+// // Interrupt service routine for RC channels 
+// ISR(PCINT0_vect){
+//   FC.receiverInterrupt();
+// }
