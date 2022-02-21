@@ -1,24 +1,27 @@
 #include "RX.h"
 
-
-/// @brief Add a delay so that there is a consistent loop rate
-void FlightControl::stabilizeLoopRate()
+void RX::configureInterruptPins()
 {
-    // Calculate required delay
-    long timeToDelay = desiredLoopRateMicroSec - (micros() - previousTime);
-
-    // Execute the delay
-    if (timeToDelay > 0)
-    {
-        delayMicroseconds(timeToDelay);
-    }
-
-    // Save previous time
-    previousTime = micros();
+    // Receiver pin interupts
+    PCICR |= (1 << PCIE0);
+    PCMSK0 |= (1 << PCINT1);
+    PCMSK0 |= (1 << PCINT2);
+    PCMSK0 |= (1 << PCINT3);
+    PCMSK0 |= (1 << PCINT4);
+    PCMSK0 |= (1 << PCINT5);
 }
 
+
+void RX::startTimer()
+{
+    // Start a timer
+    currentTime = micros();
+}
+
+
+
 /// @brief Used in interrupt service routine to read current receiver values sent by the transmitter
-void FlightControl::receiverInterrupt()
+void RX::receiverInterrupt()
 {
     // Get current time
     currentTime = micros();
@@ -105,7 +108,7 @@ void FlightControl::receiverInterrupt()
 /// @param channelCal3 Low, high, center, and direction of RC channel 3 based off calibration
 /// @param channelCal4 Low, high, center, and direction of RC channel 4 based off calibration
 /// @param channelCal5 Low, high, center, and direction of RC channel 5 based off calibration
-void FlightControl::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5)
+void RX::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5)
 {
     _channelCal1 = channelCal1;
     _channelCal2 = channelCal2;
@@ -115,20 +118,20 @@ void FlightControl::saveReceiverCalibration(channel_t channelCal1, channel_t cha
 }
 
 /// @brief Process the receiver value based on calibration
-void FlightControl::receiver()
+void RX::receiver()
 {
-    RX.CH1 = processReceiverInterrupt(rawRX.CH1, _channelCal1);
-    RX.CH2 = processReceiverInterrupt(rawRX.CH2, _channelCal2);
-    RX.CH3 = processReceiverInterrupt(rawRX.CH3, _channelCal3);
-    RX.CH4 = processReceiverInterrupt(rawRX.CH4, _channelCal4);
-    RX.CH5 = processReceiverInterrupt(rawRX.CH5, _channelCal5);
+    rx.CH1 = processReceiverInterrupt(rawRX.CH1, _channelCal1);
+    rx.CH2 = processReceiverInterrupt(rawRX.CH2, _channelCal2);
+    rx.CH3 = processReceiverInterrupt(rawRX.CH3, _channelCal3);
+    rx.CH4 = processReceiverInterrupt(rawRX.CH4, _channelCal4);
+    rx.CH5 = processReceiverInterrupt(rawRX.CH5, _channelCal5);
 }
 
 /// @brief Process the raw interupt receiver value to a properly scaled receiver value based on a prior calibration.
 /// @param input Raw input value received by the interupt.
 /// @param calibration RC calibration value structure.
 /// @return Processed receiver value.
-int FlightControl::processReceiverInterrupt(int input, channel_t calibration)
+int RX::processReceiverInterrupt(int input, channel_t calibration)
 {
     // Input value is on the low side
     if (input < calibration.center)
