@@ -1,8 +1,8 @@
 #include <Arduino.h>
-#include <Wire.h>
 #include "FlightControl.h"
 #include "IMU.h"
 #include "PID.h"
+#include "RX.h"
 
 // Set PID values
 Gains rGains{.P = 1.0, .I = 2.0, .D = 3.0};
@@ -16,7 +16,8 @@ channel_t channelCal3{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
 channel_t channelCal4{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
 channel_t channelCal5{.low = 1000, .high = 2000, .center = 1500, .reverse = 0};
 
-// Start general flight control functions and prep for IMU connection
+// General flight control class and IMU connection
+RX rx;
 FlightControl FC;
 IMU imu(AD0_LOW, AFS_4G, GFS_500DPS);
 
@@ -28,34 +29,33 @@ PID yPID(yGains);
 // Initialization
 void setup()
 {
-    // Start up I2C
-    Wire.begin();
-
-    // Connect to the IMU
+    // Start the IMU
     imu.begin();
 
-    // Configure the digital pins
-    FC.setUpDigitalPins();
+    // Configure digital pins
+    FC.configDigitalPins();
+    RX.configInterruptPins();
 
     // Configure battery for voltage monitoring
     FC.configureBattery();
 
     // Save the radio calibration values
-    FC.saveReceiverCalibration(channelCal1, channelCal2, channelCal3, channelCal4, channelCal5);
+    // FC.saveReceiverCalibration(channelCal1, channelCal2, channelCal3, channelCal4, channelCal5);
 
     // Calibrate the gyroscope
-    FC.statusLight('B');
     imu.calibrateGyro();
-    FC.statusLight('G');
 
-    // Reset the controller
+    // Reset the controllers
     rPID.reset();
     pPID.reset();
     yPID.reset();
 
-    // Start timer(s)
+    // Start timers
     imu.startTimer();
-    FC.startTimers();
+    FC.startTimer();
+
+    // Signal system is ready with green light
+    FC.statusLight('G');
 }
 
 // Main loop
@@ -65,7 +65,7 @@ void loop()
     imu.calcAttitude();
 
     // Update the receiver inputs
-    FC.receiver();
+    // FC.receiver();
 
     // Run PID controller
     rPID.update(imu.attitude.r);
@@ -79,8 +79,8 @@ void loop()
     FC.stabilizeLoopRate();
 }
 
-// Interrupt service routine for RC channels
-ISR(PCINT0_vect)
-{
-    FC.receiverInterrupt();
-}
+// // Interrupt service routine for RC channels
+// ISR(PCINT0_vect)
+// {
+//     RX.receiverInterrupt();
+// }
