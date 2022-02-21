@@ -5,13 +5,12 @@
 // Libraries
 #include <arduino.h>
 
-// Receiver calibration
-struct channel_t
+// Structs
+struct ChannelCal
 {
-    int low, high, center, reverse;
+    uint16_t low, high, center, reverse;
 };
 
-// Receiver structure
 struct receiver_t
 {
     int CH1, CH2, CH3, CH4, CH5;
@@ -22,25 +21,26 @@ class Receiver
 {
     private:
         // Functions
-        int processReceiverInterrupt(int input, channel_t calibration);
+        int processReceiverInterrupt(int input, ChannelCal calibration);
+        
+        // Variables
         uint32_t currentTime, timer1, timer2, timer3, timer4, timer5;
-        char lastChannel1, lastChannel2, lastChannel3, lastChannel4, lastChannel5;
+        uint8_t lastChannel1, lastChannel2, lastChannel3, lastChannel4, lastChannel5;
         
         // Struct
-        channel_t _channelCal1, _channelCal2, _channelCal3, _channelCal4, _channelCal5;
+        ChannelCal _ch1cal, _ch2cal, _ch3cal, _ch4cal, _ch5cal;
 
     public:
         // Config
         Receiver() = default;
 
-        void saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5);
-
+        // Functions
+        void saveReceiverCal(ChannelCal ch1cal, ChannelCal ch2cal, ChannelCal ch3cal, ChannelCal ch4cal, ChannelCal ch5cal);
         void receiverA();
-        void startTimer();
         void receiverInterrupt();
         void configInterruptPins();
 
-        // Receiver
+        // Structs
         receiver_t rx;
         receiver_t rawRX;
 };

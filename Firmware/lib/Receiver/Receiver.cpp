@@ -1,6 +1,7 @@
 #include "Receiver.h"
 
-void Receiver::configureInterruptPins()
+/// @brief Set digital pins
+void Receiver::configInterruptPins()
 {
     // Receiver pin interupts
     PCICR |= (1 << PCIE0);
@@ -11,16 +12,7 @@ void Receiver::configureInterruptPins()
     PCMSK0 |= (1 << PCINT5);
 }
 
-
-void Receiver::startTimer()
-{
-    // Start a timer
-    currentTime = micros();
-}
-
-
-
-/// @brief Used in interrupt service routine to read current receiver values sent by the transmitter
+/// @brief Used in ISR to read current receiver values sent by the transmitter
 void Receiver::receiverInterrupt()
 {
     // Get current time
@@ -103,35 +95,35 @@ void Receiver::receiverInterrupt()
 }
 
 /// @brief Save calibration values of the RC receiver to ensure inputs are scaled correctly.
-/// @param channelCal1 Low, high, center, and direction of RC channel 1 based off calibration
-/// @param channelCal2 Low, high, center, and direction of RC channel 2 based off calibration
-/// @param channelCal3 Low, high, center, and direction of RC channel 3 based off calibration
-/// @param channelCal4 Low, high, center, and direction of RC channel 4 based off calibration
-/// @param channelCal5 Low, high, center, and direction of RC channel 5 based off calibration
-void Receiver::saveReceiverCalibration(channel_t channelCal1, channel_t channelCal2, channel_t channelCal3, channel_t channelCal4, channel_t channelCal5)
+/// @param ch1cal Low, high, center, and direction of RC channel 1 based off calibration
+/// @param ch2cal Low, high, center, and direction of RC channel 2 based off calibration
+/// @param ch3cal Low, high, center, and direction of RC channel 3 based off calibration
+/// @param ch4cal Low, high, center, and direction of RC channel 4 based off calibration
+/// @param ch5cal Low, high, center, and direction of RC channel 5 based off calibration
+void Receiver::saveReceiverCal(ChannelCal ch1cal, ChannelCal ch2cal, ChannelCal ch3cal, ChannelCal ch4cal, ChannelCal ch5cal)
 {
-    _channelCal1 = channelCal1;
-    _channelCal2 = channelCal2;
-    _channelCal3 = channelCal3;
-    _channelCal4 = channelCal4;
-    _channelCal5 = channelCal5;
+    _ch1cal = ch1cal;
+    _ch2cal = ch2cal;
+    _ch3cal = ch3cal;
+    _ch4cal = ch4cal;
+    _ch5cal = ch5cal;
 }
 
 /// @brief Process the receiver value based on calibration
 void Receiver::receiverA()
 {
-    rx.CH1 = processReceiverInterrupt(rawRX.CH1, _channelCal1);
-    rx.CH2 = processReceiverInterrupt(rawRX.CH2, _channelCal2);
-    rx.CH3 = processReceiverInterrupt(rawRX.CH3, _channelCal3);
-    rx.CH4 = processReceiverInterrupt(rawRX.CH4, _channelCal4);
-    rx.CH5 = processReceiverInterrupt(rawRX.CH5, _channelCal5);
+    rx.CH1 = processReceiverInterrupt(rawRX.CH1, _ch1cal);
+    rx.CH2 = processReceiverInterrupt(rawRX.CH2, _ch2cal);
+    rx.CH3 = processReceiverInterrupt(rawRX.CH3, _ch3cal);
+    rx.CH4 = processReceiverInterrupt(rawRX.CH4, _ch4cal);
+    rx.CH5 = processReceiverInterrupt(rawRX.CH5, _ch5cal);
 }
 
 /// @brief Process the raw interupt receiver value to a properly scaled receiver value based on a prior calibration.
 /// @param input Raw input value received by the interupt.
 /// @param calibration RC calibration value structure.
 /// @return Processed receiver value.
-int Receiver::processReceiverInterrupt(int input, channel_t calibration)
+int Receiver::processReceiverInterrupt(int input, ChannelCal calibration)
 {
     // Input value is on the low side
     if (input < calibration.center)
