@@ -1,59 +1,81 @@
-#include <Arduino.h>
-#include "FlightControl.h"
+// Set receiver calibration values
+ChannelCal ch1cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch2cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch3cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch4cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
+ChannelCal ch5cal{.low = 1000, .high = 2000, .center = 1500, .reverse = false};
 
-// Start general flight control function
-FlightControl FC;
+// Start receiver class
+Receiver RX;
 
 // Initialization
-void setup() {
-  // Start a serial port
-  Serial.begin(9600);
+void setup()
+{
+    // Start a serial port
+    Serial.begin(9600);
 
-  // Configure the digital pins
-  FC.setUpDigitalPins();
-
-  // Start timer
-  FC.startTimers();
+    // Configure the digital pins
+    RX.configInterruptPins();
 }
 
 // Main loop
-void loop() {
-  // Small Delay
-  delay(250);
-  
-  // Print values
-  Serial.print("Roll:");
-  if(FC.rawRX.CH1 - 1480 < 0)Serial.print("<<<");
-  else if(FC.rawRX.CH1 - 1520 > 0)Serial.print(">>>");
-  else Serial.print("-+-");
-  Serial.print(FC.rawRX.CH1);
-  
-  Serial.print("  Pitch:");
-  if(FC.rawRX.CH2 - 1480 < 0)Serial.print("^^^");
-  else if(FC.rawRX.CH2 - 1520 > 0)Serial.print("vvv");
-  else Serial.print("-+-");
-  Serial.print(FC.rawRX.CH2);
-  
-  Serial.print("  Thrust:");
-  if(FC.rawRX.CH3 - 1480 < 0)Serial.print("vvv");
-  else if(FC.rawRX.CH3 - 1520 > 0)Serial.print("^^^");
-  else Serial.print("-+-");
-  Serial.print(FC.rawRX.CH3);
-  
-  Serial.print("  Yaw:");
-  if(FC.rawRX.CH4 - 1480 < 0)Serial.print("<<<");
-  else if(FC.rawRX.CH4 - 1520 > 0)Serial.print(">>>");
-  else Serial.print("-+-");
-  Serial.print(FC.rawRX.CH4);
+void loop()
+{
+    // Update
+    RX.update();
 
-  Serial.print("  Switch:");
-  if(FC.rawRX.CH5 - 1480 < 0)Serial.print("vvv");
-  else if(FC.rawRX.CH5 - 1520 > 0)Serial.print("^^^");
-  else Serial.print("-+-");
-  Serial.println(FC.rawRX.CH5);
+    // Small Delay
+    delay(250);
+
+    // Print values
+    Serial.print("Roll:");
+    if (RX.sticks.CH1 - 1480 < 0)
+        Serial.print("<<<");
+    else if (RX.sticks.CH1 - 1520 > 0)
+        Serial.print(">>>");
+    else
+        Serial.print("-+-");
+    Serial.print(RX.sticks.CH1);
+
+    Serial.print("  Pitch:");
+    if (RX.sticks.CH2 - 1480 < 0)
+        Serial.print("^^^");
+    else if (RX.sticks.CH2 - 1520 > 0)
+        Serial.print("vvv");
+    else
+        Serial.print("-+-");
+    Serial.print(RX.sticks.CH2);
+
+    Serial.print("  Thrust:");
+    if (RX.sticks.CH3 - 1480 < 0)
+        Serial.print("vvv");
+    else if (RX.sticks.CH3 - 1520 > 0)
+        Serial.print("^^^");
+    else
+        Serial.print("-+-");
+    Serial.print(RX.sticks.CH3);
+
+    Serial.print("  Yaw:");
+    if (RX.sticks.CH4 - 1480 < 0)
+        Serial.print("<<<");
+    else if (RX.sticks.CH4 - 1520 > 0)
+        Serial.print(">>>");
+    else
+        Serial.print("-+-");
+    Serial.print(RX.sticks.CH4);
+
+    Serial.print("  Switch:");
+    if (RX.sticks.CH5 - 1480 < 0)
+        Serial.print("vvv");
+    else if (RX.sticks.CH5 - 1520 > 0)
+        Serial.print("^^^");
+    else
+        Serial.print("-+-");
+    Serial.println(RX.sticks.CH5);
 }
 
-// Interrupt service routine for RC channels 
-ISR(PCINT0_vect){
-  FC.receiverInterrupt();
+// Interrupt service routine for receiver
+ISR(PCINT0_vect)
+{
+    RX.receiverInterrupt();
 }
